@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Estadística Aplicada</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore"><strong>Estadística Aplicada</strong></h1>
+
+</div>
+
+
+<p><br/><br/></p>
+<div id="información-básica" class="section level2">
+<h2><strong>Información básica</strong></h2>
+<ul>
+<li><p>Código : 30MAE014</p></li>
+<li><p>Departamento que la ofrece : Ciencias Naturales y
+Matemáticas</p></li>
+<li><p>Área de conocimiento. Estadística -Matemáticas y Ciencias
+Naturales<br />
+</p></li>
+<li><p>Nucleo básico de conocimiento : Estadística</p></li>
+<li><p>Créditos : 3</p></li>
+<li><p>Número total de horas : 144</p></li>
+<li><p>Horas de clase semanales : 4</p></li>
+<li><p>Horas de trabajo independiente : 5 (2 con monitor, 3 estudiante
+solo)</p></li>
+<li><p>Prerrequisitos : Teoría de Probabilidad (300MAE013)</p></li>
+<li><p>Correquisitos : ninguno</p></li>
+<li><p>Asignaturas equivalentes : ninguna</p></li>
+<li><p>Modalidad : Presencial</p></li>
+<li><p>Idioma en que se imparte : Español</p></li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="descripción-de-la-asignatura" class="section level2">
+<h2><strong>Descripción de la asignatura</strong></h2>
+<p>En el curso se abordan el muestreo y las bases de para que el
+estudiante aplique la inferencia estadística usando estimación puntual,
+intervalo de confianza y prueba de hipótesis como también la estimación
+de valores de una variable de respuesta y de valores futuros con el
+modelo de regresión lineal simple y el análisis de varianza para la
+comparación de media en un diseño de experimentos.</p>
+<p>Se fortalecerán competencias en resolución de problemas, en
+comunicación y computacionales que permitan fundamentar las bases y el
+pensamiento estadístico para aplicar los métodos inferenciales en
+diversos contextos. Se adoptan metodologías de aprendizaje y evaluación
+acordes con la metodología estadística, la definición de hipótesis,
+postulación de modelos y el diseño de experimentos, como el estudio de
+casos, la simulación, el uso de software y el desarrollo de proyectos
+temáticos a lo largo del curso.</p>
+<p><br/><br/></p>
+</div>
+<div id="objetivos-de-la-asignatura" class="section level2">
+<h2><strong>Objetivos de la asignatura</strong></h2>
+<ul>
+<li>Identificar el problema en una situación de interés.</li>
+<li>Identificar los conceptos, métodos de estimación y técnicas
+estadísticas de procesamiento de datos, necesarios para la solución de
+un problema identificado.<br />
+</li>
+<li>Resolver problemas que involucran estimación de parámetros, prueba
+de test de hipótesis, análisis de regresión lineal o comparación de
+medias en un diseño de experimentos, aplicando metodologías estadísticas
+y software para el procesamiento de datos.</li>
+<li>Analizar e interpretar la información disponible en distintas
+fuentes: tablas, gráficos, bases de datos, resultados de procesamiento,
+modelos o publicaciones de carácter inferencial.</li>
+<li>Comunicar los resultados obtenidos de un estudio inferencial.</li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="contenidos-de-la-asignatura" class="section level2">
+<h2><strong>Contenidos de la asignatura</strong></h2>
+<p><br/></p>
+<div id="unidad-1-muestreo-y-estimación-puntual" class="section level3">
+<h3><strong>Unidad 1: Muestreo y Estimación Puntual</strong></h3>
+<p>(2 semanas)</p>
+<ul>
+<li>Introducción al muestreo. Tipos de muestreo.</li>
+<li>Estimador puntual. Propiedades: insesgadez, consistencia y
+eficiencia relativa.</li>
+<li>Método de momentos y de máxima verosimilitud</li>
+<li>Valor esperado y varianza de la media muestral y de la proporción
+muestral.</li>
+<li>Distribución de probabilidad de la media muestral y de la proporción
+muestral: Teorema del límite central.</li>
+<li>Distribución de probabilidad de la diferencia de medias muestral y
+de la diferencia de proporciones muestrales.</li>
+</ul>
+<p><br/><br/> ### <strong>Unidad 2: Estimación por intervalo de
+confianza</strong><br />
+(4 semanas)</p>
+<ul>
+<li>Límites de confianza, nivel de confianza, error de estimación.</li>
+<li>Intervalo de confianza para la estimación de la media.</li>
+<li>Límites de predicción y de tolerancia.</li>
+<li>Intervalo de confianza para la estimación de la proporción y
+varianza en una población.</li>
+<li>Tamaño de muestra para la estimar la media y la proporción por
+intervalo de confianza.</li>
+<li>Comparación de dos poblaciones a partir de sus medias, proporciones
+y varianzas usando intervalos de confianza.</li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="unidad-3-hipótesis-estadística" class="section level3">
+<h3><strong>Unidad 3: Hipótesis Estadística</strong></h3>
+<p>(5 semanas)</p>
+<ul>
+<li>Introducción a la prueba de hipótesis: Hipótesis nula y alternativa,
+nivel de significancia, errores tipo I y tipo II, potencia.</li>
+<li>Prueba de hipótesis para el parámetro de una población: media,
+proporción y varianza. Valor p en la toma de decisiones.</li>
+<li>Prueba de hipótesis de dos poblaciones.</li>
+<li>Prueba Chi cuadrado para homogeneidad y pruebas de bondad de
+ajuste<br />
+</li>
+<li>Pruebas no paramétricas</li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="unidad-4-regresión-lineal" class="section level3">
+<h3><strong>Unidad 4: Regresión Lineal</strong></h3>
+<p>(2 semanas)</p>
+<ul>
+<li>Introducción a la regresión lineal, análisis de correlación lineal.
+Supuestos en la regresión.</li>
+<li>Modelo de regresión lineal simple: Estimación por mínimos cuadrados,
+análisis de varianza, validación de supuestos,<br />
+</li>
+<li>Introducción al Modelo de Regresión Lineal múltiple: Modelo,
+criterios de selección del modelo. Supuestos</li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="unidad-5-diseño-de-experimentos" class="section level3">
+<h3><strong>Unidad 5: Diseño de Experimentos</strong></h3>
+<p>(3 semanas)</p>
+<ul>
+<li>Introducción al diseño de experimentos: Factor, nivel, tratamiento,
+repetición.</li>
+<li>Modelo de ANOVA para uno y dos factores</li>
+<li>Comparaciones múltiples</li>
+</ul>
+<p><br/><br/></p>
+</div>
+</div>
+<div id="estrategias-pedagógicas" class="section level2">
+<h2><strong>Estrategias pedagógicas</strong></h2>
+<p>El fortalecimiento de las competencias se logrará mediante lecturas y
+ejercicios previos a la clase, presentación, por parte del profesor, de
+conceptos, técnicas y métodos, apoyado en medios audiovisuales, tablero
+y computador. Talleres de refuerzo para trabajar fuera de clase.
+Asesoría de distintos profesores en horarios de atención planeados en el
+departamento que brinda el curso. Talleres temáticos que los estudiantes
+resuelven con el acompañamiento semanal de un monitor. Laboratorios de
+cómputo y proyectos de aplicación temática donde los estudiantes en
+grupo identifican una situación crítica a partir de la cual presentan un
+proyecto en cuyo desarrollo analizan y resuelven problemas sencillos con
+la aplicación de métodos y software estadístico.</p>
+<p><br/><br/></p>
+</div>
+<div id="evaluación" class="section level2">
+<h2><strong>Evaluación</strong></h2>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="21%" />
+<col width="24%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Actividades porcentajes</th>
+<th align="center">Número de actividades</th>
+<th align="center">porcentaje por actividad</th>
+<th align="center">Porcentaje Total por actividad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Exámenes</td>
+<td align="center">3</td>
+<td align="center">20</td>
+<td align="center">60</td>
+</tr>
+<tr class="even">
+<td align="left">Quices</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">15</td>
+</tr>
+<tr class="odd">
+<td align="left">Laboratorio</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">15</td>
+</tr>
+<tr class="even">
+<td align="left">Proyecto</td>
+<td align="center">1</td>
+<td align="center">10</td>
+<td align="center">10</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+</div>
+<div id="referencias-bibliográficas" class="section level2">
+<h2><strong>Referencias bibliográficas</strong></h2>
+<ul>
+<li>Alvarado, J. Obagui, J. Fundamentos de Inferencia Estadística 1ª Ed.
+Editorial Javeriana, 2008</li>
+<li>DeGroot Morris. Probabilidad y Estadística, Addison Wesley 1986</li>
+<li>Hernández H, Guijarro Martha, Rojo José L., Sans José A. Cálculo de
+probabilidades y estadística, Ariel Economía. 1994</li>
+<li>Mendenhall, W. &amp; Sincich, T. Probabilidad y estadística para
+ingeniería y ciencias. Prentice Hall. 1997</li>
+<li>Navidi, W. Statistics for Engineers and Scientists. Mc Graw Hill.
+2016.</li>
+<li>Romero, R. y Zúnica, L. Métodos Estadísticos en Ingeniería. Limusa,
+2008</li>
+<li>Walpole, R. Myers, R. Myers, S. Ye, K. Probabilidad y Estadística
+para ingeniería y Ciencias. 9 Ed. Editorial Pearson. 2012</li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
