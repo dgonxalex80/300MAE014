@@ -9,7 +9,7 @@ navbar:
     - text: "Módulo 0"
       menu:
         - text: "Módulo 0"
-          href: recurso000.html
+          href: recurso100.html
         - text: "Recurso 0.1"
           href: recurso000.html  
         - text: "Recurso 0.2"

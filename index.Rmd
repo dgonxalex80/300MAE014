@@ -1,8 +1,8 @@
 ---
 title: <span style="color:#034a94">**Estadística Aplicada**</span>
 subtitle: "  "
-author: "dgonzalez80"
-date: ""
+author: " "
+date: " "
 output:
   html_document:
     toc: yes
@@ -25,7 +25,7 @@ c4 ="#686868"  # gris - color texto
 <br/><br/>
 
 
-## **Información básica**
+# **Información básica**
 
 * Código : 30MAE014
 * Departamento que la ofrece : Ciencias Naturales y  Matemáticas
@@ -44,7 +44,7 @@ c4 ="#686868"  # gris - color texto
 
 <br/><br/>
 
-## **Descripción de la asignatura**
+## **Descripción**
 
 En el curso se abordan el muestreo y las bases de para que el estudiante aplique la inferencia estadística usando estimación puntual, intervalo de confianza y prueba de hipótesis como también la estimación de valores de una variable de respuesta y de valores futuros con el modelo de regresión lineal simple y el análisis de varianza para la comparación de media en un diseño de experimentos.  
 
@@ -52,7 +52,7 @@ Se fortalecerán competencias en resolución de problemas, en comunicación y co
 
 <br/><br/>
 
-## **Objetivos de la asignatura**    
+## **Objetivos**    
 
 * Identificar el problema en una situación de interés. 
 * Identificar los conceptos, métodos de estimación y técnicas estadísticas de procesamiento de datos, necesarios para la solución de un problema identificado.  
@@ -62,57 +62,67 @@ Se fortalecerán competencias en resolución de problemas, en comunicación y co
 
 <br/><br/>
 
-## **Contenidos de la asignatura** 
+## **Contenidos** 
 
 <br/>
 
-### **Unidad 1: Muestreo y Estimación Puntual** 
+### **Módulo 1: Muestreo y Estimación Puntual** 
 (2 semanas) 
 
 * Introducción al muestreo. Tipos de muestreo. 
 * Estimador puntual. Propiedades: insesgadez, consistencia y eficiencia relativa. 
 * Método de momentos y de máxima verosimilitud 
+
 * Valor esperado y varianza de la media muestral y de la proporción muestral. 
 * Distribución de probabilidad de la media muestral y de la proporción muestral: Teorema del límite central. 
 * Distribución de probabilidad de la diferencia de medias muestral y de la diferencia de proporciones muestrales. 
 
 <br/><br/>
-### **Unidad 2: Estimación por intervalo de confianza**  
+### **Módulo 2: Estimación por intervalo de confianza**  
 (4 semanas) 
 
 * Límites de confianza, nivel de confianza, error de estimación. 
 * Intervalo de confianza para la estimación de la media. 
+
 * Límites de predicción y de tolerancia. 
+
 * Intervalo de confianza para la estimación de la proporción y varianza en una población. 
+
 * Tamaño de muestra para la estimar la media y la proporción por intervalo de confianza. 
+
 * Comparación de dos poblaciones a partir de sus medias, proporciones y varianzas usando intervalos de confianza. 
 
  <br/><br/>
 
-### **Unidad 3: Hipótesis Estadística**  
+### **Módulo 3: Hipótesis Estadística**  
 (5 semanas) 
 
 * Introducción a la prueba de hipótesis: Hipótesis nula y alternativa, nivel de significancia, errores tipo I y tipo II, potencia. 
+
 * Prueba de hipótesis para el parámetro de una población: media, proporción y varianza. Valor p en la toma de decisiones. 
+
 * Prueba de hipótesis de dos poblaciones. 
+
 * Prueba Chi cuadrado para homogeneidad y pruebas de bondad de ajuste  
 * Pruebas no paramétricas 
 
 <br/><br/>
 
-### **Unidad 4: Regresión Lineal**  
+### **Módulo 4: Regresión Lineal**  
 (2 semanas) 
 
 * Introducción a la regresión lineal, análisis de correlación lineal.  Supuestos en la regresión. 
 * Modelo de regresión lineal simple: Estimación por mínimos cuadrados, análisis de varianza, validación de supuestos,  
+
 * Introducción al Modelo de Regresión Lineal múltiple: Modelo, criterios de selección del modelo. Supuestos 
 
 <br/><br/>
 
-### **Unidad 5: Diseño de Experimentos**  
+### **Módulo 5: Diseño de Experimentos**  
 (3 semanas) 
 
 * Introducción al diseño de experimentos: Factor, nivel, tratamiento, repetición. 
+
 * Modelo de ANOVA para uno y dos factores 
 * Comparaciones múltiples 
 
@@ -138,7 +148,7 @@ El fortalecimiento de las competencias se logrará mediante lecturas y ejercicio
 
 <br/><br/>
 
-## **Referencias bibliográficas** 
+## **Referencias** 
 
 * Alvarado, J. Obagui, J. Fundamentos de Inferencia Estadística 1ª Ed. Editorial Javeriana, 2008 
 * DeGroot Morris. Probabilidad y Estadística, Addison Wesley 1986 
@@ -148,3 +158,38 @@ El fortalecimiento de las competencias se logrará mediante lecturas y ejercicio
 * Romero, R. y Zúnica, L. Métodos Estadísticos en Ingeniería. Limusa, 2008 
 * Walpole, R. Myers, R. Myers, S. Ye, K. Probabilidad y Estadística para ingeniería y Ciencias. 9 Ed. Editorial Pearson. 2012 
  
+ 
+ 
+# **Cronograma**
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/ene2024.png")
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/feb2024.png")
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/mar2024.png")
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/abr2024.png")
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/may2024.png")
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/jun2024.png")
+```
+ 
+
