@@ -22,112 +22,64 @@ navbar:
       menu:
         - text: "Módulo 1"
           href: recurso000.html
-        - text: "---------"          
-        - text: "Guía 1.1"
-          href: recurso000.html           
-        - text: "Guía 1.2"
-          href: recurso000.html       
-        - text: "Guía 1.3"
-          href: recurso000.html
-        - text: "---------"  
         - text: "Recursos 1.1"
           href: recurso000.html
         - text: "Recursos 1.2"
           href: recurso000.html
         - text: "Recursos 1.3"
           href: recurso000.html
+        - text: "Recursos 1.4"
+          href: recurso000.html
+        - text: "Recursos 1.5"
+          href: recurso000.html
+        - text: "Recursos 1.6"
+          href: recurso000.html          
         - text: "---------"            
         - text: "Monitoria 1"
           href: recurso000.html
-        - text: "Taller 111"
-          href: recurso000.html
-        - text: "---------"          
-        - text: "Introducción a R"
-          href: recurso000.html
-        - text: "Código 1.1"
-          href: recurso000.html
-        - text: "Código 1.2"
-          href: recurso000.html
-        - text: "Código 1.3"
-          href: recurso000.html  
-        - text: "Ficha ténica"
-          href: recurso000.html
-        - text: "Tablero 1"
-          href: recurso000.html       
     - text: "Módulo 2"
       menu:
         - text: "Módulo 2"
           href: recurso000.html
-        - text: "---------"  
-        - text: "Guía 2.1"
-          href: recurso000.html
-        - text: "Guía 2.2"
-          href: recurso000.html        
         - text: "---------"            
         - text: "Recursos 2.1"
           href: recurso000.html 
         - text: "Recursos 2.2"
           href: recurso000.html 
+        - text: "Recursos 2.3"
+          href: recurso000.html 
+        - text: "Recursos 2.4"
+          href: recurso000.html 
+        - text: "Recursos 2.5"
+          href: recurso000.html 
+        - text: "Recursos 2.6"
+          href: recurso000.html           
         - text: "---------"  
         - text: "Monitoria 2"
           href: recurso000.html  
-        - text: "---------"  
-        - text: "Código 2.1"
-          href: recurso000.html
-        - text: "Taller 211"
-          href: recurso000.html
-        - text: "Taller 221"
-          href: recurso000.html
     - text: "Módulo 3"
       menu:
         - text: "Módulo 3"
           href: recurso000.html
         - text: "---------"
-        - text: "Guía 3.1"
-          href: recurso000.html
-        - text: "Guía 3.2"
-          href: recurso000.html
-        - text: "Guía 3.3"
-          href: recurso000.html            
-        - text: "---------"  
         - text: "Recursos 3.1"
           href: recurso000.html  
         - text: "Recursos 3.2"
           href: recurso000.html  
         - text: "Recursos 3.3"
           href: recurso000.html 
+        - text: "Recursos 3.4"
+          href: recurso000.html  
+        - text: "Recursos 3.5"
+          href: recurso000.html          
         - text: "---------"            
         - text: "Monitoria 3"
           href: recurso000.html
-        - text: "---------"   
-        - text: "Código 3.1"
-          href: recurso000.html
-        - text: "Código 3.2"
-          href: recurso000.html
-        - text: "Código 3.3"
-          href: recurso000.html
-        - text: "---------"            
-        - text: "Taller 311"
-          href: recurso000.html
-        - text: "Taller 323"
-          href: recurso000.html         
-        - text: "---------"                
-        - text: "Actividad 331"
-          href: recurso000.html
-        - text: "Actividad 332"
-          href: recurso000.html       
     - text: "Módulo 4"
       menu:
         - text: "Módulo 4"
           href: recurso000.html
         - text: "---------"
-        - text: "Guía 4.1"
-          href: recurso000.html
-        - text: "Guía 4.2"
-          href: recurso000.html
-        - text: "Guía 4.3"
-          href: recurso000.html         
-        - text: "---------"          
         - text: "Recursos 4.1"
           href: recurso000.html
         - text: "Recursos 4.2"
@@ -137,20 +89,6 @@ navbar:
         - text: "---------"  
         - text: "Monitoria 4"
           href: recurso000.html
-        - text: "---------"   
-        - text: "Código 4.1"
-          href: recurso000.html 
-        - text: "Código 4.2"
-          href: recurso000.html
-        - text: "Código 4.3"
-          href: recurso000.html 
-        - text: "---------"  
-        - text: "Tablas"
-          href: recurso000.html  
-        - text: "Taller 422"
-          href: recurso000.html   
-        - text: "Taller 431"
-          href: recurso000.html   
     - text: "Módulo 5"
       menu:
         - text: "Módulo 5"
@@ -158,6 +96,10 @@ navbar:
         - text: "---------"          
         - text: "Recursos 5.1"
           href: recurso000.html
+        - text: "Recursos 5.2"
+          href: recurso000.html 
+        - text: "Recursos 5.3"
+          href: recurso000.html          
     - text: "Proyecto"
       menu:
         - text: "Guía proyecto"

@@ -78,6 +78,7 @@ Se fortalecerán competencias en resolución de problemas, en comunicación y co
 * Distribución de probabilidad de la diferencia de medias muestral y de la diferencia de proporciones muestrales. 
 
 <br/><br/>
+
 ### **Módulo 2: Estimación por intervalo de confianza**  
 (4 semanas) 
 
