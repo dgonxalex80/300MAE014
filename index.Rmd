@@ -9,7 +9,7 @@ output:
     toc_depth: 2
     toc_float: yes
     code_folding: hide
-    theme: cerulean
+    theme: flatly
 ---
 
 
@@ -34,13 +34,15 @@ c4 ="#686868"  # gris - color texto
 * Créditos : 3
 * Número total de horas : 144
 * Horas de clase semanales : 4
-* Horas de trabajo independiente : 5 (2 con monitor, 3 estudiante solo)
+* Horas de trabajo independiente : 5 (2 con monitor, 3 de trabajo independiente)
 
 * Prerrequisitos : Teoría de Probabilidad (300MAE013)
 * Correquisitos : ninguno
 * Asignaturas equivalentes : ninguna
 * Modalidad : Presencial
 * Idioma en que se imparte : Español
+* Profesor : Daniel Enrique González Gómez - dgonzalez@javerianacali.edu.co
+* Monitor :
 
 <br/><br/>
 
@@ -165,32 +167,6 @@ El fortalecimiento de las competencias se logrará mediante lecturas y ejercicio
 
 
 ```{r, echo=FALSE, out.width="100%", fig.align = "center"}
-knitr::include_graphics("img/ene2024.png")
+knitr::include_graphics("img/calendario_014_20241.png")
 ```
-
-
-```{r, echo=FALSE, out.width="100%", fig.align = "center"}
-knitr::include_graphics("img/feb2024.png")
-```
-
-
-```{r, echo=FALSE, out.width="100%", fig.align = "center"}
-knitr::include_graphics("img/mar2024.png")
-```
-
-
-```{r, echo=FALSE, out.width="100%", fig.align = "center"}
-knitr::include_graphics("img/abr2024.png")
-```
-
-
-```{r, echo=FALSE, out.width="100%", fig.align = "center"}
-knitr::include_graphics("img/may2024.png")
-```
-
-
-```{r, echo=FALSE, out.width="100%", fig.align = "center"}
-knitr::include_graphics("img/jun2024.png")
-```
- 
 
