@@ -1,0 +1,33 @@
+---
+title: <span style="color:#034a94">**Módulo 1**</span>
+subtitle: " "
+author: "dgonzalez80"
+date: ""
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    theme:  flatly
+---
+
+<br/><br/>
+
+# **Muestreo y estimación puntual**
+
+* Introducción al muestreo. Tipos de muestreo.
+
+* Estimador puntual. Propiedades: insesgadez, consistencia y eficiencia relativa.
+
+* Método de momentos y de máxima verosimilitud
+
+* Valor esperado y varianza de la media muestral y de la proporción muestral.
+
+* Distribución de probabilidad de la media muestral y de la proporción muestral: Teorema del límite central.
+
+* Distribución de probabilidad de la diferencia de medias muestral y de la diferencia de proporciones muestrales.
+
+<br/><br/>
+
+

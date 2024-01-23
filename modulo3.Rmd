@@ -1,0 +1,30 @@
+---
+title: <span style="color:#034a94">** **</span>
+subtitle: " "
+author: "dgonzalez80"
+date: ""
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    theme:  flatly
+---
+
+<br/><br/>
+
+# **Hipótesis Estadística**
+
+* Introducción a la prueba de hipótesis: Hipótesis nula y alternativa, nivel de significancia, errores tipo I y tipo II, potencia.
+
+* Prueba de hipótesis para el parámetro de una población: media, proporción y varianza. Valor p en la toma de decisiones.
+
+* Prueba de hipótesis de dos poblaciones.
+
+* Prueba Chi cuadrado para homogeneidad y pruebas de bondad de ajuste
+Pruebas no paramétricas
+
+
+
+<br/><br/>

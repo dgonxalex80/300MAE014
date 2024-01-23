@@ -1,0 +1,29 @@
+---
+title: <span style="color:#034a94">**Módulo 4**</span>
+subtitle: " "
+author: "dgonzalez80"
+date: ""
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    theme:  flatly
+---
+
+<br/><br/>
+
+# **Regresión Lineal**
+
+* Introducción a la regresión lineal, análisis de correlación lineal. Supuestos en la regresión.
+
+* Modelo de regresión lineal simple: Estimación por mínimos cuadrados, análisis de varianza, validación de supuestos,
+
+* Introducción al Modelo de Regresión Lineal múltiple: Modelo, criterios de selección del modelo. Supuestos
+
+
+
+
+
+<br/><br/>

@@ -1,0 +1,34 @@
+---
+title: <span style="color:#034a94">**Módulo 2 **</span>
+subtitle: " "
+author: "dgonzalez80"
+date: ""
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    theme:  flatly
+---
+
+<br/><br/>
+
+# **Estimación por intervalo de confianza**
+
+
+* Límites de confianza, nivel de confianza, error de estimación.
+
+* Intervalo de confianza para la estimación de la media.
+
+* Límites de predicción y de tolerancia.
+
+* Intervalo de confianza para la estimación de la proporción y varianza en una población.
+
+* Tamaño de muestra para la estimar la media y la proporción por intervalo de confianza.
+
+* Comparación de dos poblaciones a partir de sus medias, proporciones y varianzas usando intervalos de confianza.
+
+
+<br/><br/>
+
