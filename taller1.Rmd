@@ -1,0 +1,283 @@
+---
+title: <span style="color:#034a94">**Taller 1**</span>
+subtitle: " "
+author: "dgonzalez80"
+date: ""
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA)
+library(psych)
+library(summarytools)
+
+# install.packages("devtools")
+#devtools::install_github("dgonxalex80/paquete014")
+#library(paquete014)
+library(TeachingSampling)
+data("BigLucy")
+# colores
+c0= "#F7AA00"
+c1= "#235784"
+c2= "#40A8C4"
+c3= "#EEF6F7"
+
+c4= "#11224D"
+c5= "#5B84C4"
+
+
+```
+
+<br/>
+
+# **Tipos de Muestreo**
+
+<br/><br/>
+
+## **Objetivo del Taller**
+
+<br/>
+
+El objetivo de este taller es el de proporcionar una comprensión práctica de los diferentes tipos de muestreo y su posible efecto sobre la estimación de parámetros como la media y la proporción a partir de una población representada por la data **BigLucy** contenida en el paquete TeachingSampling, para lo cual se deberán aplicar técnicas de muestreo y realizar cálculos de estimación para obtener conclusiones válidas.
+
+<br/><br/>
+
+## **Problema**
+
+El dataset `BigLucy`, contenido en el paquete `TeachingSampling` en R, se compone de información sobre 10.000 empresas ficticias con el objetivo de simular escenarios de muestreo y análisis estadístico.
+
+Las variables incluidas en el dataset son:
+
+* **ID** : Identificador de la empresa. Corresponde a una secuencia alfanumérica (dos letras y tres dígitos)
+
+* **Ubication** : Dirección de la oficina principal de la empresa en la ciudad.
+
+* **Level** : Tamaño de empresas industriales según los Impuestos declarados. Hay pequeñas, medianas y grandes empresas.
+
+* **Zone** : Zona determinada según su ubicación cartográfica de la empresa.
+
+* **Income** : Cantidad total de las ganancias (o ganancias) de una empresa en el año fiscal anterior. Se calcula tomando los ingresos y ajustando el costo de hacer negocios.
+
+
+* **Employees** : Número total de personas que trabajaron para la empresa en el ejercicio fiscal anterior.
+
+* **Taxes** : Total del Impuesto sobre la Renta de una empresa
+
+* **SPAM** : Indica si la empresa utiliza las opciones de Internet y WEBmail para realizar autopropaganda.
+
+* **ISO** :  Indica si la empresa está certificada Internacionalmente.
+
+* **Years** :   Antiguedad de la empresa.
+
+* **Segments** : Segmentos cartográficos por ciudad. Un segmento comprende en promedio 10 empresas ubicadas cerca unas de otras.
+
+**Gutiérrez, H. A. (2009)**
+
+```{r, message=FALSE, warning=FALSE}
+# install.packages("TeachingSampling") # correr si no se tiene instaldo el paquete
+library(TeachingSampling)
+data("BigLucy")
+str(BigLucy)
+```
+
+<br/><br/><br/>
+
+## **Parte 1: Tipos de Muestreo**
+
+<br/>
+
+### **Muestreo Aleatorio Simple:**
+
+* Selecciona una muestra aleatoria simple de tamaño `n = 30` de la población `BigLucy`.
+
+* Calcula la media de la variable Income y la proporción de empresas que utilizan herramientas de internet para automatizar sus operaciones (SPAM).
+
+* Repite los dos puntos anteriores con un valor de `n = 2000`. 
+
+
+```{r, eval=FALSE}
+## Forma 1 - se construye una data muestra
+## Muestreo aleatorio simple -------------------------
+# install.packages("dslabs")
+set.seed(123)  # fijar semilla
+#-----------------------------------------------------
+# 4. Muestreo Probabilístico Simple
+n= 30  # tamaño de la muestra 
+data1 <- BigLucy[sample(nrow(BigLucy), n), ] 
+mean(data1$Income)
+prop.table(table(data1$ISO))
+```
+
+
+
+
+<br/><br/><br/>
+
+## **Muestreo Estratificado:**
+
+* Identifica posibles estratos relevantes en la data `BigLucy`.
+   
+* Realiza un muestreo estratificado seleccionando muestras de tamaño `n = 30` de la población `BigLucy`, utilizando como indicador de estrato la variable Level  (tamaño de la empresa).
+
+* Calcula la media para la variables Income y la proporción de empresas certificadas internacinalmente (ISO) utilizando la muestra estratificada obtenida.
+
+* Repite los dos puntos anteriores con un valor de `n = 2000`.
+
+
+```{r, eval=FALSE}
+# Utiliza los datos de BigLucy para extraer una muestra aleatoria estratificada
+# según un diseño SI en cada estrato
+
+# Se pueden cargar las variables sin nombrar la base
+data(BigLucy)
+
+# Adjunta los datos al entorno de trabajo
+attach(BigLucy)
+
+# Resumen de la variable de estratificación
+# summary(Level)
+
+# Define el tamaño de cada estrato
+N1 <- summary(Level)[[1]]
+N2 <- summary(Level)[[2]]
+N3 <- summary(Level)[[3]]
+Nh <- c(N1, N2, N3)
+
+# Muestra los tamaños de cada estrato
+# N1; N2; N3
+
+# Crea un vector con los tamaños de los estratos
+#  nh <- c(70, 100, 200)
+
+# Tamaño de la muestra
+n=30
+# Segmentación de la muestra de acuedo con los pesos por estrato
+wh=Nh/nrow(BigLucy)
+# wh
+
+nh= round(wh*n,0)
+# nh
+
+# Realiza una muestra estratificada
+sam <- S.STSI(Level, Nh, nh)
+
+# La información sobre las unidades en la muestra se almacena en un objeto llamado "data"
+data2 <- BigLucy[sam,]
+
+# estimación de la media de Income
+mean(data2$Income)
+
+# estimación de la proporción de empresas con ISO
+prop.table(table(data2$ISO))
+
+```
+
+
+
+
+<br/><br/><br/>
+
+
+
+## **Muestreo Sistemático:**
+
+* Aplica un muestreo sistemático para una muestra de n= 30 (intervalo `k=N/n`) para seleccionar una muestra de la población `BigLucy`.
+   
+* Calcula la media para la variables Income y la proporción de empresas certificadas internacinalmente (ISO) utilizando la muestra sistemática obtenida.
+
+* Repite los dos puntos anteriores con un valor de `n = 2000`.
+
+
+
+```{r, eval=FALSE}
+# Uses the Lucy data to draw a Systematic sample
+data(BigLucy)
+attach(BigLucy)
+N <- nrow(BigLucy)
+n = 30
+intervalos <- round(N/n,0)
+# The population is divided in 6 groups
+# The selected sample
+sam <- S.SY(N,intervalos)
+
+# The information about the units in the sample is stored in an object called data
+data3 <- BigLucy[sam,]
+
+
+# estimación de la media de Income
+mean(data3$Income)
+
+# estimación de la proporción de empresas con ISO
+prop.table(table(data3$ISO))
+
+```
+
+<br/><br/><br/>
+
+## **Muestreo por Juicio:**
+
+* Selecciona una muestra por juicio subjetivo. Elige observaciones que consideres representativas de la población.
+   
+* Calcula la media para la variables Income y la proporción de empresas certificadas internacinalmente (ISO) utilizando la muestra por juicio  obtenida.
+
+* Repite los dos puntos anteriores con un valor de `n = 2000`.
+
+```{r, eval=FALSE}
+# Uses the Lucy data to draw a Systematic sample
+data(BigLucy)
+n=30
+data4= BigLucy[1:n,]
+
+# estimación de la media de Income
+mean(data4$Income)
+
+# estimación de la proporción de empresas con ISO
+prop.table(table(data4$ISO))
+
+
+
+```
+
+
+<br/><br/><br/>
+
+
+## **Analisis**
+
+Construye una tabla con los resultados obtenidos y concluye 
+
+
+<div class="content-box-gray">
+### <span style="color:#686868">**NOTA**</span> 
+
+Los resultados  para la base total de los parámetros es:
+
+<pre>
+media poblacional de la variables Income
+[1] 429.5012
+</pre>
+
+<pre>
+proporción poblacional de la variable ISO
+       no       yes 
+0.6670418 0.3329582 
+</pre>
+
+</div>
+
+
+<br/><br/>
+
+
+# **Propiedades de los estimadores**
+
+
+
+

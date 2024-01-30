@@ -1,0 +1,122 @@
+---
+title: <span style="color:#034a94">**Taller 1**</span>
+subtitle: "  "
+author: " "
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA)
+library(psych)
+library(summarytools)
+
+# install.packages("devtools")
+#devtools::install_github("dgonxalex80/paquete014")
+#library(paquete014)
+library(TeachingSampling)
+data("BigLucy")
+# colores
+c0= "#F7AA00"
+c1= "#235784"
+c2= "#40A8C4"
+c3= "#EEF6F7"
+
+c4= "#11224D"
+c5= "#5B84C4"
+
+
+```
+
+# **Propiedades de los estimadores** 
+
+
+# **1. Problema 1** 
+<br/><br/>
+
+Para una variable con distribución uniforme $unif(a=0, b=20)$ se desea determinar las propiedades de los siguientes  estimadores del parámetro $b$
+
+
+```{r}
+library(ggplot2)
+
+# Crear datos para la distribución uniforme
+x <- seq(0, 20, length=1000)
+fx <- dunif(x, min=0, max=20)  # Distribución uniforme en [0, 20]
+
+# Crear un marco de datos con los datos
+dat <- data.frame(x, fx)
+
+# Graficar la distribución uniforme
+ggplot(data=dat, aes(x=x, y=fx)) +
+  geom_line(size=1, color='red') +
+  labs(title='Distribución Uniforme [0, 20]', x='Valor', y='Densidad de Probabilidad') +
+  scale_y_continuous(limits=c(0, .06)) +
+  theme_minimal()
+```
+
+
+* $\widehat{\theta_{1}} = 2 \bar{x}$ 
+
+* $\widehat{\theta_{2}} = \max\{x\}$
+
+* $\widehat{\theta_{3}} = \dfrac{(n+1)}{n} \max\{x\}$
+
+<br/><br/>
+
+
+
+Para ello se realiza una simulación, para posteriormente evaluar los estimadores propuestos y determinar sus propiedades.
+
+<br/><br/>
+
+
+<br/><br/><br/>
+
+* Para un tamaño de muestra `n = 10` determine que estimador presenta los mejores resultados, basándose en las propiedades observadas . Como criterio de evaluación determine cual estimador tiene resultados más cercanos a `20`.
+
+* Repita el proceso anterior para una muestra `n = 30`; `n = 50` , `n = 200` y `n = 2000`. De acuerdo a los resultados anteriores que se puede concluir?
+
+# **2. Problema 2** 
+
+Para una población con distriobución normal con media $\mu = 120$ y una desviación estandar $\sigma = 20$, evalue los siguentes estimadores de $\mu$ :
+
+```{r}
+library(ggplot2)
+
+# Crear datos para la distribución normal
+x <- seq(50, 190, length=1000)
+fx <- dnorm(x, mean=120, sd=20)  # media=0, desviación estándar=1
+
+# Crear un marco de datos con los datos
+dat <- data.frame(x, fx)
+
+# Graficar la distribución normal
+ggplot(data=dat, aes(x=x, y=fx)) +
+  geom_line(size=1, color='blue') +
+  labs(title='Distribución Normal', x='Valor', y='Densidad de Probabilidad') +
+  theme_minimal()
+
+```
+
+
+
+
+* $\widehat{\mu}_{1} = \bar{X}$
+* $\widehat{\mu}_{2} = Me = P_{50}$
+* $\widehat{\mu}_{3} = RM = \dfrac{\min(x)+\max(x)}{2}$
+* $\widehat{\mu}_{4} =\dfrac{Q{1}+Q_{3}}{2}$
+
+
+* Repita el proceso anterior para una muestra `n = 30`; `n = 50` , `n = 200` y `n = 2000`. De acuerdo a los resultados anteriores que se puede concluir?
+
+
+<br/><br/><br/>
+

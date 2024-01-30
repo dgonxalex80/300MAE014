@@ -1,0 +1,98 @@
+---
+title: " "
+subtitle: "  "
+author: " "
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/banner_guia.png")
+```
+
+
+<br/><br/>
+
+
+## **Introducción**
+
+La inferencia estadística permite generalizar lo hallado en una muestra a toda la población. Para realizar este proceso contamos con dos alternativas: la estimación y las pruebas de hipótesis. El fundamento de estos procesos está fundamentado en varios conceptos que se describen y se discuten en estas primeras unidades. En algunos casos serán apoyados con procesos de simulación que permitirán la verificación de cada uno de ellos. 
+ 
+En esta primera unidad profundizaremos sobre los conceptos : población, muestra, censo, muestreo, parámetro, estimador, tipos de muestreo, muestreo aleatorio simple, muestreo aleatorio estratificado, muestreo aletorio sistemático, muestreo por conglomerados, muestreos no probabilisticos, muestreo por juicio, muestreo por conveniencia, muestreos bola de nieve, métodos de estimación, método de momentos, método de máxima verosimilitud, propiedades de estimadores como son insesgadez, eficiencia, consistencia.
+
+
+<br/><br/>
+
+## **Objetivos de la unidad**
+
+Al finalizar esta unidad el estudiante estará en capacidad de RECONOCER los elementos, conceptos y propiedades que intervienen en la Inferencia Estadística, de tal manera que pueda ENTENDER de manera adecuada los resultados obtenidos para la toma de decisiones informadas.
+
+<br/><br/>
+
+## **Duración**
+
+La presente  unidad será desarrollada durante los dias 29 de enero al 4  de febrero.    
+Ademas del material suministrado  contaran con el acompañamiento del profesor en dos sesiones (martes y jueves) y de  una tercera con el apoyo de un monitor. 
+
+Para alcanzar los objetivos planteados se propone realizar las siguientes actividades
+
+<br/><br/>
+
+## **Cronograma de trabajo**
+
+
+|Actividad           | Descripción                    | 
+|:-------------------|:-----------------------------  |
+|**Actividad 1**     | Construya un mapa mental **a mano** con que contenga el siguiente grupo de palabras : **población, parámetro, censo, muestra, muestreo, muestreo probabilistico, muestreo no probabilistico, muestreo aleatorio simple, muestreo aleatorio estratificado, muestreo por conglomerados, muestreo por juicio, muestreo por conveniciencia, muestreo bola de nieve, estimador puntual, estimador insesgado, estimador consistente, estimador eficiente, estimación por intervalos de confianza, pruebas de hipotesis**      |
+| Recursos           | [**Tablero**](https://padlet.com/dgonzalez80/lijxz9p7nvz5mm2q)        |
+|Trabajo  individual |                                                                   |
+|Fecha               | 4 de febrero                                                      |
+|Hora                | 23:59                                                             |
+|                    |                                                                   |
+|**Actividad 2**     | Desarrollar los problemas planteados en el **Taller1** que le permitan validar las propiedades de los estimadores |
+|Trabajo  individual |                                                                   |
+|Fecha               | 4 de febrero                                                      |
+|Hora                | 23:59                                                             |
+
+<br/><br/>
+
+## **Criterios de evaluación**
+
+* Reconoce los diferentes conceptos de la inferencia estadística
+
+* Relaciona correctamente los conceptos de la inferencia estadística
+
+
+<br/><br/>
+
+
+<br/><br/>
+
+## **Entregables** 
+
+|                  |                                         |
+|:-----------------|:----------------------------------------|
+| Actividad 1     |  mapa mental en  hoja de papel          |
+
+
+<br/><br/><br/><br/>
+
+
+

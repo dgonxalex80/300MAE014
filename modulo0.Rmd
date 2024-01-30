@@ -12,5 +12,19 @@ output:
     theme:  flatly
 ---
 
-# **Lo que debes sabar antes de empezar**
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA)
+
+
+# install.packages("devtools")
+# devtools::install_github("dgonxalex80/paquete014")
+#library(paquete014)
+
+
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/banner010.png")
+```
