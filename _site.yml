@@ -21,10 +21,8 @@ navbar:
         - text: "----"  
         - text: "Conceptos de inferencia estadística"
           href: recurso100.html
-        - text: "Métodos de estimación"
-          href: recurso110.html  
-        - text: "Propiedades de los estimadores"
-          href: recurso110.html            
+        - text: "Métodos de estimación propiedades"
+          href: recurso111.html            
         - text: "Taller 1"
           href: Taller001.html
     - text: "Módulo 2"

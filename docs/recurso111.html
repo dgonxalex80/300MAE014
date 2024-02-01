@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="dgonzalez80" />
+
+
+<title>ESTIMACIÓN PUNTUAL</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    300MAE014
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 0
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo0.html">Módulo 0</a>
+    </li>
+    <li>
+      <a href="recurso001.html">Metodología Estadística</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo1.html">Módulo 1</a>
+    </li>
+    <li>
+      <a href="guia1.html">Guía de aprendizaje 1</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="recurso100.html">Conceptos de inferencia estadística</a>
+    </li>
+    <li>
+      <a href="recurso111.html">Métodos de estimación propiedades</a>
+    </li>
+    <li>
+      <a href="Taller001.html">Taller 1</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo2.html">Módulo 2</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 3
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo3.html">Módulo 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 4
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo4.html">Módulo 4</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 5
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo5.html">Módulo 5</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Proyecto
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso000.html">Guía proyecto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    RStudio-R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso000.html">Introducción a R</a>
+    </li>
+    <li>
+      <a href="recurso000.html">Recursos 1</a>
+    </li>
+    <li>
+      <a href="recurso000.html">Recursos 2</a>
+    </li>
+    <li>
+      <a href="recurso000.html">Recursos 3</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore"><span
+style="color:#034a94"><strong>ESTIMACIÓN PUNTUAL</strong></span></h1>
+<h3 class="subtitle">Unidad</h3>
+<h4 class="author">dgonzalez80</h4>
+
+</div>
+
+
+<div id="métodos-de-estimación" class="section level1">
+<h1><strong>MÉTODOS DE ESTIMACIÓN</strong></h1>
+<p><br/></p>
+<p>Para construir los estimadores se emplean métodos de estimacién como
+se describe a continuación:</p>
+<p><br/><br/></p>
+<div id="método-de-momentos" class="section level2">
+<h2><strong>MÉTODO DE MOMENTOS</strong></h2>
+<p><br/></p>
+<p>El método de momentos fué propuesto por Karl Pearson al rededor de
+1895, pensado en sus inicios en contexto descriptivo, analizando las
+distribuciones de probabilidad y aproximandolas al sistema de curvas que
+llevan su nombre. Porteriormente este concepto fue modificado por R.A.
+Fisher en 1920. El método consiste en estimar un parámetro de una
+distribución igualando sus momentos teóricos o poblacionales, si
+existen, con los correspondientes momentos muestrales.\</p>
+<p>Para mostrar este método es necesario definir el concepto de
+momento.</p>
+<p><br/><br/></p>
+<div id="momento-poblacional-k-esimo" class="section level3">
+<h3><strong>Momento Poblacional k-esimo:</strong></h3>
+<p><br/></p>
+<div id="caso-variable-discreta" class="section level4">
+<h4>Caso variable discreta</h4>
+<p><span class="math inline">\(M_{k}=E\big[X^{k}\big]=\sum_{Rx}
+x^{k}p(x)\)</span></p>
+</div>
+<div id="caso-variable-continua" class="section level4">
+<h4>Caso variable continua</h4>
+<p>$M_{k}=E=_{-}<sup>{}x</sup>{k}f(x) dx $</p>
+<p><br/><br/></p>
+</div>
+</div>
+<div id="momentos-muestrales" class="section level3">
+<h3><strong>Momentos muestrales:</strong></h3>
+<p><br/></p>
+<p>En ambos casos (v.a. discreta o continua)</p>
+<p>$m_{k}=<em>{i=1}^{n} x</em>{i}^{k} $</p>
+<p>El método de momentos supone que los momentos tanto poblacionales
+como muestrales son conocidos, y por lo tanto tambien la función de
+probabilidad. A continuación se relacionan algunos de estos momentos
+poblacionales:\</p>
+<p><br/></p>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="20%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Distribución</th>
+<th align="left"><span class="math inline">\(E[X]=\mu\)</span></th>
+<th align="left"><span
+class="math inline">\(V[X]=E[X^{2}]-E[X]^{2}=\sigma^{2}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Bernoulli</td>
+<td align="left"><span class="math inline">\(p\)</span></td>
+<td align="left"><span class="math inline">\(pq\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Geométrica</td>
+<td align="left"><span
+class="math inline">\(\displaystyle\frac{1}{p}\)</span></td>
+<td align="left"><span
+class="math inline">\(\displaystyle\frac{q}{p^{2}}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Binomial</td>
+<td align="left"><span class="math inline">\(np\)</span></td>
+<td align="left"><span class="math inline">\(npq\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Poisson</td>
+<td align="left"><span class="math inline">\(\lambda\)</span></td>
+<td align="left"><span class="math inline">\(\lambda\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Gamma</td>
+<td align="left"><span class="math inline">\(\alpha\beta\)</span></td>
+<td align="left"><span
+class="math inline">\(\alpha\beta^{2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Exponencial</td>
+<td align="left"><span class="math inline">\(\beta\)</span></td>
+<td align="left"><span class="math inline">\(\beta^{2}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Uniforme</td>
+<td align="left"><span
+class="math inline">\(\displaystyle\frac{a+b}{2}\)</span></td>
+<td align="left"><span
+class="math inline">\(\displaystyle\frac{(b-a)^{2}}{12}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Normal</td>
+<td align="left"><span class="math inline">\(\mu\)</span></td>
+<td align="left"><span class="math inline">\(\sigma^{2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+</div>
+<div id="ejemplo" class="section level3">
+<h3><strong>EJEMPLO</strong></h3>
+<p><br/></p>
+<p>Encuentre los estimadores de los parametros de la distribucion normal
+a traves del metodo de momentos. Previamente sabemos que los parametros
+de una variable con distribucion normal son <span
+class="math inline">\(E[X]=\mu\)</span> y <span
+class="math inline">\(V[X]=\sigma^{2}\)</span> y que <span
+class="math inline">\(V[X]=E[X^{2}]-E[X]^{2}\)</span>. Dada esta
+informacion el estimador de momentos se construye de la siguiente
+manera:</p>
+<p><span class="math display">\[M_{1}=m_{1} \]</span> <span
+class="math display">\[M_{2}=m_{2} \]</span></p>
+<p><br/></p>
+<p>Aplicando el método:</p>
+<p><span class="math inline">\(M_{1}=E[X] = m_{1}\)</span></p>
+<p><span class="math inline">\(\mu =
+\displaystyle\frac{1}{n}\sum_{i=1}^{n}x_{i}\)</span><br />
+</p>
+<p>Finalmente,</p>
+<p><span class="math inline">\(\widehat{\mu} =
+\displaystyle\frac{1}{n}\sum_{i=1}^{n} x_{i}=\bar{x}\)</span></p>
+<p>Para estimar <span class="math inline">\(\sigma^{2}\)</span>, se
+realiza el siguiente procedimiento usando <span
+class="math inline">\(M^{1}=m^{1}\)</span> y <span
+class="math inline">\(M^{2}=m^{2}\)</span>.</p>
+<p><span class="math display">\[V[X]=E[X^{2}]-E[X]^{2} =
+M_{2}-(M_{1})^{2}\]</span></p>
+<p>entonces igualamos estos dos momentos poblacionales con sus
+respectivos momentos muestrales quedando la igualdad</p>
+<p><span class="math display">\[V[X]=
+M_{2}-(M_{1})^{2}=\displaystyle\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}-\bar{x}^{2}\]</span>
+podemos representar la varianza por <span
+class="math inline">\(\sigma^{2}\)</span> y obtenemos</p>
+<p><span
+class="math display">\[\sigma^{2}=\displaystyle\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}-\bar{x}^{2}\]</span></p>
+<p>y obtenemos el estimador de la varianza:</p>
+<p><span class="math inline">\(\widehat{\sigma^{2}}
+=\displaystyle\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}-\bar{x}^{2}\)</span></p>
+<p><span class="math inline">\(\widehat{\sigma^{2}} =
+\displaystyle\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}-\bar{x}^{2}-\bar{x}^{2}+\bar{x}^{2}\)</span></p>
+<p><span class="math inline">\(=
+\displaystyle\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}-2\bar{x}^{2}+\bar{x}^{2}\)</span></p>
+<p><span class="math inline">\(=
+\displaystyle\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}-\displaystyle\frac{2\bar{x}\sum
+x_{i}}{n}+\displaystyle\frac{n \bar{x}^{2}}{n}\)</span></p>
+<p><span
+class="math inline">\(=\displaystyle\frac{1}{n}\Big(\sum_{i=1}^{n}
+x_{i}^{2}-2\bar{x}\sum_{i=1}^{n} x_{i}+\bar{x}^{2}\Big)\)</span></p>
+<p><span class="math inline">\(\widehat{\sigma^{2}} =
+\displaystyle\frac{1}{n}\sum_{i=1}^{n}\Big(x-\bar{x}\Big)^{2}\)</span>\</p>
+<p><br/><br/></p>
+<p>En resumen los estimadores de momentos para los parámetros de la
+distribución normal son:</p>
+<p><span class="math display">\[\widehat{\mu} =
+\displaystyle\frac{1}{n}\sum_{i=1}^{n} x_{i}=\bar{x} \]</span> <span
+class="math display">\[\widehat{\sigma^{2}}=\displaystyle\frac{1}{n}\sum_{i=1}^{n}\Big(x-\bar{x}\Big)^{2}\]</span></p>
+<p>A partir de ellos y mediante la obtención de una muestra aleatoria
+por ejemplo :630, 650, 710, 750, 790, 820, 860 y 910 se pueden estimar
+los parámetros por método de momentos con los siguientes resultados:</p>
+<p><span class="math display">\[\widehat{\mu}=765\]</span><br />
+<span class="math display">\[\widehat{\sigma^{2}}=8550\]</span></p>
+<p><br/><br/><br/></p>
+</div>
+</div>
+<div id="método-de-máxima-verosimilitud" class="section level2">
+<h2><strong>MÉTODO DE MÁXIMA VEROSIMILITUD</strong></h2>
+<p><br/></p>
+<p>Uno de los mejores métodos para obtener un estimador puntual de un
+parámetro es el método de máxima verosimilitud o de máxima probabilidad.
+ESta tecnica fue desarrollada en 1920 por el estadístico britanico Sir
+R.A. Fosher. El estimador será el valor del parámetro que maximice la
+función de verosimilitud <span
+class="math inline">\(L(\theta)\)</span>.</p>
+<p>La función de verosimilitud <span
+class="math inline">\(L(\theta)\)</span> corresponde a la funcion de
+distribución conjunta de variables aleatorias independientes con igual
+funcion de distribucion. Estas variables aleatorias corresponden a las
+variables que conforman la muestra.</p>
+<p><span
+class="math display">\[L(\theta)=f(x_{1},\theta).f(x_{2},\theta).f(x_{3},\theta)....f(x_{n}),\theta)\]</span></p>
+<p>El objetivo del método sera encotrar el valor del parametro que
+maximice la probabilidad conjunta.</p>
+<p>El método supone el conocimiento de la función de distribución de
+probabilidad de la variable en estudio. Por</p>
+<p><br/><br/><br/></p>
+<div id="ejemplo-1" class="section level3">
+<h3><strong>EJEMPLO</strong></h3>
+<p>En la unidad anterior tratamos en caso de la distribución normal cuya
+función de distribución de probabilidad esta dada por :</p>
+<p><span class="math display">\[f(x_{i})=\frac{1}{\sqrt{2\pi}\sigma^{2}}
+\exp{\Bigg(-\frac{1}{2\sigma^{2}}\big(x_{i}-\mu\big)^{2}\Bigg)}\]</span></p>
+<p>La función de verosimulitud estará dada por:</p>
+<p><span
+class="math display">\[L(x_{1},x_{2},..,x_{n};\mu,\sigma^{2})=f(x_{1};\mu,\sigma^{2})....f(x_{n};\mu,\sigma^{2})\]</span>
+Esta función se puede escribir como :</p>
+<p><span
+class="math display">\[L(x_{1},x_{2},..,x_{n};\mu,\sigma^{2})=\displaystyle\prod_{i=1}^{n}
+\frac{1}{\sqrt{2\pi \sigma^{2}}}
+\exp{\Bigg(-\frac{1}{2\sigma^{2}}\big(x_{i}-\mu\big)^{2}\Bigg)}
+\]</span></p>
+<p><span class="math display">\[L=\displaystyle\Big(\frac{1}{2\pi
+\sigma^{2}}\Big)^{n/2} \exp
+\Bigg(\sum_{i=1}^{n}\frac{-1}{2\sigma^{2}}(x_{i}-\mu)^{2}\Bigg)
+\]</span></p>
+<p><span class="math display">\[L=\displaystyle\Big(2\pi
+\sigma^{2}\Big)^{-n/2} \exp
+\Bigg(\frac{-1}{2\sigma^{2}}\sum_{i=1}^{n}(x_{i}-\mu)^{2}\Bigg)
+\]</span></p>
+<p>El método consiste en encontrar el valor del parámetro que maximice
+esta función para lo cual procedemos a derivar <span
+class="math inline">\(L\)</span> parcialmente con respecto a <span
+class="math inline">\(\mu\)</span>.</p>
+<p>Este proceso presenta algunas dificultades de calculo que son
+atenuadas mediante la premisa de que el maximo de la funcion <span
+class="math inline">\(L\)</span> corresponde a los mismos maximos de la
+funcion <span class="math inline">\(\ln(L)\)</span>, la cual es mas
+sencilla de derivar. Este procedimiento es posible debido a que la
+función <span class="math inline">\(L\)</span> es creciente</p>
+<p>Convertimos <span class="math inline">\(L\)</span> en <span
+class="math inline">\(ln(L)\)</span> % <span
+class="math display">\[\ln(L)= -\displaystyle\frac{n}{2} \ln(2\pi) -
+\displaystyle\frac{n}{2}
+\ln(\sigma^{2})+\displaystyle\frac{1}{2\sigma^{2}}\displaystyle\sum_{i=1}^{n}(x_{i}-\mu)^{2}\]</span>
+Al derivar parcialmente <span class="math inline">\(\ln(L)\)</span> con
+respecto a <span class="math inline">\(\mu\)</span> tenemos:</p>
+<p><span class="math display">\[\displaystyle\frac{\partial
+\ln(L)}{\partial \mu}=
+-\displaystyle\frac{{2}}{{2}\sigma^{2}}  \displaystyle\sum_{i=1}^{n}
+(x_{i}-\mu) =0\]</span></p>
+<p>De esta igualdad se despeja el parámetro de interés <span
+class="math display">\[{\sigma^{2}}\frac{1}{{\sigma^{2}}}\sum_{i=1}^{n}
+(x_{i}-\mu) =0 \sigma^{2} \]</span> <span
+class="math display">\[\sum_{i=1}^{n} x_{i} - n \mu =0\]</span></p>
+<p><span class="math display">\[\widehat{\mu}=\frac{1}{n}\sum_{i=1}^{n}
+x_{i} = \bar{x}\]</span></p>
+<p>En el caso de la estimación de <span
+class="math inline">\(\sigma^{2}\)</span>, se deriva <span
+class="math inline">\(\ln(L)\)</span> parcialmente con respecto a <span
+class="math inline">\(\sigma^{2}\)</span>, se iguala a cero el resultado
+obtenido y por último se despeja <span
+class="math inline">\(\sigma^{2}\)</span>. Verifique que el estimador de
+máxima verosimilitud para la varianza es igual a:</p>
+<p><span
+class="math display">\[\widehat{\sigma^{2}}=\frac{1}{n-1}\sum_{i=1}^{n}
+\big(x_{i}-\mu \big)^{2} \]</span></p>
+<p><br/><br/><br/></p>
+</div>
+<div id="nota" class="section level3">
+<h3><strong>NOTA</strong></h3>
+<p>Algunas propiedades de la función <span
+class="math inline">\(\ln(x)\)</span></p>
+<ul>
+<li><span class="math inline">\(\ln(xy) = \ln(x) + \ln(y)\)</span></li>
+<li><span class="math inline">\(\ln(x/y) = \ln(x) - \ln(y)\)</span></li>
+<li><span class="math inline">\(\ln(x^{n})=n \ln(x)\)</span></li>
+<li><span class="math inline">\(\ln(e^{x}) = x\)</span></li>
+</ul>
+<p><br/><br/><br/></p>
+</div>
+</div>
+</div>
+<div id="propiedades-deseables-en-los-estimadores"
+class="section level1">
+<h1><strong>PROPIEDADES DESEABLES EN LOS ESTIMADORES</strong></h1>
+<p>Anteriormente se describieron dos los metodos para la construcción de
+estimadores, Estos métodos generan diversas alternativas dentro de los
+cuales debemos seleccionar los mejores. Para realizar dicha
+clasificación debemos examinar sus primcipales propiedades como son la
+INSESGADEZ, CONSISTENCIA, EFICICIENCIA y SUFICIENCIA, entre otras.</p>
+<p>Un indicador que mide la calidad de un estimador <span
+class="math inline">\(\widehat{\theta}\)</span> se denomina Error
+Cuadrático Medio (ECM) y se define de la siguiente manera:</p>
+<p><br/><br/></p>
+<div id="def1" class="section level3">
+<h3><strong>Def1</strong>:</h3>
+<p>Se define como <strong>Error Cuadrático Medio</strong> (ECM) el valor
+esperado de la diferencia entre el estimador y el parámetro, al
+cuadrado.</p>
+<p><span
+class="math display">\[ECM[\widehat{\theta}]=E[\widehat{\theta}-\theta]^{2}
+\]</span></p>
+<p><br/><br/></p>
+</div>
+<div id="insesgadez" class="section level3">
+<h3><strong>Insesgadez</strong></h3>
+</div>
+<div id="def.2" class="section level3">
+<h3><strong>Def.2</strong>:</h3>
+<p>Se dice que el estimador <span
+class="math inline">\(\widehat{\theta}\)</span> que es función de los
+datos contenidos en una muestra, es un estimador insesgado del parametro
+<span class="math inline">\(\theta\)</span>, si <span
+class="math inline">\(E[\widehat{\theta}]=\theta\)</span>, para todos
+los posibles valores de <span class="math inline">\(\theta\)</span>
+(Canavos(1988))</p>
+<p><br/><br/></p>
+</div>
+<div id="ejemplo-2" class="section level3">
+<h3><strong>EJEMPLO</strong> :</h3>
+<p>Suponga que una muestra aleatoria simple de <span
+class="math inline">\(X_{1},X_{2},...,X_{n}\)</span> procede de una
+población con <span class="math inline">\(E[X]=\mu\)</span>, el
+parámetro de inters. Probar que la media muestral <span
+class="math inline">\(\bar{X}\)</span> es siempre un estimador insesgado
+del parámetro media poblacional <span
+class="math inline">\(\mu\)</span>.\ <span class="math display">\[
+\begin{eqnarray*}
+E\big[\bar{X}\big]&amp;=&amp;E\Bigg[\frac{1}{n}
+(X_{1}+X_{2}+...+X_{n}  \Bigg]\\
+                  &amp;=&amp;\frac{1}{n}\Big[E\big[X_{1}+X_{2}+...X_{n}\big]\Bigg]\\
+                  &amp;=&amp;
+\frac{1}{n}\Big[E[X_{1}+E[X_{2}+...+E[X_{n}] \Big]\\
+                  &amp;=&amp; \frac{1}{n} \Big[\mu+\mu+..+\mu\Big]\\
+                  &amp;=&amp; \frac{1}{n} n\mu =\mu\\
+                 \end{eqnarray*}
+\]</span></p>
+<p><br/><br/></p>
+</div>
+<div id="consistencia" class="section level3">
+<h3><strong>Consistencia</strong></h3>
+</div>
+<div id="def.3" class="section level3">
+<h3><strong>Def.3</strong></h3>
+<p>Se dice que <span class="math inline">\(\widehat{\theta}\)</span> es
+un <strong>estimador asintoticamente insesgado</strong> de <span
+class="math inline">\(\theta\)</span> si al aumentar el tamaño de la
+muestra se convierte en un estimador insesgado de <span
+class="math inline">\(\theta\)</span> (Sarabia 2007)</p>
+<p><br/><br/></p>
+</div>
+<div id="def.4" class="section level3">
+<h3><strong>Def.4</strong>:</h3>
+<p>Sea <span class="math inline">\(\widehat{\theta}\)</span> el
+estimador de un parametro <span class="math inline">\(\theta\)</span> y
+sea <span
+class="math inline">\(\widehat{\theta_{1}},\widehat{\theta_{2}}...\widehat{\theta_{n}}\)</span>
+una secuencia de estimadores que representan a <span
+class="math inline">\(\widehat{\theta}\)</span> con base en muestras de
+tamaño <span class="math inline">\(1,2,...n\)</span>, respectivamente.
+Se dice que <span class="math inline">\(\widehat{\theta}\)</span> es un
+estimador cositente para <span class="math inline">\(\theta\)</span> si:
+<span class="math display">\[\lim_{n \to \infty} P(|\widehat{\theta} -
+\theta|\leq \epsilon)=1 \]</span> para todos los valores de <span
+class="math inline">\(\theta\)</span> y <span
+class="math inline">\(\epsilon&gt;0\)</span></p>
+<p><br/><br/></p>
+</div>
+<div id="mímima-varianza-o-eficiencia" class="section level3">
+<h3><strong>Mímima varianza o Eficiencia</strong></h3>
+</div>
+<div id="def.5" class="section level3">
+<h3><strong>Def.5</strong></h3>
+<p>Sean <span class="math inline">\(\widehat{\theta_{1}}\)</span> y
+<span class="math inline">\(\widehat{\theta_{2}}\)</span> dos
+estimadores insesgados del parámetro <span
+class="math inline">\(\theta\)</span>:</p>
+<ul>
+<li><p>Se dice que el estimador <span
+class="math inline">\(\widehat{\theta_{1}}\)</span> es más eficiente que
+el estimador <span class="math inline">\(\widehat{\theta_{2}}\)</span>
+si <span
+class="math display">\[V[\widehat{\theta_{1}}]&lt;V[\widehat{\theta_{1}}]\]</span>.</p></li>
+<li><p>Se defome la eficiencia relativa de un estimador con respecto a
+otro como el cociente de las varianzas: <span
+class="math display">\[\frac{V[\widehat{\theta_{2}}]}{V[\widehat{\theta_{1}}]}\]</span></p></li>
+</ul>
+<p>Existe la <strong>cota de Cramer Rao</strong>, que permite estimar un
+valir mínimo de la varianza, en caso de que algun estimador tenga como
+varianza este valor decimos que este estimador es eficinete. Formula de
+cota de Cremer Rao</p>
+<p><br/><br/></p>
+</div>
+<div id="suficiencia" class="section level3">
+<h3><strong>Suficiencia</strong></h3>
+</div>
+<div id="def.6" class="section level3">
+<h3><strong>Def.6</strong></h3>
+<p>Se dice que un estimador <span
+class="math inline">\(\widehat{\theta}\)</span> es un estimador
+suficiente del parámetro <span class="math inline">\(\theta\)</span>, si
+la distribución condicional de la muestra (<span
+class="math inline">\(L(x,\theta)\)</span>)no depende de <span
+class="math inline">\(\theta\)</span> (Sarabia(2007)) Otra forma de
+establecer si un estimador es suficiente es:</p>
+<p><br/></p>
+</div>
+<div id="def.7-criterio-de-factorización-de-fisher"
+class="section level3">
+<h3><strong>Def.7</strong> (Criterio de factorización de Fisher):</h3>
+<p>Sea <span class="math inline">\(L(x,\theta)\)</span> la función de
+probabilidad de la muestra. El estimador <span
+class="math inline">\(\widehat{\theta}\)</span> es suficiene para la
+estimación de <span class="math inline">\(\theta\)</span> si y solo si
+existen funciones <span class="math inline">\(g\)</span> y <span
+class="math inline">\(h\)</span> tales que: <span
+class="math display">\[L(x,\theta)=g(x)h(\widehat{\theta}(x)) \]</span>
+Con <span class="math inline">\(g\)</span> una función no negativa que
+solo depende de la información de la muestra <span
+class="math inline">\((x)\)</span> y <span
+class="math inline">\(h\)</span> que es una función no negativa que
+depende de <span class="math inline">\(\widehat{\theta}\)</span> y <span
+class="math inline">\(\theta\)</span>. (Sarabia(2007)).</p>
+<!-- {\bf Criterios para seleccionar un buen estimador} -->
+<!-- \begin{center} -->
+<!-- \includegraphics[width=8cm]{gc.png} -->
+<!-- \end{center} -->
+<p>Cuando se escoge un estimador se debe elegir aquel que genere las
+mejores condiciones de estimación. Pensemos que en el centro de la diana
+está el parámetro objetivo. Si elegimo un estimador que proporcione
+resultados similares al cuadrante 1 estaremos optando por un estimador
+que tiene una varinza pequeña, pero está alejado del centroestimador
+sesgado. En el caso del cuadrante 2, el estimador tienen una varianza
+grande, pero además es sesgado. En el cuadrante 3 tenemos un estimador
+insesgado - en promedio damos en el centro - pero presenta una varianza
+grande. Finalmente el estimador representado por el cuadrante 4,
+presenta las mejores condiciones, tiene varianza pequeñaa y es
+insesgado. \ Tambien es posible elegir un estimador sesgado, al que sea
+posible estimar su sesgo y ser corregido o un estimador insesgado pero
+consistente, es decir que en principio sea sesgado pero que si
+aumentamos el tamaño de la muestra se torne insesgado.</p>
+<p><br/><br/><br/></p>
+</div>
+<div id="ejercicios-propuestos" class="section level2">
+<h2><strong>EJERCICIOS PROPUESTOS</strong></h2>
+<ol style="list-style-type: decimal">
+<li>Si <span class="math inline">\(X_{1},X_{2},...,X_{n}\)</span>
+constituye una muestra aleatoria, obtenga la función de verosimilitud
+para las siguientes distribuciones:</li>
+</ol>
+<ul>
+<li>Poisson con parametro <span
+class="math inline">\(\lambda\)</span></li>
+<li>Uniforme con parametos (<span
+class="math inline">\(a,b\)</span>)</li>
+<li>Gamma con parametros <span class="math inline">\(\alpha\)</span>,
+<span class="math inline">\(\beta\)</span></li>
+<li>Weibull con parametros <span class="math inline">\(\alpha\)</span>,
+<span class="math inline">\(\beta\)</span></li>
+</ul>
+<p><br/><br/></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Estime los parametros enunciados en el punto [1] mediante el método
+de máxima verosimilitud</li>
+</ol>
+<ul>
+<li>Estime los parametros enunciados en el punto [1] mediante el método
+de momentos</li>
+<li>Demuestre que el estimador <span
+class="math display">\[S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}
+(x_{i}-\bar{x})^{2}\]</span> es un estimador insesgado</li>
+</ul>
+<p><br/><br/></p>
+<ol start="3" style="list-style-type: decimal">
+<li>A partir de una muestra de tamaño 3 procedente de una población de
+Bernoulli de parámetro <span class="math inline">\(p\)</span> se
+consideran los siguientes estimadores: <span
+class="math display">\[\widehat{p}=\frac{X_{1}+X_{2}+X_{3}}{3}\]</span>
+<span
+class="math display">\[\widehat{p}=\frac{X_{1}+X_{2}+1}{3}\]</span>
+<span
+class="math display">\[\widehat{p}=\frac{X_{1}+X_{2}+2X_{3}}{4}\]</span>
+[a.] Hallar el sesgo, la varianza y el error cuadrático medio de los
+tres estimadores.</li>
+</ol>
+<p>[b.] Cuál de los tres estimadores es preferible?, justifique su
+respuesta.</p>
+<p>[c.] Si para la selección de estimadores exigimos que sea insesgado,
+¿cuál es ahora preferible?.</p>
+<p>pp 175 ejemplo 8.8 Sarabia</p>
+<p><br/><br/></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Para modeloar los costos de un tipo de accidentes industriales una
+compañia de seguros utiliza una distribución uniforme <span
+class="math inline">\(U(0,\theta)\)</span> con función de densidad:
+<span class="math display">\[f(x;\theta)=\frac{1}{\theta}, \hspace{.5cm}
+0&lt;x&lt;\theta \]</span> y donde <span
+class="math inline">\(\theta\)</span> es un parámetro positivo. Se
+dispone de una muestra de <span class="math inline">\(n\)</span>
+accidentes <span
+class="math inline">\(X_{1},X_{2},...X_{n}\)</span>.</li>
+</ol>
+<p>[a.] Si se considera el estimador <span
+class="math inline">\(\widehat{\theta_{1}}=2\bar{X}\)</span>. Probar que
+es un estimador insesgado y calcular su varianza. Probar que es un
+estimador consistente.</p>
+<p>[b.] Como un estimador alternativo se considera elvalor máximo de la
+muestra:<span
+class="math inline">\(\widehat{\theta_{1}}=\max\{X_{1},X_{2},...X_{n}\}\)</span>.
+Diseñe un experimento simulado que permita mostrar que este estimador es
+sesgado pero consistente.</p>
+<p><br/><br/></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Considere una muestra de tamaño 4 extraida de una población con
+distribución <span class="math inline">\(N(\mu,\sigma^{2})\)</span>,
+donde se desea estimar la media. Para ello se considera los
+estimadores:</li>
+</ol>
+<p><span
+class="math display">\[\widehat{\mu_{1}}=\frac{1}{4}\big(X_{1}+X_{2}+X_{3}+X_{4}\big)
+\]</span> <span
+class="math display">\[\widehat{\mu_{2}}=\frac{1}{2}X_{1}+\frac{1}{4}X_{2}+\frac{1}{8}\big(X_{3}+X_{4}\big)
+\]</span></p>
+<p>[a.] Pruebe que se trata de estimadores insesgados</p>
+<p>[b.] Cuál de los estimadores es preferible para estimar <span
+class="math inline">\(\mu\)</span>?. Justifique su respuesta</p>
+<p><br/><br/><br/><br/></p>
+</div>
+<div id="solución" class="section level2">
+<h2><strong>Solución</strong></h2>
+<ol style="list-style-type: decimal">
+<li>[a.] Para construir la función de verosimilitud recordemos la
+función de densidad de la distribución Poisson</li>
+</ol>
+<p><span class="math display">\[ f(x)= \frac{e^{-\lambda}
+\lambda^{x}}{x!} \]</span></p>
+<p>Como se ha estudiado anteriormente la función de verosimilitud
+corresponde a la función de distribución conjunta de las n variables
+aleatorias que conforman la muestra. Como estas variables conforman un
+grupo de variables independientes su función distribución se construye a
+partir de la multiplicacion de las funciones de cada una de las
+variables</p>
+<p><span
+class="math display">\[L(X_{1},X_{2}..X_{n};\lambda)=f(X_{1}.f(X_{2})....f(X_{n})
+\]</span> <span class="math display">\[L(X;\lambda)=\prod_{i=1}^{n}
+f(X_{i})=\prod_{i=1}^{n} \frac{e^{-\lambda}\lambda^{x}}{x!}\]</span></p>
+<p>quedando finalmente <span
+class="math display">\[L(X;\lambda)=\displaystyle\frac{e^{-n\lambda}\displaystyle\lambda^{\sum
+x_{i}}}{\prod x_{i}!} \]</span></p>
+<p>[b.] En el caso de la función uniforme con función de
+distribución</p>
+<p><span class="math display">\[
+f(x)=\displaystyle\frac{1}{b-a}\]</span></p>
+<p>tenemos el siguiente desarrollo:</p>
+<p><span class="math display">\[L(X_{1},X_{2}..X_{n};a,b)=
+\prod_{i=1}^{n} \Bigg(\frac{1}{b-a} \Bigg)\]</span></p>
+<p><span
+class="math display">\[L(X_{1},X_{2}..X_{n};a,b)=\Bigg(\displaystyle\frac{1}{b-a}\Bigg)^{n}\]</span></p>
+<p>[c.] Para la función de distribución Gamma tenemos:</p>
+<p><span class="math display">\[
+f(x)=\frac{x_{i}^{\alpha-1}e^{-x/\beta}}{\beta^{\alpha}\Gamma(\alpha)}\]</span></p>
+<p>tenemos que la función de verosimilitud correspondiente es</p>
+<span
+class="math display">\[L(X_{1},X_{2}..X_{n};\alpha,\beta)=\prod_{i=1}^{n}
+\frac{x_{i}^{\alpha-1}e^{-x_{i}/\beta}}{\beta^{\alpha}\Gamma(\alpha)}\]</span>
+<span
+class="math display">\[L(X;\alpha,\beta)=\frac{\Bigg(\displaystyle\prod_{i=1}^{n}
+x_{i}^{\alpha-1}\Bigg).\Bigg( e^{-\frac{1}{\beta}\sum
+x_{i}}\Bigg)}{\Bigg(\beta^{\alpha}\Gamma(\alpha)\Bigg)^{n}}\]</span>
+<p>Una variable con distribución Weibull tiene la siguiente función de
+distribución:\ <span class="math inline">\(f(x)=\alpha \beta^{\alpha}
+x^{\alpha - 1} e^{-(\beta x)^{\alpha}}\)</span>\ <span
+class="math inline">\(L(x_1,...,x_n, \alpha, \beta)=\prod_{i=1}^{n}
+\alpha \beta^{\alpha} x^{\alpha - 1} e^{-(\beta x)^{\alpha}}\)</span>\
+<span class="math inline">\(L(x_1,...,x_n, \alpha, \beta)=(\alpha
+\beta^{\alpha})^{n} \prod_{i=1}^{n} x_{i}^{\alpha - 1} e^{-
+\beta^{\alpha} \sum x_{i}^{\alpha}}\)</span>\ <span
+class="math inline">\(L(x_1,...,x_n, \alpha, \beta)= \alpha^{n} \beta^{n
+\alpha} \prod_{i=1}^{n} x_{i}^{\alpha - 1} e^{- \beta^{\alpha} \sum
+x_{i}^{\alpha}}\)</span></p>
+Para estimar los parámetros correspondientes al punto [1] por el método
+de máxima verosimilitud, primero debemos transformar las funciones <span
+class="math inline">\(L\)</span> en <span
+class="math inline">\(\ln(L)\)</span> y luego procedemos a derivar
+parcialmente esta función con respecto al parámetro que buscamos estimar
+asi
+%222222222222222222222222222222222222222222222222222222222222222222222222222222
+Recordemos que para desarrollar el método de momentos es necesario
+conocer por <span class="math inline">\(E[X]\)</span> y la <span
+class="math inline">\(V[X]\)</span> de la distribución
+<p>Para demostrar que el estimador <span class="math display">\[S^
+{2}=\frac{1}{n-1}\sum_{i=1}^ {n}(x_{i}-\bar{x})^{2}\]</span> es
+necesario tener en cuenta que <span class="math display">\[V[X]=\sigma^
+{2}=E[X^{2}]-E[X]^{2}\]</span> <span
+class="math display">\[V[\bar{X}]=\frac{\sigma^
+{2}}{n}=E[\bar{X^{2}}]-E[\bar{X}]^{2}\]</span> a partir de estos
+resultados podemos tener</p>
+<p><span class="math display">\[E[S^{2}]=E\Bigg[\frac{1}{n-1}\sum_{i=1}^
+{n}(x_{i}-\bar{x})^{2}\Bigg]\]</span> <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1} E\Bigg[\sum_{i=1}^
+{n}(x_{i}-\bar{x})^{2}\Bigg]\]</span> <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1} E\Bigg[\sum_{i=1}^
+{n}x_{i}^{2}-2\bar{x} \sum_{i=1}^ {n} x_{i}
++  n\bar{x}^{2}\Bigg]\]</span></p>
+<p><span class="math display">\[E[S^{2}]=\frac{1}{n-1}
+E\Bigg[\sum_{i=1}^ {n}x_{i}^{2}-2n\bar{x} \frac{\sum_{i=1}^ {n}
+x_{i}}{n} +  n\bar{x}^{2}\Bigg]\]</span> <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1} E\Bigg[\sum_{i=1}^
+{n}x_{i}^{2}-2n\bar{x}^{2} +  n\bar{x}^{2}\Bigg]\]</span> <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1} E\Bigg[\sum_{i=1}^ {n}
+x_{i}^{2}-n\bar{x}^{2}\Bigg]\]</span> <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1} \Bigg[\sum_{i=1}^ {n}
+E\big[x_{i}^{2}\big]-n E\big[\bar{x}^{2}\big]\Bigg]\]</span> remplazando
+por los respectivos valores tenemos <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1} \Bigg[\sum_{i=1}^ {n}
+\Big[ \sigma^{2}+\mu^ {2}\Big]-n \Big[\frac{\sigma^{2}}{n}+\mu^
+{2}\Big]\Bigg]\]</span> <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1}
+\Bigg[\Big[n\sigma^{2}+n\mu^{2} \Big]- \Big[n \frac{\sigma^{2}}{n}+\mu^
+{2}\Big]\Bigg]\]</span> <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1} \Bigg[ n \sigma^{2} -
+\sigma^{2}\Bigg] \]</span> <span
+class="math display">\[E[S^{2}]=\frac{1}{n-1} \Bigg[ (n-1) \sigma^{2}
+\Bigg] \]</span> <span
+class="math display">\[E[S^{2}]=\sigma^{2}\]</span> por lo tanto <span
+class="math inline">\(S^{2}\)</span> es un estimador insesgado de <span
+class="math inline">\(\sigma^{2}\)</span></p>
+En este caso <span
+class="math display">\[E[X]=\frac{a+b}{2}=\frac{\theta}{2}\]</span>
+<p>Para determinar si los estimadores son insesgados debes de probar si
+<span class="math inline">\(E[\widehat{\mu}]=\mu\)</span> Para el primer
+estimador tenemos <span
+class="math display">\[E[\widehat{\mu_{1}}]=\frac{1}{4}\Big[E[X_{1}]+E[X_{2}]+E[X_{3}]+
+E[X_{4}]\Big]\]</span> <span
+class="math display">\[E[\widehat{\mu_{1}}]=\frac{1}{4}\Big[\mu+\mu+\mu+\mu\Big]=\frac{1}{4}\Big[
+4\mu\Big]=\mu\]</span> luego <span
+class="math inline">\(\widehat{\mu_{1}}\)</span>, es un estimador
+insesgado de <span class="math inline">\(\mu\)</span></p>
+<p>En el caso del segundo estimador tenemos\</p>
+<p><span
+class="math inline">\(E[\widehat{\mu_{2}}]=1/2E[X_{1}]+\frac{1}{4}E[X_{2}]+\frac{1}{8}\Big(E[X_{3}]+E[X_{4}]\Big)\)</span>\</p>
+<p><span
+class="math inline">\(E[\widehat{\mu_{2}}]=1/2\mu+\frac{1}{4}\mu+\frac{2}{8}\mu=\frac{4\mu+2\mu+2\mu}{8}=\frac{8
+\mu}{8}\mu=\mu\)</span>\</p>
+Luego, <span class="math inline">\(\widehat{\mu_2}\)</span> es un
+estimador insesgado de <span class="math inline">\(\mu\)</span>
+<p>Si se requiere seleccionar un estimador entre los dos anteriores
+debemos de comparar sus varianza, podemos verificar que <span
+class="math inline">\(V[\widehat{\mu_{1}}]&lt;V[\widehat{\mu_{2}}]\)</span>.
+\</p>
+<p><span class="math inline">\(V(\widehat{\mu_1})=V\left(\dfrac{X_1 +
+X_2 + X_3 +
+X_4}{4}\right)=\dfrac{1}{16}[V(X_1)+V(X_2)+V(X_3)+V(X_4)]=\dfrac{1}{16}[\sigma^2+\sigma^2+\sigma^2+\sigma^2]=\dfrac{4}{16}\sigma^2=\dfrac{\sigma^2}{4}\)</span>\</p>
+<p><span
+class="math inline">\(V(\widehat{\mu_2})=V\left(\dfrac{1}{2}X_1+\dfrac{1}{4}X_2+\dfrac{1}{8}(X_3+X_4)\right)=V\left(\dfrac{1}{2}X_1\right)+V\left(\dfrac{1}{4}X_2\right)+V\left(\dfrac{1}{8}(X_3+X_4)\right)=\dfrac{1}{4}V(X_1)+\dfrac{1}{16}V(X_2)+\dfrac{1}{64}V(X_3+X_4)=\dfrac{1}{4}\sigma^2+\dfrac{1}{16}\sigma^2+\dfrac{1}{32}\sigma^2=\dfrac{11}{32}\sigma^2\)</span>\</p>
+<p>Es mejor el estimador <span
+class="math inline">\(\widehat{\mu_1}\)</span> por tener menor varianza.
+\end{itemize}</p>
+<p>\begin{itemize}</p>
+<p><span class="math inline">\(f(x)= c (1 + \theta x)\)</span> para
+<span class="math inline">\(-1 \leq x \leq 1\)</span></p>
+<p>$_{-1}^{1} c (1 + x)dx=1 $\</p>
+<p>$c _{-1}^{1}(1 + x)dx=1 $\</p>
+<p><span class="math inline">\(c\left[1 + \dfrac{\theta
+x^2}{2}\right]_{-1}^{1}=1\)</span>\</p>
+<p><span class="math inline">\(c\left[1 + \dfrac{1}{2}\theta + 1 -
+\dfrac{\theta}{2}\right]=1\)</span>\</p>
+<p><span class="math inline">\(c=\dfrac{1}{2}\)</span></p>
+<p>Debo hallar el primer momento poblacional <span
+class="math inline">\((E[x])\)</span> y luego igualarlo a <span
+class="math inline">\(\overline{x}\)</span>\</p>
+<p><span class="math inline">\(E[x]= \dfrac{1}{2} \int_{-1}^1 (x +
+\theta x^2)dx=\dfrac{1}{2}\left[\dfrac{x^2}{2}+\dfrac{\theta x^3}{3}
+\right]_{-1}^1\)</span>\</p>
+<p><span class="math inline">\(=\dfrac{1}{2} \left[ \dfrac{1}{2} +
+\dfrac{\theta}{3} - \dfrac{1}{2} + \dfrac{\theta}{3}
+\right]=\dfrac{\theta}{3}\)</span>\ al reemplazar este valor en la
+segunda ecuación tenemos: $$(b-2{x}+b)^{2} <span
+class="math inline">\(E[x]=\overline{x}\)</span>\</p>
+<p><span class="math inline">\(\dfrac{\theta}{3}=\overline{x}\)</span>
+<span class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(\widehat{\theta} = 3 \overline{x}\)</span></p>
+<p><span class="math inline">\(E[3 \overline{x}]=
+3E\left[\dfrac{X_1+X_2+X_3+....+X_n}{n}\right]\)</span>\</p>
+<p><span
+class="math inline">\(\dfrac{3}{n}(E[X_1]+E[X_2]+....+E[X_n])\)</span>\</p>
+<p><span
+class="math inline">\(\dfrac{3}{n}\left[\dfrac{\theta}{3}+\dfrac{\theta}{3}+....+\dfrac{\theta}{3}\right]=\dfrac{3}{n}*\dfrac{n
+\theta}{3}=\theta\)</span>\</p>
+<p>Por lo tanto <span class="math inline">\(\widehat{\theta}=3
+\overline{x}\)</span> es un estimador insesgado de <span
+class="math inline">\(\theta\)</span></p>
+<p>\end{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{multicols} \end{document}itemize}</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
