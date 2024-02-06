@@ -12,7 +12,7 @@
 <meta name="author" content="" />
 
 
-<title>Taller 1</title>
+<title>guia102.knit</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -408,97 +408,97 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore"><span style="color:#034a94"><strong>Taller
-1</strong></span></h1>
-<h4 class="author"></h4>
 
 </div>
 
 
-<div id="propiedades-de-los-estimadores" class="section level1">
-<h1><strong>Propiedades de los estimadores</strong></h1>
+<p><img src="img/banner_guia.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><br/><br/></p>
+<div id="introducción" class="section level2">
+<h2><strong>Introducción</strong></h2>
+<p>La media muestral, la proporción muestral y la varianza muestral,
+constituyen los principales estimadores para una población. Estudiar sus
+caracteristicas principales como son el valor esperado y varianza,
+permiten entender su distribución y realizar calculos de probabilidad
+asociados a estas variables aleatorias, como son los intervalos de
+confianza y los estadisticos de prueba asociados a las pruebas de
+hipótesis.</p>
+<p><br/><br/></p>
 </div>
-<div id="problema-1" class="section level1">
-<h1><strong>1. Problema 1</strong></h1>
-<p><br/><br/></p>
-<p>Para una variable con distribución uniforme <span
-class="math inline">\(unif(a=0, b=20)\)</span> se desea determinar las
-propiedades de los siguientes estimadores del parámetro <span
-class="math inline">\(b\)</span></p>
-<pre class="r"><code>library(ggplot2)
-
-# Crear datos para la distribución uniforme
-x &lt;- seq(0, 20, length=1000)
-fx &lt;- dunif(x, min=0, max=20)  # Distribución uniforme en [0, 20]
-
-# Crear un marco de datos con los datos
-dat &lt;- data.frame(x, fx)
-
-# Graficar la distribución uniforme
-ggplot(data=dat, aes(x=x, y=fx)) +
-  geom_line(size=1, color=&#39;red&#39;) +
-  labs(title=&#39;Distribución Uniforme [0, 20]&#39;, x=&#39;Valor&#39;, y=&#39;Densidad de Probabilidad&#39;) +
-  scale_y_continuous(limits=c(0, .06)) +
-  theme_minimal()</code></pre>
-<p><img src="Taller001_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<ul>
-<li><p><span class="math inline">\(\widehat{\theta_{1}} = 2
-\bar{x}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\theta_{2}} =
-\max\{x\}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\theta_{3}} =
-\dfrac{(n+1)}{n} \max\{x\}\)</span></p></li>
-</ul>
-<p><br/><br/></p>
-<p>Para ello se realiza una simulación, para posteriormente evaluar los
-estimadores propuestos y determinar sus propiedades.</p>
-<p><br/><br/></p>
-<p><br/><br/><br/></p>
-<ul>
-<li><p>Para un tamaño de muestra <code>n = 10</code> determine que
-estimador presenta los mejores resultados, basándose en las propiedades
-observadas . Como criterio de evaluación determine cual estimador tiene
-resultados más cercanos a <code>20</code>.</p></li>
-<li><p>Repita el proceso anterior para una muestra <code>n = 30</code>;
-<code>n = 50</code> , <code>n = 200</code> y <code>n = 2000</code>. De
-acuerdo a los resultados anteriores que se puede concluir?</p></li>
-</ul>
+<div id="objetivos-de-la-unidad" class="section level2">
+<h2><strong>Objetivos de la unidad</strong></h2>
+<p>Al finalizar esta unidad el estudiante estará en capacidad de
+RECONOCER las principales distribuciones muestrales, las relaciones
+existentes entre ellas y la generalización del Teorema del límite
+central, de tal manera que pueda INFERIR de manera adecuada los
+resultados obtenidos para la toma de decisiones informadas.
+<br/><br/></p>
 </div>
-<div id="problema-2" class="section level1">
-<h1><strong>2. Problema 2</strong></h1>
-<p>Para una población con distriobución normal con media <span
-class="math inline">\(\mu = 120\)</span> y una desviación estandar <span
-class="math inline">\(\sigma = 20\)</span>, evalue los siguentes
-estimadores de <span class="math inline">\(\mu\)</span> :</p>
-<pre class="r"><code>library(ggplot2)
-
-# Crear datos para la distribución normal
-x &lt;- seq(50, 190, length=1000)
-fx &lt;- dnorm(x, mean=120, sd=20)  # media=0, desviación estándar=1
-
-# Crear un marco de datos con los datos
-dat &lt;- data.frame(x, fx)
-
-# Graficar la distribución normal
-ggplot(data=dat, aes(x=x, y=fx)) +
-  geom_line(size=1, color=&#39;blue&#39;) +
-  labs(title=&#39;Distribución Normal&#39;, x=&#39;Valor&#39;, y=&#39;Densidad de Probabilidad&#39;) +
-  theme_minimal()</code></pre>
-<p><img src="Taller001_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<ul>
-<li><p><span class="math inline">\(\widehat{\mu}_{1} =
-\bar{X}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\mu}_{2} = Me =
-P_{50}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\mu}_{3} = RM =
-\dfrac{\min(x)+\max(x)}{2}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\mu}_{4}
-=\dfrac{Q{1}+Q_{3}}{2}\)</span></p></li>
-<li><p>Repita el proceso anterior para una muestra <code>n = 30</code>;
-<code>n = 50</code> , <code>n = 200</code> y <code>n = 2000</code>. De
-acuerdo a los resultados anteriores que se puede concluir?</p></li>
-</ul>
-<p><br/><br/><br/></p>
+<div id="duración" class="section level2">
+<h2><strong>Duración</strong></h2>
+<p>La presente unidad será desarrollada durante los dias 5 al 11 de
+febrero. Ademas del material suministrado contaran con el acompañamiento
+del profesor en 2 sesiones (martes y jueves) y de una espacio de
+monitoría en sala de computo.</p>
+<p>Para alcanzar los objetivos planteados se propone realizar las
+siguientes actividades</p>
+<p><br/><br/></p>
+</div>
+<div id="cronograma-de-trabajo" class="section level2">
+<h2><strong>Cronograma de trabajo</strong></h2>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Actividad</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Actividad 2</td>
+<td align="left">En formato Rmd deberá resolver el taller 2 y publicar
+el desarrollo de las dos parte en RPubl</td>
+</tr>
+<tr class="even">
+<td align="left">Trabajo individual</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Recursos</td>
+<td align="left">recurso sitio web del curso</td>
+</tr>
+<tr class="even">
+<td align="left">Fecha</td>
+<td align="left">12 de febrero</td>
+</tr>
+<tr class="odd">
+<td align="left">Hora</td>
+<td align="left">23:59</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+</div>
+<div id="entregables" class="section level2">
+<h2><strong>Entregables</strong></h2>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="69%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left">Actividad 2</td>
+<td align="left">Solución del taller 2 en formato html publicado en
+RPubl</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/><br/><br/></p>
 </div>
 
 

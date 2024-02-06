@@ -1,0 +1,76 @@
+---
+title: " "
+subtitle: "  "
+author: " "
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/banner_guia.png")
+```
+
+
+<br/><br/>
+
+
+## **Introducción**
+
+La media muestral, la proporción muestral y la varianza muestral, constituyen los principales estimadores para una población. Estudiar sus caracteristicas principales como son el valor esperado y varianza, permiten entender su distribución y realizar calculos de probabilidad asociados a estas variables aleatorias, como son los intervalos de confianza y los estadisticos de prueba asociados a las pruebas de hipótesis. 
+
+<br/><br/>
+
+## **Objetivos de la unidad**
+
+Al finalizar esta unidad el estudiante estará en capacidad de RECONOCER las principales distribuciones muestrales, las relaciones existentes entre ellas y la generalización del Teorema del límite central,  de tal manera que pueda INFERIR de manera adecuada los resultados obtenidos para la toma de decisiones informadas.
+<br/><br/>
+
+## **Duración**
+
+La presente  unidad será desarrollada durante los dias 5 al 11  de febrero. Ademas del material suministrado  contaran con el acompañamiento del profesor en 2 sesiones (martes y jueves) y de una espacio de monitoría en sala de computo. 
+
+Para alcanzar los objetivos planteados se propone realizar las siguientes actividades
+
+
+<br/><br/>
+
+## **Cronograma de trabajo**
+
+|Actividad           | Descripción                    | 
+|:-------------------|:-----------------------------  |
+|Actividad 2         | En formato Rmd deberá resolver el taller 2 y publicar el desarrollo de las dos parte en RPubl |
+|Trabajo  individual |                                |
+|Recursos            | recurso sitio web del curso    |
+|Fecha               | 12 de febrero                  |
+|Hora                | 23:59                          |
+
+<br/><br/>
+
+## **Entregables** 
+
+|                  |                                         |
+|:-----------------|:----------------------------------------|
+| Actividad 2      |  Solución del taller 2 en formato html publicado en RPubl  |
+
+
+<br/><br/><br/><br/>
+
+
+

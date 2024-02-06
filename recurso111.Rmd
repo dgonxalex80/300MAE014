@@ -233,6 +233,11 @@ Algunas propiedades de la función $\ln(x)$
 
 Anteriormente se describieron dos los metodos para la construcción de estimadores, Estos métodos generan diversas alternativas dentro de los cuales debemos seleccionar los mejores. Para realizar dicha clasificación debemos examinar sus primcipales propiedades como son la INSESGADEZ, CONSISTENCIA, EFICICIENCIA y SUFICIENCIA, entre otras.
 
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/propiedades.png")
+```
+
 Un indicador que mide la calidad de un estimador $\widehat{\theta}$ se denomina Error Cuadrático Medio (ECM) y se define de la siguiente manera:
 
 <br/><br/>
@@ -680,5 +685,7 @@ Por lo tanto $\widehat{\theta}=3 \overline{x}$ es un estimador insesgado de $\th
 \end{document}itemize}
 
 
-
+  PROPIEDADES DE LN, EXP, E[x] v[x]
+  
+  
 

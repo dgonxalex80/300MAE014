@@ -16,15 +16,22 @@ navbar:
       menu:
         - text: "Módulo 1"
           href: modulo1.html
-        - text: "Guía de aprendizaje 1"
-          href: guia1.html
         - text: "----"  
+        - text: "Guía de aprendizaje 1.1"
+          href: guia101.html
         - text: "Conceptos de inferencia estadística"
           href: recurso100.html
         - text: "Métodos de estimación propiedades"
           href: recurso111.html            
         - text: "Taller 1"
           href: Taller001.html
+        - text: "----"  
+        - text: "Guía de aprendizaje 1.2"
+          href: guia102.html
+        - text: "Distribuciones muestales"
+          href: recurso121.html     
+        - text: "Taller 2"
+          href: Taller002.html         
     - text: "Módulo 2"
       menu:
         - text: "Módulo 2"

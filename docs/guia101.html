@@ -12,7 +12,7 @@
 <meta name="author" content="" />
 
 
-<title>Taller 1</title>
+<title>guia101.knit</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -408,97 +408,141 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore"><span style="color:#034a94"><strong>Taller
-1</strong></span></h1>
-<h4 class="author"></h4>
 
 </div>
 
 
-<div id="propiedades-de-los-estimadores" class="section level1">
-<h1><strong>Propiedades de los estimadores</strong></h1>
+<p><img src="img/banner_guia.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><br/><br/></p>
+<div id="introducción" class="section level2">
+<h2><strong>Introducción</strong></h2>
+<p>La inferencia estadística permite generalizar lo hallado en una
+muestra a toda la población. Para realizar este proceso contamos con dos
+alternativas: la estimación y las pruebas de hipótesis. El fundamento de
+estos procesos está fundamentado en varios conceptos que se describen y
+se discuten en estas primeras unidades. En algunos casos serán apoyados
+con procesos de simulación que permitirán la verificación de cada uno de
+ellos.</p>
+<p>En esta primera unidad profundizaremos sobre los conceptos :
+población, muestra, censo, muestreo, parámetro, estimador, tipos de
+muestreo, muestreo aleatorio simple, muestreo aleatorio estratificado,
+muestreo aletorio sistemático, muestreo por conglomerados, muestreos no
+probabilisticos, muestreo por juicio, muestreo por conveniencia,
+muestreos bola de nieve, métodos de estimación, método de momentos,
+método de máxima verosimilitud, propiedades de estimadores como son
+insesgadez, eficiencia, consistencia.</p>
+<p><br/><br/></p>
 </div>
-<div id="problema-1" class="section level1">
-<h1><strong>1. Problema 1</strong></h1>
+<div id="objetivos-de-la-unidad" class="section level2">
+<h2><strong>Objetivos de la unidad</strong></h2>
+<p>Al finalizar esta unidad el estudiante estará en capacidad de
+RECONOCER los elementos, conceptos y propiedades que intervienen en la
+Inferencia Estadística, de tal manera que pueda ENTENDER de manera
+adecuada los resultados obtenidos para la toma de decisiones
+informadas.</p>
 <p><br/><br/></p>
-<p>Para una variable con distribución uniforme <span
-class="math inline">\(unif(a=0, b=20)\)</span> se desea determinar las
-propiedades de los siguientes estimadores del parámetro <span
-class="math inline">\(b\)</span></p>
-<pre class="r"><code>library(ggplot2)
-
-# Crear datos para la distribución uniforme
-x &lt;- seq(0, 20, length=1000)
-fx &lt;- dunif(x, min=0, max=20)  # Distribución uniforme en [0, 20]
-
-# Crear un marco de datos con los datos
-dat &lt;- data.frame(x, fx)
-
-# Graficar la distribución uniforme
-ggplot(data=dat, aes(x=x, y=fx)) +
-  geom_line(size=1, color=&#39;red&#39;) +
-  labs(title=&#39;Distribución Uniforme [0, 20]&#39;, x=&#39;Valor&#39;, y=&#39;Densidad de Probabilidad&#39;) +
-  scale_y_continuous(limits=c(0, .06)) +
-  theme_minimal()</code></pre>
-<p><img src="Taller001_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<ul>
-<li><p><span class="math inline">\(\widehat{\theta_{1}} = 2
-\bar{x}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\theta_{2}} =
-\max\{x\}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\theta_{3}} =
-\dfrac{(n+1)}{n} \max\{x\}\)</span></p></li>
-</ul>
-<p><br/><br/></p>
-<p>Para ello se realiza una simulación, para posteriormente evaluar los
-estimadores propuestos y determinar sus propiedades.</p>
-<p><br/><br/></p>
-<p><br/><br/><br/></p>
-<ul>
-<li><p>Para un tamaño de muestra <code>n = 10</code> determine que
-estimador presenta los mejores resultados, basándose en las propiedades
-observadas . Como criterio de evaluación determine cual estimador tiene
-resultados más cercanos a <code>20</code>.</p></li>
-<li><p>Repita el proceso anterior para una muestra <code>n = 30</code>;
-<code>n = 50</code> , <code>n = 200</code> y <code>n = 2000</code>. De
-acuerdo a los resultados anteriores que se puede concluir?</p></li>
-</ul>
 </div>
-<div id="problema-2" class="section level1">
-<h1><strong>2. Problema 2</strong></h1>
-<p>Para una población con distriobución normal con media <span
-class="math inline">\(\mu = 120\)</span> y una desviación estandar <span
-class="math inline">\(\sigma = 20\)</span>, evalue los siguentes
-estimadores de <span class="math inline">\(\mu\)</span> :</p>
-<pre class="r"><code>library(ggplot2)
-
-# Crear datos para la distribución normal
-x &lt;- seq(50, 190, length=1000)
-fx &lt;- dnorm(x, mean=120, sd=20)  # media=0, desviación estándar=1
-
-# Crear un marco de datos con los datos
-dat &lt;- data.frame(x, fx)
-
-# Graficar la distribución normal
-ggplot(data=dat, aes(x=x, y=fx)) +
-  geom_line(size=1, color=&#39;blue&#39;) +
-  labs(title=&#39;Distribución Normal&#39;, x=&#39;Valor&#39;, y=&#39;Densidad de Probabilidad&#39;) +
-  theme_minimal()</code></pre>
-<p><img src="Taller001_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="duración" class="section level2">
+<h2><strong>Duración</strong></h2>
+<p>La presente unidad será desarrollada durante los dias 29 de enero al
+4 de febrero.<br />
+Ademas del material suministrado contaran con el acompañamiento del
+profesor en dos sesiones (martes y jueves) y de una tercera con el apoyo
+de un monitor.</p>
+<p>Para alcanzar los objetivos planteados se propone realizar las
+siguientes actividades</p>
+<p><br/><br/></p>
+</div>
+<div id="cronograma-de-trabajo" class="section level2">
+<h2><strong>Cronograma de trabajo</strong></h2>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Actividad</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Actividad 1</strong></td>
+<td align="left">Construya un mapa mental <strong>a mano</strong> con
+que contenga el siguiente grupo de palabras : <strong>población,
+parámetro, censo, muestra, muestreo, muestreo probabilistico, muestreo
+no probabilistico, muestreo aleatorio simple, muestreo aleatorio
+estratificado, muestreo por conglomerados, muestreo por juicio, muestreo
+por conveniciencia, muestreo bola de nieve, estimador puntual, estimador
+insesgado, estimador consistente, estimador eficiente, estimación por
+intervalos de confianza, pruebas de hipotesis</strong></td>
+</tr>
+<tr class="even">
+<td align="left">Recursos</td>
+<td align="left"><a
+href="https://padlet.com/dgonzalez80/lijxz9p7nvz5mm2q"><strong>Tablero</strong></a></td>
+</tr>
+<tr class="odd">
+<td align="left">Trabajo individual</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Fecha</td>
+<td align="left">4 de febrero</td>
+</tr>
+<tr class="odd">
+<td align="left">Hora</td>
+<td align="left">23:59</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Actividad 2</strong></td>
+<td align="left">Desarrollar los problemas planteados en el
+<strong>Taller1</strong> que le permitan validar las propiedades de los
+estimadores</td>
+</tr>
+<tr class="even">
+<td align="left">Trabajo individual</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Fecha</td>
+<td align="left">4 de febrero</td>
+</tr>
+<tr class="even">
+<td align="left">Hora</td>
+<td align="left">23:59</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+</div>
+<div id="criterios-de-evaluación" class="section level2">
+<h2><strong>Criterios de evaluación</strong></h2>
 <ul>
-<li><p><span class="math inline">\(\widehat{\mu}_{1} =
-\bar{X}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\mu}_{2} = Me =
-P_{50}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\mu}_{3} = RM =
-\dfrac{\min(x)+\max(x)}{2}\)</span></p></li>
-<li><p><span class="math inline">\(\widehat{\mu}_{4}
-=\dfrac{Q{1}+Q_{3}}{2}\)</span></p></li>
-<li><p>Repita el proceso anterior para una muestra <code>n = 30</code>;
-<code>n = 50</code> , <code>n = 200</code> y <code>n = 2000</code>. De
-acuerdo a los resultados anteriores que se puede concluir?</p></li>
+<li><p>Reconoce los diferentes conceptos de la inferencia
+estadística</p></li>
+<li><p>Relaciona correctamente los conceptos de la inferencia
+estadística</p></li>
 </ul>
-<p><br/><br/><br/></p>
+<p><br/><br/></p>
+<p><br/><br/></p>
+</div>
+<div id="entregables" class="section level2">
+<h2><strong>Entregables</strong></h2>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Actividad 1</td>
+<td align="left">mapa mental en hoja de papel</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/><br/><br/></p>
 </div>
 
 
