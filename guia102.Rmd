@@ -39,7 +39,7 @@ La media muestral, la proporción muestral y la varianza muestral, constituyen l
 
 ## **Objetivos de la unidad**
 
-Al finalizar esta unidad el estudiante estará en capacidad de RECONOCER las principales distribuciones muestrales, las relaciones existentes entre ellas y la generalización del Teorema del límite central,  de tal manera que pueda INFERIR de manera adecuada los resultados obtenidos para la toma de decisiones informadas.
+Al finalizar esta unidad el estudiante estará en capacidad de RECONOCER las principales distribuciones muestrales, las relaciones existentes entre ellas y la generalización del Teorema del límite central,  de tal manera que pueda INFERIR  adecuadamente los resultados obtenidos para la toma de decisiones informadas.
 <br/><br/>
 
 ## **Duración**
