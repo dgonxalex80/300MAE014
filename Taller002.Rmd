@@ -54,6 +54,8 @@ c5= "#5B84C4"
 * $P(z < Z)=0.05$
 * $P(Z > z)=0.80$
 
+En cada caso represente la situación gráficamente
+
 <br/><br/>
 
 2. Sea $X \sim N(50,10)$, Determine las siguientes probabilidades:
@@ -66,6 +68,8 @@ c5= "#5B84C4"
 * $P(X > 35)$
 * $P(40 < X < 45)$
 * $P(38 < X < 62)$
+
+En cada caso represente la situación gráficamente
 
 <br/><br/>
 
@@ -80,6 +84,8 @@ c5= "#5B84C4"
 * $P(X < x)=0.025$
 * $P(X < x)=0.975$
 
+En cada caso represente la situación gráficamente
+
 <br/><br/>
 
 4. El tiempo en que un cajero de un banco con servicio en el automovil atiende a un cliente es una variable aleatoria con una media $\mu=3.2$ minutos y una desviación estandar de $\sigma = 1.6$ minutos. Si se obtiene una muestra de $n = 64$ clientes, encuentre la probabilidad de que el tiempo medio con el cajero sea:
@@ -89,6 +95,8 @@ c5= "#5B84C4"
 * a lo más de $2.7$ minutos
 * más de $3.5$ minutos
 * al menos $3.2$ minutos, pero menos de $3.4$ minutos
+
+En cada caso represente la situación gráficamente
 
 <br/><br/>
 
@@ -105,6 +113,8 @@ c5= "#5B84C4"
 * El punto $t$ tal que $P(T_{v=15}>t)=0.05$
 * El punto $t$ tal que $P(T_{20} > t)=0.10$
 * El punto $t$ tal que $P(T_{30}<-t)=0.10$
+
+En cada caso represente la situación gráficamente
 
 <br/><br/>
 
@@ -128,6 +138,8 @@ c5= "#5B84C4"
 * $P(\chi^{2}<X^{2}<23.209)=0.015$, $(v=10)$
 * $P(37.652 <X^{2}< \chi^{2})=0.045$, $(v=25)$
 
+En cada caso represente la situación gráficamente
+
 <br/><br/>
 
 9. La calificación de un examen de admisión a la universidad que se aplica a estudiantes durante los últimos cinco años está distribuido normal con media $\mu=74$ y varianza $\sigma^{2}=8$. En una muestra de $n=20$ estudiantes, se encontro un valor de $s^{2}=20$. Se considera que el valor de 8 para la varianza puede ser aceptado, si el valor de la variable $X^{2}=(n-1)S^{2} /8$, esta entre $\chi^{2}_{0.05;v=19}$ y $\chi^{2}_{0.95;v=19}$.?Que conclusión debe tomar?, en caso contrario se rechaza esta afirmación.
@@ -142,6 +154,8 @@ c5= "#5B84C4"
 * $f_{0.05}(v_{1}=15;v_{2}=7)$
 * $f_{0.95}(v_{1}=19; v_{2}=24)$
 * $f_{0.95}(v_{1}=7; v_{2}=15)$
+
+En cada caso represente la situación gráficamente
 
 
 <br/><br/>
