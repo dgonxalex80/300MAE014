@@ -1,0 +1,82 @@
+---
+title: " "
+subtitle: "  "
+author: " "
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/banner_guia.png")
+```
+
+
+<br/><br/>
+
+## **Introducción**
+
+La inferencia estadística constituye una de las principales componentes de la metodologia estadistica, encaminados a generar procedimiento para el avance de la ciencia. Con ella se pueden generalizar los resultados obtenidos en una muestra a toda la población, previo cumplimiento de supuestos establecidos por la estadística (llamada paramétrica).
+
+A partir de los conceptos trabajados en las unidades anteriores, avanzamos al concepto de estimación por intervalos de confianza
+
+<br/><br/>
+
+## **Objetivos de la unidad**
+
+Al finalizar la unidad el estudiante estará en capacidad de IDENTIFICAR, CALCULAR, INTERPRETAR e INFERIR sobre un **intervalo de confianza** para estimadores de una y dos poblaciones, que le permita seleccionar la mejor alternativa para la estimación de un parámetro poblacional, orientados a la toma de decisiones  informadas.
+
+<br/><br/>
+
+
+
+## **Duración**
+
+La presente  unidad será desarrollada del 13 al 19 de febrero de 2024. Ademas del material suministrado  contaran con el acompañamiento del profesor durante dos sesiones de clase  y una tercera con el acompañamiento de un monitor. Los entegables para esta unidad podrán enviarse a través de la plataforma Brightspace hasta el  19 de febrero de 2024. 
+
+Para alcanzar los objetivos planteados se propone realizar las siguientes actividades
+
+<br/><br/>
+
+## **Cronograma de trabajo**
+
+|Actividad           | Descripción                       | 
+|:-------------------|:----------------------------------|
+|Actividad 4          | Resuelva las preguntas y problemas planteadas en  el  **Taller 3** y entregue su solución  en formato  **pdf** en el enlace correspondiente de  Brightspace|
+|Trabajo individual |                                    |
+|Fecha              | 19 de febrero de 2024              |
+|Hora               | 23:59 hora local                   |
+
+
+<br/><br/>
+
+## **Entregables** 
+
+|               |                              | 
+|:--------------|:-----------------------------|
+| Actividad     | Solucionario taller 3 de problemas sobre intervalos de confianza| 
+|Fecha          | 19  de febrero de 2024       |
+|Hora           | 23:59 hora local             |
+
+
+
+<br/><br/><br/><br/>
+
+
+

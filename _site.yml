@@ -31,7 +31,15 @@ navbar:
         - text: "Distribuciones muestales"
           href: recurso121.html     
         - text: "Taller 2"
-          href: Taller002.html         
+          href: Taller002.html   
+        - text: "----"  
+        - text: "Guía de aprendizaje 1.3"
+          href: guia103.html
+        - text: "Estimación por Intervalos de confianza"
+          href: recurso131.html     
+        - text: "Taller 3"
+          href: Taller003.html            
+          
     - text: "Módulo 2"
       menu:
         - text: "Módulo 2"

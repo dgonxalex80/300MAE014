@@ -1,0 +1,205 @@
+---
+title: <span style="color:#034a94">**Taller 3**</span>
+subtitle: "  "
+author: " "
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA)
+library(psych)
+library(summarytools)
+
+# install.packages("devtools")
+#devtools::install_github("dgonxalex80/paquete014")
+#library(paquete014)
+library(TeachingSampling)
+data("BigLucy")
+# colores
+c0= "#F7AA00"
+c1= "#235784"
+c2= "#40A8C4"
+c3= "#EEF6F7"
+
+c4= "#11224D"
+c5= "#5B84C4"
+
+
+```
+
+<br/>
+
+### <span style="color:#034a94">**Problema 1**</span>
+
+Encuentre e interprete un intervalo de confianza del 95% para una media poblacional $\mu$ para los valores:
+
++ $n=36$, $\bar{x}= 13.1$, $s^{2}=3.42$ , suponga que $X\sim$ normal
+
++ $n=64$, $\bar{x}= 2.73$, $s^{2}=0.1047$, suponga que $X \sim$ normal 
+
++ $n=125$, $\bar{x}=0.84$, $s^{2}=0.086$, suponga que se desconoce la distribución de $X$ 
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 2**</span>
+
+El departamento de carnes de una cadena de supermercados empaca la carne molida en vendejas de dos tamaños: una esta diseñada para contener mas o menos 1 libra de carne y la otra para casi $3$ libras.  Una muestra aleatoria de 35 paquetes de la bandeja mas pequeña produjo mediciones de peso con un promedio de $1.01$ libras y una desviación estándar de $0.18$ libras.
+
++  Encuentre una intervalo de confianza del $99$% para el promedio de los paquetes mas pequeños.
+
++ El departamento de control de calidad de esta cadena de supermercados piensa que la cantidad de carne molidas debe ser en promedio de 1 libra. ¿Debe preocupar al departamento de control de la calidad el resultado obtenido para el IC($99$%)
+
+<br/><br/>
+
+
+
+### <span style="color:#034a94">**Problema 3**</span>
+
+
+En una encuesta aleatoria realizada a $500$ familias de la ciudad que poseen televisión por cable,  se encuentra que $340$ tienen suscripción a HBO.  Calcule un intervalo de confianza para la proporción de familias que tienen suscripción a HBO en la ciudad. Interprete el resultado obtenido.
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 4**</span>
+
+
+De $1000$ casos seleccionados al azar de cáncer de pulmón, $823$ resultaron en la muerte dentro de los $10$ años después de su detección. Construya un intervalo de confianza para la tasa de mortalidad por cáncer de pulmón del $95$\%, de acuerdo con los datos suministrados. Interprete los resultados obtenidos.
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 5**</span>
+
+Los siguientes datos corresponden a las notas finales del curso de matematicas fundamentales.
+
+```{r, eval=FALSE}
+nf=c(4.1, 2.7, 3.1, 3.2, 3.0, 3.2, 2.0, 2.4, 1.6, 3.2, 3.1, 2.6, 2.0, 2.4, 2.8, 3.3, 4.0, 3.4, 3.0, 3.1, 2.7, 2.7, 3.0, 3.8, 3.2, 2.2, 3.5, 3.5, 3.8, 3.5, 3.9, 4.2, 4.3, 3.9, 3.2, 3.5, 3.5, 3.7, 4.1, 3.7, 3.5, 3.6, 3.2, 3.1, 3.4, 3.0, 3.0, 3.0, 2.7, 1.7, 3.6, 2.1, 2.4, 3.0, 3.1, 2.5, 2.5, 3.6, 2.2, 2.4, 3.1, 3.3, 2.7, 3.7, 3.0, 2.7, 3.0, 3.2, 3.1, 2.4, 3.0, 2.7, 2.5, 3.0, 3.0, 3.0, 3.2, 3.1, 3.8, 4.1, 3.7, 3.5, 3.0, 3.7, 3.7, 4.1, 3.7, 3.9, 3.7, 2.0)
+
+cat("resumen 'notas", "\n")
+summary(nf)
+cat("\n")
+cat("varianza notas", "\n")
+var(nf)
+```
+
+<pre>
+nf=c(4.1, 2.7, 3.1, 3.2, 3.0, 3.2, 2.0, 2.4, 1.6, 3.2, 3.1, 2.6, 2.0, 2.4, 2.8, 
+     3.3, 4.0, 3.4, 3.0, 3.1, 2.7, 2.7, 3.0, 3.8, 3.2, 2.2, 3.5, 3.5, 3.8, 3.5,
+     3.9, 4.2, 4.3, 3.9, 3.2, 3.5, 3.5, 3.7, 4.1, 3.7, 3.5, 3.6, 3.2, 3.1, 3.4, 
+     3.0, 3.0, 3.0, 2.7, 1.7, 3.6, 2.1, 2.4, 3.0, 3.1, 2.5, 2.5, 3.6, 2.2, 2.4, 
+     3.1, 3.3, 2.7, 3.7, 3.0, 2.7, 3.0, 3.2, 3.1, 2.4, 3.0, 2.7, 2.5, 3.0, 3.0, 
+     3.0, 3.2, 3.1, 3.8, 4.1, 3.7, 3.5, 3.0, 3.7, 3.7, 4.1, 3.7, 3.9, 3.7, 2.0)
+
+resumen notas 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.600   2.700   3.100   3.137   3.600   4.300 
+
+varianza notas 
+[1] 0.3529101
+
+
+</pre>
+
+Construya un intervalo del 95% confianza para el promedio de la nota final del curso de matematicas fundamentales. Interprete su resultado
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 6**</span>
+
+Una muestra de siete bloques de concreto tienen la siguiente fuerza de compresión medida en MPa . Los resultados obtenidos son:
+
+```{r, eval=FALSE}
+x=c(1367.6, 1411.5, 1318.7, 1193.6, 1406.2, 1425.7, 1572.4)
+
+cat("resumen ", "\n")
+summary(x)
+cat("varianza ", "\n")
+var(x)
+```
+
+<pre>
+
+x=c(1367.6, 1411.5, 1318.7, 1193.6, 1406.2, 1425.7, 1572.4)
+
+resumen  
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1194    1343    1406    1385    1419    1572 
+
+varianza  
+[1] 13209.88
+
+</pre>
+
+Estime un intervalo de confianza del 95% para la media de la fuerza de compresion de los bloques de concreto
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 7**</span>
+
+El Director de una fabrica de muebles desea estimar el tiempo promedio que toma perforar tres agujeros en una placa metálica que se utiliza en la construcción de bases para mesas metálicas. El desea tener una confianza del 95 % para que la media muestral este dentro de $5$ segundos de la media real, suponiendo que $\sigma=40$, obtenida en estudios anteriores. Una de las firmas contactadas para la realización del estudio indica que para esas condiciones, deberá realizar $175$ mediciones. El Director le pide que revise la información suministrada y le de su concepto.
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 8**</span>
+
+El área de elementos físicos de la universidad lo ha encomendado estimar la altura promedio de los estudiantes con el fin de realizar un pedido de mesas y sillas para los nuevos espacios que tendrá la universidad. Quieres estar seguro al $98$% de que tu estimación esté dentro de $\pm2$ centímetros del valor real. ¿Que tamaño debe tener la muestra para cumplir con los requerimientos establecidos?
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 9**</span>
+
+El gerente de un restaurante deseas determinar el tamaño de muestra necesario para estimar la proporción de clientes satisfechos con un nivel de confianza del $95$% y un error máximo permitido del $5$%. Para ello, ha realizado una prueba piloto de un nuevo menú para medir la satisfacción de los clientes. En la prueba piloto, encuestaste a 100 clientes y descubriste que el $75$ de ellos estaban satisfechos con la comida. ¿Qué tamaño de muestra deberá tener el estudio?
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 10**</span>
+
+El gerente de un centro de atención al cliente y deseas estimar el tiempo promedio que tardan los agentes en responder a las llamadas de los clientes. Quieres tener un nivel de confianza del $95$% en que tu estimación se encuentra dentro de $\pm5$ segundos del valor real. Para lograrlo, necesitas calcular el tamaño de muestra requerido para este propósito.
+
+<br/><br/>
+
+### <span style="color:#034a94">**Problema 11**</span>
+
+Una empresa dedicada a la realización de encuestas políticas,  deseas estimar la proporción de votantes que apoyan a un candidato específico en las proximas elecciones a gobernación del Valle del Cauca. No tienes información previa sobre el nivel de apoyo, por lo que deseas determinar el tamaño de muestra necesario para estimar esta proporción con un nivel de confianza del $90$% y un margen de error máximo del $2$%.  ¿Qué tamaño de muestra deberá tener el estudio?
+
+<br/><br/>
+
+
+### <span style="color:#034a94">**Problema 12**</span>
+
+Cuando se extrae una muestra de una población que no es normal y se requiere estimar un intervalo de confianza se pueden utilizar los metodos de estimación
+bootstrap. Existen varias versiones del método. Una presentación básica del método se describe a continuación:
+
+El artículo de In-use Emissions from Heavy Duty Dissel Vehicles (J.Yanowitz, 2001) presenta las mediciones de eficiencia de combustible en millas/galón de una muestra de siete camiones. Los datos obtenidos son los siguientes: 7.69, 4.97, 4.56, 6.49, 4.34, 6.24 y 4.45. Se supone que es una muestra aleatoria de camiones y que se desea construir un intervalo de confianza del 95 % para la mediaµ de la eficiencia de combustible de esta población. No se tiene información de la distribución de los datos. El método bootstrap permite construir intervalos de confianza del 95 % -
+Para ilustrar el método suponga que coloca los valores de la muestra en una caja y extrae uno al azar. Este correspondería al primer valor de la muestra bootstrap $X^{∗}_{1}$. Despues de anotado el valor se regresa $X^{∗}_{1}$, a la caja y se extrae el valor $X^{∗}_{2}$, regresandolo nuevamente. Este procedimiento se repite hasta completar una muestra de tamaño $n$, $X^{∗}_{1}, X^{∗}_{2},X^{∗}_{3}, \cdots,X^{∗}_{n}$, conformando la muestra bootstrap.
+Es necesario extraer un gran número de muestras (suponga $k = 1000$). Para cada una de las muestra bootstrap obtenidas se calcula la media $\bar{X}^{∗}$.
+
+Es necesario extraer un gran número de muestras (suponga $n = 1000$).  Para cada una de las muestra bootstrap obtenidas se calcula la media $\bar{X}^{*}_{i}$, obteniéndose un valor para cada muestra. El intervalo de confianza queda conformado por los percentil $P_{2.5}$ y $P_{97.5}$.  Existen dos métodos para estimar el intervalo:
+
+<br/>
+
+$$\Big( P_{2.5} \hspace{.2cm}; \hspace{0.2cm} P_{97.5}\Big)$$
+<br/>
+
+$$\Big( 2\bar{X} - P_{97.5} \hspace{.2cm}; \hspace{0.2cm} 2 \bar{X} - P_{2.5}\Big)$$
+<br/>
+
+Construya el intervalo de confianza por los dos métodos y compare los resultados obtenidos.
+
+
+<sub>
+Tomado de Navidi(2006)
+</sub>
+
+
+
+<!-- ### <span style="color:#034a94">**Problema 13**</span> -->
+
+

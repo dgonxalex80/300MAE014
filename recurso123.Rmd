@@ -1,8 +1,8 @@
 ---
-title: <span style="color:#034a94">**Taller 3**</span>
-subtitle: "  "
-author: " "
-date: " "
+title: <span style="color:#034a94">**Titulo**</span>
+subtitle: "Unidad "
+author: "dgonzalez80"
+date: ""
 output:
   html_document:
     toc: no
@@ -19,10 +19,9 @@ library(psych)
 library(summarytools)
 
 # install.packages("devtools")
-#devtools::install_github("dgonxalex80/paquete014")
-#library(paquete014)
-library(TeachingSampling)
-data("BigLucy")
+#devtools::install_github("dgonxalex80/paqueteDEG")
+#library(paqueteDEG)
+
 # colores
 c0= "#F7AA00"
 c1= "#235784"
@@ -35,7 +34,9 @@ c5= "#5B84C4"
 
 ```
 
-<br/>
+# **EN CONSTRUCCIÓN**
 
-# <span style="color:#034a94">**PRIMERA PARTE**</span>
 
+```{r, echo=FALSE, out.width="30%", fig.align = "center"}
+knitr::include_graphics("img/enconstruccion.gif")
+```
