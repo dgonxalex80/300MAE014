@@ -202,4 +202,4 @@ Tomado de Navidi(2006)
 
 <!-- ### <span style="color:#034a94">**Problema 13**</span> -->
 
-
+$\bar{x}$

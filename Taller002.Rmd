@@ -1,5 +1,5 @@
 ---
-title: <span style="color:#034a94">**Taller 3**</span>
+title: <span style="color:#034a94">**Taller 2**</span>
 subtitle: "  "
 author: " "
 date: " "
@@ -35,7 +35,351 @@ c5= "#5B84C4"
 
 ```
 
+
+
 <br/>
 
 # <span style="color:#034a94">**PRIMERA PARTE**</span>
+
+<br/>
+
+## <span style="color:#034a94">**Distribuciones muestrales**</span> 
+
+<br/>
+
+1. Para una variable con distribución normal estandar determine el valor de $z$ tal que:
+
+<br/>
+
+* $P(-z < Z < z)=0.90$
+* $P(z < Z < 1)=0.40$
+* $P(z < Z)=0.05$
+* $P(Z > z)=0.80$
+
+En cada caso represente la situación gráficamente
+
+<br/><br/>
+
+2. Sea $X \sim N(50,10)$, Determine las siguientes probabilidades:
+
+<br/>
+
+* $P(X < 40)$
+* $P(X < 65)$
+* $P(X> 55)$
+* $P(X > 35)$
+* $P(40 < X < 45)$
+* $P(38 < X < 62)$
+
+En cada caso represente la situación gráficamente
+
+<br/><br/>
+
+3. Sea $X \sim N(10,5)$. Encontrar los valores de $x$ que corresponden a las siguientes probabilidades:
+
+<br/>
+
+* $P(X < x)=0.05$
+* $P(X < x)=0.95$
+* $P(X < x)=0.99$
+* $P(X < x)=0.01$
+* $P(X < x)=0.025$
+* $P(X < x)=0.975$
+
+En cada caso represente la situación gráficamente
+
+<br/><br/>
+
+4. El tiempo en que un cajero de un banco con servicio en el automovil atiende a un cliente es una variable aleatoria con una media $\mu=3.2$ minutos y una desviación estandar de $\sigma = 1.6$ minutos. Si se obtiene una muestra de $n = 64$ clientes, encuentre la probabilidad de que el tiempo medio con el cajero sea:
+
+<br/>
+
+* a lo más de $2.7$ minutos
+* más de $3.5$ minutos
+* al menos $3.2$ minutos, pero menos de $3.4$ minutos
+
+En cada caso represente la situación gráficamente
+
+<br/><br/>
+
+5. Use la tabla t-student para encontrar:
+
+<br/>
+
+* $t_{0.05}(v=8)$
+* $t_{0.975}(v=12)$
+* $t_{0.25}(v=10)$
+* $t_{0.95}(v=10)$
+* El punto $t$ tal que $P(-t<T_{v=25}<t)=0.90$
+* El punto $t$ tal que $P(-t<T_{v=25}<t)=0.95$
+* El punto $t$ tal que $P(T_{v=15}>t)=0.05$
+* El punto $t$ tal que $P(T_{20} > t)=0.10$
+* El punto $t$ tal que $P(T_{30}<-t)=0.10$
+
+En cada caso represente la situación gráficamente
+
+<br/><br/>
+
+6. Una empresa manufacturera afirma que las baterías que utiliza en sus juegos electrónicos duran un periodo de 30 horas. Para mantener este promedio, se prueban 16 baterías cada mes. Si el valor $T=(\bar{x}-30)/(s/\sqrt{n})$ cae entre $t_{0.025;v=15}$ y $t_{0.975;v=15}$, la empresa queda satisfecha con su afirmación ?. Qué conclusión deberia tomar la empresa si una muestra presenta una media $\bar{x}=27.5$ horas y una desviación estandar de $s = 5$ horas?. Suponga que la duración de las baterías tiene una distribución normal.
+
+<br/><br/>
+
+7. Un fabricante de barras de cereal bajos en grasas afirma que su cantenido promedio de grasas saturadas es de 0.5 gramos. En una muestra aleatoria de 8 barras del cereal, el contenidio de grasas saturadas fue de : $0.6$, $0.7$, $0.7$, $0.3$, $0.4$, $0.5$, $0.4$ y $0.2$ gramos. ¿Estaría de acuerdo con la afirmación realizada por el fabricante?. Suponga que el contenido de grasas saturadas en la barra es una variable aleatoria que se distribuye de manera nornal.
+
+<br/><br/>
+
+8. Para una distribución chi-cuadrado encuentre:
+
+<br/>
+
+* $\chi^{2}_{0.025}(v=15)$
+* $\chi^{2}_{0.01}(v=17)$
+* $\chi^{2}_{0.05}(v=24)$
+* $P(X^{2}>\chi^{2})=0.99$, $(v=4)$
+* $P(X^{2}>\chi^{2})=0.025$, $(v=19)$
+* $P(\chi^{2}<X^{2}<23.209)=0.015$, $(v=10)$
+* $P(37.652 <X^{2}< \chi^{2})=0.045$, $(v=25)$
+
+En cada caso represente la situación gráficamente
+
+<br/><br/>
+
+9. La calificación de un examen de admisión a la universidad que se aplica a estudiantes durante los últimos cinco años está distribuido normal con media $\mu=74$ y varianza $\sigma^{2}=8$. En una muestra de $n=20$ estudiantes, se encontro un valor de $s^{2}=20$. Se considera que el valor de 8 para la varianza puede ser aceptado, si el valor de la variable $X^{2}=(n-1)S^{2} /8$, esta entre $\chi^{2}_{0.05;v=19}$ y $\chi^{2}_{0.95;v=19}$.?Que conclusión debe tomar?, en caso contrario se rechaza esta afirmación.
+
+<br/><br/>
+
+10. Para la distribución F encuentre:
+
+<br/>
+
+* $f_{0.05}(v_{1}=7;v_{2}=15)$
+* $f_{0.05}(v_{1}=15;v_{2}=7)$
+* $f_{0.95}(v_{1}=19; v_{2}=24)$
+* $f_{0.95}(v_{1}=7; v_{2}=15)$
+
+En cada caso represente la situación gráficamente
+
+
+<br/><br/>
+
+# <span style="color:#034a94">**SEGUNDA PARTE**</span>
+
+<br/>
+
+
+## <span style="color:#034a94">**Verificación del Teorema central del límite **</span>
+
+<br/>
+
+El siguiente código verifica el Teorema del Límita Central en el caso de una variable con distribución exponencial.  A partir de el, realice la validación para las siguientes distribuciones :
+
+
+* uniforme
+* normal
+* Binomial
+* lognormal
+* Weibull
+
+Con los resultados obtenidos concluya
+
+<br/><br/>
+
+### <span style="color:#034a94">**CÓDIGO**</span>
+
+```{r, eval=FALSE}
+par(cex=0.5, cex.axis=.5, cex.lab=.5, cex.main=.5, cex.sub=.5,  mfrow=c(3,2), mai = c(.5, .5, .5, .5))
+# Teorema Central del Límite-----------------------------
+n=1000   #  numero de columnas (tamaño máximo de muestra)
+m=1000*n
+# Caso --------------------------------------------------
+# distribución exponencial-------------------------------
+X=matrix(rexp(m,1),ncol=n)
+
+# generación de muestras---------------------------------
+X1=X[ ,1]            # n=1
+X2=X[ ,1:2]          # n=2
+X20=X[ ,1:20]        # n=20
+X30=X[ ,1:30]        # n=30
+X50=X[ ,1:50]        # n=50
+X100=X[ ,1:100]      # n=100
+X200=X[ ,1:200]      # n=200
+X1000=X[ ,1:1000]    # n=1000
+
+# generacion de medias-----------------------------------
+Mx2=apply(X2,1,mean)        # medias de muestras de tamaño n=2
+Mx20=apply(X20,1,mean)      # medias de muestras de tamaño n=20
+Mx30=apply(X30,1,mean)      # medias de muestras de tamaño n=30
+Mx50=apply(X50,1,mean)      # medias de muestras de tamaño n=50
+Mx100=apply(X100,1,mean)    # medias de muestras de tamaño n=100
+Mx100=apply(X200,1,mean)    # medias de muestras de tamaño n=200
+Mx1000=apply(X1000,1,mean)  # medias de muestras de tamaño n=1000
+
+# generación de densidad empírica ------------------------
+d=density(X1)
+d2=density(Mx2)
+d20=density(Mx20)
+d30=density(Mx30)
+d50=density(Mx50)
+d100=density(Mx100)
+d100=density(Mx200)
+d1000=density(Mx1000)
+
+# Gráficos 
+# grafico de densidad -----------------------------------
+plot(d, main=" ", xlab = "n=1")
+plot(d2,main=" ", xlab = "n=2")
+plot(d20, main="", xlab = "n=20")
+plot(d30, main=" ", xlab = "n=30")
+plot(d50, main=" ", xlab = "n=50")
+plot(d100, main=" ", xlab = "n=100")
+plot(d200, main=" ", xlab = "n=200")
+plot(d1000,main=" ", xlab="n=1000")
+
+# histogramas  de comparacion----------------------------
+hist(X1,  main = "n=1", freq=FALSE)
+hist(Mx2, main ="n=2", freq=FALSE) 
+hist(Mx20, main = "n=20",freq=FALSE)
+hist(Mx30, main = "n=30",freq=FALSE) 
+hist(Mx50, main = "n=50",freq=FALSE) 
+hist(Mx100, main = "n=100", freq=FALSE)
+ hist(Mx200, main = "n=200",freq=FALSE)
+hist(Mx1000, main = "n=1000", freq = FALSE) 
+
+# histogramas  de comparacion----------------------------
+qqnorm(X1) ; qqline(X1, col="red")
+qqnorm(Mx2) ; qqline(Mx2, col="red")
+qqnorm(Mx20) ; qqline(Mx20, col="red")
+qqnorm(Mx30) ; qqline(Mx30, col="red")
+qqnorm(Mx50) ; qqline(Mx50, col="red")
+qqnorm(Mx100) ; qqline(Mx100, col="red")
+qqnorm(Mx200) ; qqline(Mx200, col="red")
+qqnorm(Mx1000) ; qqline(Mx1000, col="red")
+```
+
+<pre>
+par(cex=0.5,       # tamaño general de las letras
+    cex.axis=.5,   # tamaño de las etiquetas de los ejes
+    cex.lab=.5,    # tamaño de las etiquetes de los puntos
+    cex.main=.5,   # tamaño del titulo
+    cex.sub=.5,    # tamaño del subtitulo
+    mfrow=c(3,2),  # genera una matriz de graficos 3 x 2 
+    mai = c(.5, .5, .5, .5)) # define los margenes del grafico
+
+# Teorema Central del Límite---------------------------------
+n=1000   #  numero de columnas (tamaño máximo de muestra)
+m=1000*n
+# Caso ------------------------------------------------------
+# distribución exponencial-----------------------------------
+X=matrix(rexp(m,1),ncol=n)
+
+# generación de muestras-------------------------------------
+X1=X[ ,1]            # n=1
+X2=X[ ,1:2]          # n=2
+X20=X[ ,1:20]        # n=20
+X30=X[ ,1:30]        # n=30
+X50=X[ ,1:50]        # n=50
+X100=X[ ,1:100]      # n=100
+X200=X[ ,1:200]      # n=200
+X1000=X[ ,1:1000]    # n=1000
+
+# generacion de medias-------------------------------------
+Mx2=apply(X2,1,mean)        # medias de muestras de tamaño n=2
+Mx20=apply(X20,1,mean)      # medias de muestras de tamaño n=20
+Mx30=apply(X30,1,mean)      # medias de muestras de tamaño n=30
+Mx50=apply(X50,1,mean)      # medias de muestras de tamaño n=50
+Mx100=apply(X100,1,mean)    # medias de muestras de tamaño n=100
+Mx100=apply(X200,1,mean)    # medias de muestras de tamaño n=200
+Mx1000=apply(X1000,1,mean)  # medias de muestras de tamaño n=1000
+
+# generación de densidad empírica ---------------------------
+d=density(X1)
+d2=density(Mx2)
+d20=density(Mx20)
+d30=density(Mx30)
+d50=density(Mx50)
+d100=density(Mx100)
+d100=density(Mx200)
+d1000=density(Mx1000)
+
+# Gráficos 
+# grafico de densidad --------------------------------------
+plot(d, main=" ", xlab = "n=1")
+plot(d2,main=" ", xlab = "n=2")
+plot(d20, main="", xlab = "n=20")
+plot(d30, main=" ", xlab = "n=30")
+plot(d50, main=" ", xlab = "n=50")
+plot(d100, main=" ", xlab = "n=100")
+plot(d200, main=" ", xlab = "n=200")
+plot(d1000,main=" ", xlab="n=1000")
+
+# histogramas  de comparacion------------------------------
+hist(X1,  main = "n=1", freq=FALSE)
+hist(Mx2, main ="n=2", freq=FALSE) 
+hist(Mx20, main = "n=20",freq=FALSE)
+hist(Mx30, main = "n=30",freq=FALSE) 
+hist(Mx50, main = "n=50",freq=FALSE) 
+hist(Mx100, main = "n=100", freq=FALSE)
+ hist(Mx200, main = "n=200",freq=FALSE)
+hist(Mx1000, main = "n=1000", freq = FALSE) 
+
+# histogramas  de comparacion-----------------------------
+qqnorm(X1) ; qqline(X1, col="red")
+qqnorm(Mx2) ; qqline(Mx2, col="red")
+qqnorm(Mx20) ; qqline(Mx20, col="red")
+qqnorm(Mx30) ; qqline(Mx30, col="red")
+qqnorm(Mx50) ; qqline(Mx50, col="red")
+qqnorm(Mx100) ; qqline(Mx100, col="red")
+qqnorm(Mx200) ; qqline(Mx200, col="red")
+qqnorm(Mx1000) ; qqline(Mx1000, col="red")
+# --------------------------------------------------------
+</pre>
+
+<br/><br/><br/>
+
+<div class="content-box-blue">
+## <span style="color:#034a94">**NOTA**</span>
+
+
+En $R$ los nombre de las funciones diseñadas para los cálculos requeridos están conformadas por dos partes:
+
+* La primera parte es una letra que identifica el propósito de la función.
+
+  * *d* : función de distribución de probabilidad $f(x)= P(X=x)$, para el caso discreto. En el caso de las variables continuas representa la función de densidad de probabilidad $f(x)$
+
+  * *p* : función de probbilidad acumulada $F(x) = P(X \leq x)$
+
+  * *q* : percentil $X_p$
+
+  * *r* : generador de números aleatorios
+
+<br/><br/>
+
+La siguiene tabla presenta estas las funciones para los principales modelos tanto discretos como continuos
+
+<br/><br/>
+
+
+|*modelo*            |  $F(x)$  |  $X_{p}$ |  $f(x)$  | aleatorio   |
+|:-------------------|:---------|:---------|:---------|:------------|
+|normal              | pnorm    | qnorm    | dnorm    | rnorm       |
+|t-Student           | pt       | qt       | dt       | rt          |
+|Ji-cuadrado         | pchisq   | qchisq   | dchisq   | rchisq      |
+|F                   | pf       | qf       | df       | rf          |
+|                    |          |          |          |             |   
+<br/><br/>
+
+En **R** los nombres de las funciones diseñadas para los cálculos requeridos están conformadas por dos partes: la primera parte con el propósito de la función (primera letra)  y la segunda parte hace referencia al modelo a utilizar (**d** **norm** para el calculo de probabilidad de una variable aleatoria con distribución normal)
+
+En cada caso si no recuerda las sintaxis de la función puede hacer uso de las ayudas de R así:
+
+<br/><br/>
+
+```{r}
+# Caso de la normal estandar 
+cat("P(Z < 0.5) = ", pnorm(0.5) , "\n")
+cat("P(Z > z )= 0.85,  z = ", qnorm(0.15),"\n"  )
+cat("muestra aleatoria de n = 5 para Z ~ normal(0,1) : ", rnorm(5), "\n" )
+```
+
+</div>
 
