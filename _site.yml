@@ -35,8 +35,10 @@ navbar:
         - text: "----"  
         - text: "Guía de aprendizaje 1.3"
           href: guia103.html
-        - text: "Estimación por Intervalos de confianza"
-          href: recurso131.html     
+        - text: "Estimación una población"
+          href: recurso131.html   
+        - text: "Estimación dos poblaciones"
+          href: recurso132.html            
         - text: "Taller 3"
           href: Taller003.html            
           
