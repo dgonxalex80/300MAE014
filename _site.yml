@@ -40,7 +40,9 @@ navbar:
         - text: "Estimación dos poblaciones"
           href: recurso132.html            
         - text: "Taller 3"
-          href: Taller003.html            
+          href: Taller003.html    
+        - text: "Taller 4"
+          href: Taller004.html            
           
     - text: "Módulo 2"
       menu:

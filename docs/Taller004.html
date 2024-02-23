@@ -12,7 +12,7 @@
 <meta name="author" content="" />
 
 
-<title>guia000.knit</title>
+<title>Taller 4</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -31,7 +31,6 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
@@ -221,9 +220,6 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
 
 
 
@@ -414,78 +410,111 @@ $(document).ready(function () {
 
 <div id="header">
 
-<div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
 
 
-
+<h1 class="title toc-ignore"><span style="color:#034a94"><strong>Taller
+4</strong></span></h1>
+<h4 class="author"></h4>
 
 </div>
 
 
-<p><img src="img/banner_guia.png" width="100%" style="display: block; margin: auto;" /></p>
-<p><br/><br/></p>
-<div id="introducción" class="section level2">
-<h2><strong>Introducción</strong></h2>
-<p><br/><br/></p>
+<p><br/><br/><br/></p>
+<div id="problema-1" class="section level3">
+<h3><span style="color:#034a94"><strong>Problema 1</strong></span></h3>
+<p>Un taller de autos considera comprar una de dos marcas diferentes de
+pinturas. Con el fin de determinar cúal de las marcas comprar se
+seleccionaron 15 tipos de pinturas de cada marca para los cuales se
+midió el tiempo de secado en horas, obteniendo los siguientes
+resultado:</p>
+<p><br/></p>
+<pre class="r"><code>A = c (3.5,2.7, 3.9, 4.2, 3.6, 2.7, 3.3, 5.2, 4.2, 2.9, 4.4, 5.2, 4.0, 4.1, 3.4) 
+B = c (4.7, 3.9, 4.5, 5.5, 4.0, 5.3, 4.3, 6.0, 5.2, 3.7, 5.5, 6.2, 5.1, 5.4, 4.8) 
+boxplot ( data.frame (A,B), col= c (&quot;#264653&quot;, &quot;#f4a261&quot;), las=1, main=&quot;Tiempo de secado por tipo de pintura&quot;) 
+grid()</code></pre>
+<p><img src="Taller004_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+<br/></p>
+<p>Suponga que el tiempo de secado se distribuye normal . Calcule un
+intervalo de confianza para la diferencia de medias e interprete su
+resultado. ¿Cúal marca recomendaría comprar?, justifique su
+respuesta.</p>
+<p><br/><br/><br/></p>
 </div>
-<div id="objetivos-de-la-unidad" class="section level2">
-<h2><strong>Objetivos de la unidad</strong></h2>
+<div id="problema-2" class="section level3">
+<h3><span style="color:#034a94"><strong>Problema 2</strong></span></h3>
+<p>Un artículo publicado en un diario de la ciudad afirma que una
+persona reduce su peso en un periodo de dos semanas un 4.5 kilogramos en
+oromedio con una nueva dieta, sin realizar ejercicios físicos. Con el
+fin de validar lo informado en el artículo un grupo de estudiantes
+decide realizar la dieta para lo cual registra sus pesos antes y después
+de dos semanas. La información recogida por 7 estudiantes es la
+siguiente:</p>
+<p><br/></p>
+<pre class="r"><code>peso.ant= c (58.2, 60.3, 61.3, 69.0, 64.0, 62.6, 56.7) 
+peso.des= c (60.0, 54.9, 58.1, 62.1, 58.5, 59.9, 54.4)</code></pre>
+<p><br/></p>
+<p>Suponga que los pesos de una persona se distribuye normal. De acuerdo
+a la información recogida por los estudiantes se puede afirmar que lo
+indicado por el artículo publicado en el diario es cierto?, justufique
+su respuesta.</p>
+<p><br/><br/><br/></p>
 </div>
-<div id="duración" class="section level2">
-<h2><strong>Duración</strong></h2>
-<p><br/><br/></p>
+<div id="problema-3" class="section level3">
+<h3><span style="color:#034a94"><strong>Problema 3</strong></span></h3>
+<p>A seis ingenieros que trabajan para el estado se les solicito
+realizar un pronostico la tasa de inflación para el año entrante. La
+misma petición se le realizo a ocho especialistas en finanzas que
+trabajan para el sector privado. Los pronósticos entregado por los
+ingenieros son los siguientes: 4.2 %, 5.1 %, 3.9 %, 4.7 %, 4.8 %, 5.8 %.
+Por su parte los especialistas en finanzas pronosticaron: 5.7 %, 6.1 %,
+5.2 %, 4.9 %, 4.6 %, 4.5 %, 5.2 %, 5.5 %. ¿Estan los especialistas
+(ingenieros y financieros) realizando pronósticos similares? . Suponga
+que los pronósticos realizados tienen distribucion normal. Construye un
+intervalo de confianza para la diferencia de los promedios realizados
+por los ingenieros y los especializadas en finanzas del 95%. Concluya a
+partir de los resultados</p>
+<p><br/></p>
+<pre class="r"><code>ing = c (4.2, 5.1, 3.9, 4.7, 4.8, 5.8) 
+fin = c (5.7, 6.1, 5.2, 4.9, 4.6, 4.5, 5.2, 5.5)</code></pre>
+<p><br/><br/><br/></p>
 </div>
-<div id="cronograma-de-trabajo" class="section level2">
-<h2><strong>Cronograma de trabajo</strong></h2>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Actividad</th>
-<th align="left">Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Actividad</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left">Trabajo individual</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left">Recursos</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left">Fecha</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left">Hora</td>
-<td align="left">23:59</td>
-</tr>
-</tbody>
-</table>
-<p><br/><br/></p>
+<div id="problema-4" class="section level3">
+<h3><span style="color:#034a94"><strong>Problema 4</strong></span></h3>
+<p>Los directivos de una ensambladora de automóviles de gran tamaño
+están tratando de decidir si compraran neumáticos de la marca A o de la
+marca B para sus modelos nuevos. Con el fin de ayudarlos a tomar una
+decisión se realiza un experimento en el que se usan 12 neumáticos de
+cada marca. Los neumáticos se utilizan hasta que se desgastan
+completamente. Los resultados son los siguientes:</p>
+<p><br/></p>
+<pre class="r"><code>A= c ( 55145, 58026, 58795, 54660, 61153, 56969, 61764, 59094, 60456, 54557, 52484, 59600) 
+B= c (60970, 62409, 60546, 58508, 58974, 56682, 59483, 58048, 73107, 61977, 55974, 58522)</code></pre>
+<p>¿Que marca de neumáticos escogería entre las dos opciones de acuerdo
+a la anterior informacion? Suponga que las poblaciones se distribuyen de
+forma aproximadamente normal .</p>
+<p><br/><br/><br/></p>
 </div>
-<div id="entregables" class="section level2">
-<h2><strong>Entregables</strong></h2>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">Actividad</td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p><br/><br/><br/><br/></p>
+<div id="problema-5" class="section level3">
+<h3><span style="color:#034a94"><strong>Problema 5</strong></span></h3>
+<p>Un estudio realizado por MasterCard revelo que 131 de las 468 mujeres
+que efectuaron compras en almacén lo hicieron utilizando la tarjeta de
+crédito propia del almacén, mientras que 57 de 237 hombres utilizaron la
+misma tarjeta para sus compras en el almacén. ¿ Existe evidencia
+suficiente en los datos que permita concluir que la proporción de
+mujeres es mayor que la proporción de hombres que utilizan la tarjeta de
+crédito propia del almacén para realizar sus compras?</p>
+<p><br/><br/><br/></p>
+</div>
+<div id="problema-6" class="section level3">
+<h3><span style="color:#034a94"><strong>Problema 6</strong></span></h3>
+<p>El gerente de un restaurante deseas determinar el tamaño de muestra
+necesario para estimar la proporción de clientes satisfechos con un
+nivel de confianza del 95% y un error máximo permitido del 5%. Para
+ello, ha realizado una prueba piloto de un nuevo menú para medir la
+satisfacción de los clientes. En la prueba piloto, encuestaste a 100
+clientes y descubriste que el 75 de ellos estaban satisfechos con la
+comida. ¿Qué tamaño de muestra deberá tener el estudio</p>
+<p><br/><br/><br/></p>
 </div>
 
 
@@ -521,11 +550,6 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
