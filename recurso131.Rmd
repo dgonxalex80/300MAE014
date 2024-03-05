@@ -462,7 +462,7 @@ Donde:
 
 <br/><br/><br/>
 
-En todos los casos si n/N>0.05, debes de corregir por un factor de población finita
+En todos los casos si $\hspace{0.5cm} n/N>0.05$, debes de corregir por un factor de población finita
 
 $$n = \dfrac{N n_{0}}{N+n_{0}-1}$$
 

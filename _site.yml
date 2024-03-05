@@ -32,8 +32,12 @@ navbar:
           href: recurso121.html     
         - text: "Taller 2"
           href: Taller002.html   
+    - text: "Módulo 2"
+      menu:
+        - text: "Módulo 2"
+          href: modulo2.html
         - text: "----"  
-        - text: "Guía de aprendizaje 1.3"
+        - text: "Guía de aprendizaje 2.1"
           href: guia103.html
         - text: "Estimación una población"
           href: recurso131.html   
@@ -42,17 +46,19 @@ navbar:
         - text: "Taller 3"
           href: Taller003.html    
         - text: "Taller 4"
-          href: Taller004.html            
-          
-    - text: "Módulo 2"
-      menu:
-        - text: "Módulo 2"
-          href: modulo2.html
-
+          href: Taller004.html  
     - text: "Módulo 3"
       menu:
         - text: "Módulo 3"
           href: modulo3.html
+        - text: "----"  
+        - text: "Guía de aprendizaje 3.1"
+          href: guia301.html
+        - text: "Conceptos básicos pruebas de hipótesis"
+          href: recurso311.html   
+        - text: "Taller 311"  
+          href: taller311.html          
+        - text: "----"           
     - text: "Módulo 4"
       menu:
         - text: "Módulo 4"

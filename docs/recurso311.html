@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="" />
+
+
+<title>recurso311.knit</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    300MAE014
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 0
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo0.html">Módulo 0</a>
+    </li>
+    <li>
+      <a href="recurso001.html">Metodología Estadística</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo1.html">Módulo 1</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia101.html">Guía de aprendizaje 1.1</a>
+    </li>
+    <li>
+      <a href="recurso100.html">Conceptos de inferencia estadística</a>
+    </li>
+    <li>
+      <a href="recurso111.html">Métodos de estimación propiedades</a>
+    </li>
+    <li>
+      <a href="Taller001.html">Taller 1</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia102.html">Guía de aprendizaje 1.2</a>
+    </li>
+    <li>
+      <a href="recurso121.html">Distribuciones muestales</a>
+    </li>
+    <li>
+      <a href="Taller002.html">Taller 2</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo2.html">Módulo 2</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia103.html">Guía de aprendizaje 2.1</a>
+    </li>
+    <li>
+      <a href="recurso131.html">Estimación una población</a>
+    </li>
+    <li>
+      <a href="recurso132.html">Estimación dos poblaciones</a>
+    </li>
+    <li>
+      <a href="Taller003.html">Taller 3</a>
+    </li>
+    <li>
+      <a href="Taller004.html">Taller 4</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 3
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo3.html">Módulo 3</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia301.html">Guía de aprendizaje 3.1</a>
+    </li>
+    <li>
+      <a href="recurso311.html">Conceptos básicos pruebas de hipótesis</a>
+    </li>
+    <li>
+      <a href="taller311.html">Taller 311</a>
+    </li>
+    <li class="divider"></li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 4
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo4.html">Módulo 4</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 5
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo5.html">Módulo 5</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Proyecto
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso000.html">Guía proyecto</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    RStudio-R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso000.html">Introducción a R</a>
+    </li>
+    <li>
+      <a href="recurso000.html">Recursos 1</a>
+    </li>
+    <li>
+      <a href="recurso000.html">Recursos 2</a>
+    </li>
+    <li>
+      <a href="recurso000.html">Recursos 3</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+<p><img src="img/banner_guia.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="img/decision.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><br/><br/></p>
+<div id="introducción" class="section level2">
+<h2><strong>Introducción</strong></h2>
+<p><img src="img/pruebas1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><br/><br/></p>
+<p>El origen de los estudios, relacionados con las pruebas de hipótesis
+estadísticas, se sitúa alrededor de 1738, cuando en un ensayo escrito
+por Daniel Bernoulli(1) aparece el cálculo una estadística de prueba
+para ensayar su hipótesis en el campo de la astronomía. Entre 1915 y
+1933 se desarrolla esta formulación gracias a los estudios realizados
+por tres grandes autores: Ronald Fisher(2), Jerzy Neyman(3) y Egon
+Pearson(4). Hoy en día predomina la teoría de Neyman-Pearson (lema de
+Neyman-Pearson).</p>
+<p><img src="img/prueba.jpg" width="30%" style="display: block; margin: auto;" /></p>
+<center>
+<sub> Tomada de : <a href="https://pixabay.com/es/"
+class="uri">https://pixabay.com/es/</a> </sub>
+</center>
+<p><br/><br/></p>
+<p>Una hipótesis estadística es una afirmación o conjetura acerca de los
+parámetros de la distribución de probabilidades de una población. Si la
+hipótesis estadística especifica completamente la distribución, entonces
+ella se llama <strong>Hipótesis Simple</strong>, de otra manera se llama
+Hipótesis Compuesta.</p>
+<p>Desde el punto de vista clásico, todas las pruebas de hipótesis
+trabajan en base a ciertos principios que consideran:</p>
+<ul>
+<li>Hipótesis nula (<strong>Ho</strong>)</li>
+<li>Hipótesis alterna (<strong>Ha</strong>)</li>
+<li>Estadístico de Prueba (<strong>EdeP</strong>)</li>
+<li>Región de Rechazo (<strong>RdeR</strong>)</li>
+<li>Regla de Decisión(<strong>RD</strong>)</li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="conceptos-básicos" class="section level2">
+<h2><strong>Conceptos básicos</strong></h2>
+<p><br/><br/></p>
+<div id="hipótesis-nula-ho" class="section level3"
+style="padding: 15px; border: 1px solid transparent; border-color: transparent; margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #CEE8EE; border-color: #000000;">
+<h3><strong>Hipótesis Nula (Ho)</strong></h3>
+<p>Es la hipótesis a probar, ésta NO se rechaza si de la muestra no se
+obtiene suficiente evidencia para rechazarla.</p>
+</div>
+<p><br/><br/></p>
+<div id="hipótesis-alterna-ha" class="section level3"
+style="padding: 15px; border: 1px solid transparent; border-color: transparent; margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #CEE8EE; border-color: #000000;">
+<h3><strong>Hipótesis Alterna (Ha)</strong></h3>
+<p>La hipótesis <code>Ho</code> se contrasta con la hipótesis Ha, y ésta
+última corresponde a valores alternativos del parámetro planteados en la
+hipótesis nula. La hipótesis <span class="math inline">\(Ha\)</span> se
+considera cierta si existe suficiente evidencia para rechazar la
+hipótesis nula.</p>
+</div>
+<p><br/><br/></p>
+<div id="estadístico-de-prueba" class="section level3"
+style="padding: 15px; border: 1px solid transparent; border-color: transparent; margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #CEE8EE; border-color: #000000;">
+<h3><strong>Estadístico de Prueba</strong></h3>
+<p>Es una función de la muestra que contiene información sobre el
+parámetro de interés, la que nos permite decidir sobre el rechazo de la
+hipótesis nula, <code>Ho</code>. Es tambien una variable aleatoria que
+sigue una función de distribución conocida como por ejemplo:</p>
+<p>Para una muestra determinada se obtiene un valor del estadístico de
+prueba, a partir del cálculo y se determina el rechazo o no, de la
+hipótesis nula.</p>
+</div>
+<p><br/><br/></p>
+<div id="región-de-rechazo-rder" class="section level3">
+<h3><strong>Región de Rechazo (RdeR)</strong></h3>
+<p>También llamada región crítica (<code>RC</code>), define los valores
+del estadístico de prueba para los cuales la información muestral
+contradice la hipótesis nula. Estos valores nos permitirán adoptar una
+regla de decisión consistente. Una prueba de una hipótesis estadística
+es un procedimiento que permite, mediante el contraste entre la
+información muestral y lo propuesto en una hipótesis, decidir sobre su
+rechazo.</p>
+<p>Una prueba de una hipótesis estadística es un procedimiento que
+permite, mediante el contraste entre la información muestral y lo
+propuesto en una hipótesis, decidir sobre su rechazo.</p>
+<p><br/><br/></p>
+</div>
+<div id="regla-de-decisión-rd" class="section level3">
+<h3><strong>Regla de Decisión (RD)</strong></h3>
+<p>De esta manera, como una regla de decisión, si para una muestra
+particular el estadístico de prueba (valor calculado) cae dentro de la
+región crítica, rechazaremos la hipótesis nula <code>Ha</code> en favor
+de la hipótesis alternativa <code>Ha</code>. En cambio, si el valor
+calculado no cae dentro de la RC, no podremos rechazar la hipótesis nula
+y por tanto decimos que la información contenida en la muestra no ofrece
+suficiente evidencia estadística que nos permita
+rechazar<code></code>Ho`, ASUMIMOS que la hipótesis nula es cierta.</p>
+<p><br/><br/></p>
+</div>
+<div id="errores-asociados" class="section level3">
+<h3><strong>Errores asociados</strong></h3>
+<p>Cuando se decide ya sea en favor o en contra de una determinada
+prueba de hipótesis, es posible estar en una de las cuatro situaciones
+descritas en la siguiente tabla:</p>
+<!-- |                   |  **Estado de la naturaleza**    |                                 | -->
+<!-- |:------------------|:--------------------------------|:--------------------------------| -->
+<!-- |                   |  **Ho es verdadera**            | **Ho es falsa**                 | -->
+<!-- | **Decisión sobre la hipótesis**|                    |                                 | -->
+<!-- |                   |                                 |                                 | -->
+<!-- |Rechazar $Ho$      | **Error tipo I**                | **Decisión correcta**           | -->
+<!-- |                   | P(Error tipo I) = $\alpha$      | $1-\beta$ : Potencia            | -->
+<!-- |                   |                                 |                                 | -->
+<!-- |No rechazar $Ho$   | **Decisión correcta**           | **Error tipo II**               | -->
+<!-- |                   |                                 | P(Eror tipo II) =$\beta$        | -->
+<!-- |                   |                                 |                                 | -->
+<p><img src="img/errores.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Existen dos situaciones en las que se comenten errores después de
+tomar una decisión:</p>
+<p><br/><br/></p>
+<p><strong>Error tipo I</strong>: Cuando se rechazamos una hipótesis
+nula que en realidad es verdadera. Tomando como simil la situación donde
+un médico desea determinar si un paciente está sano o enfermo
+(<code>Ho</code>: SANO vs <code>Ha</code>: ENFERMO), es posible que
+concluya que el paciente está enfermo (rechace <code>Ho</code>) cuando
+en verdad esta persona esta sana. En términos de probabilidad este error
+se debe de representar como: <span
+class="math display">\[P(\text{Rechazar } Ho | Ho \text{ es verdadera})=
+\alpha\]</span></p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>Error tipo I</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/donar.jpg" /></td>
+<td align="left">Para ilustrar el error tipo I, podeos acudir aun evento
+ocurrido a una estudiante que después de realizar una donación de sangre
+fue requerida por la clinica benefactora, pues el examen que le habían
+practicado a la sangre donada, presentaba signos de estar infectada por
+hepatitis c. Esto prendió las alarmas en la casa y fue llevada por la
+familia a que se le realizaran otros exámenes para confirmar el
+diagnostico inicial. Las segundas pruebas evidenciaron que se trataba de
+un error. Este caso constituye un caso de falso positivo (Se diagnostica
+como enferan, cuando en verdad esta sana)</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+<p><strong>Error Tipo II</strong>: Cuando no se rechaza una hipótesis
+nula que en realidad es falsa. Utilizando el ejemplo del médico,
+diríamos que cuando el medico indica que el paciente esta sano, cuando
+esta realmente enfermo, incurre en un error frecuente cuando algunos
+pacientes son asintomáticos y aunque tienen la enfermedad, sus exámenes
+médicos salen negativos. En este caso la probabilidad se representa
+como:</p>
+<p><span class="math display">\[P(\text{No rechazar} Ho | Ho \text{ es
+falsa}) \]</span></p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>Error tipo II</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="img/dopin.jpg" /></td>
+<td align="left">Para ilustrar el caso del error tipo II, recurrimos a
+lo acontecido en el Tour de Francia, donde el ciclista estadunidence
+Lance Armstrong gano esta competencia seis veces de manera consecutiva y
+aunque fue acusado de dopin, no se le pudo comprobar. Fue solo en el
+2012 cuando el mismo admitió haber usado EPO. Podemos decir que durante
+su vida deportiva los exámenes practivados dieron negativos, estando el
+dopado. Este caso se cataloga como falso negativo.</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+</div>
+<div id="nivel-de-significancia-alpha" class="section level3">
+<h3><strong>Nivel de significancia (<span
+class="math inline">\(\alpha\)</span>)</strong></h3>
+<p>No es posible minimizar simultáneamente, las probabilidades de los
+errores tipo I y II, ya que en la medida que uno disminuye el otro
+aumenta, como se muestra en la figura siguiente, en la que claramente se
+ve que la reducción del área <span class="math inline">\(\alpha\)</span>
+(probabilidad de error tipo I), implica el aumento del área <span
+class="math inline">\(\beta\)</span> (probabilidad de error tipo
+II).</p>
+<p><br/><br/><br/><br/></p>
+</div>
+</div>
+<div id="pruebas-paramétricas" class="section level1">
+<h1><strong>Pruebas paramétricas</strong></h1>
+<p>Se llaman pruebas de hipótesis metrificaras debido a que para su
+realización se deben verificar el cumplimiento de supuestos sobre
+parámetros.</p>
+<p><br/><br/></p>
+<div id="p-de-h-sobre-una-población" class="section level2">
+<h2><strong>P de H sobre una población</strong></h2>
+<p>Los parámetros más importante a los que se les realizan pruebas de
+hipótesis son : <span class="math inline">\(\mu\)</span>, <span
+class="math inline">\(p\)</span> y <span
+class="math inline">\(\sigma^{2}\)</span>, en el caso de una población
+:</p>
+<p><br/><br/></p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="28%" />
+<col width="27%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">parámetro</th>
+<th align="left">prueba de dos colas</th>
+<th align="left">prueba de cola inferior</th>
+<th align="left">prueba de cola superior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\mu\)</span></td>
+<td align="left"><span class="math inline">\(Ho: \mu =
+\mu_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ho: \mu \geq
+\mu_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ho: \mu \leq
+\mu_{o}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><span class="math inline">\(Ha: \mu \neq
+\mu_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ha: \mu &lt;
+\mu_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ha: \mu &gt;
+\mu_{o}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(p\)</span></td>
+<td align="left"><span class="math inline">\(Ho: p = p_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ho: p \geq
+p_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ho: p \leq
+p_{o}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><span class="math inline">\(Ha: p \neq
+p_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ha: p &lt;
+p_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ha: p &gt;
+p_{o}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\sigma^{2}\)</span></td>
+<td align="left"><span class="math inline">\(Ho: \sigma^{2} =
+\sigma^{2}_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ho: \sigma^{2} \geq
+\sigma^{2}_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ho: \sigma^{2} \leq
+\sigma^{2}_{o}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><span class="math inline">\(Ha: \sigma^{2} \neq
+\sigma^{2}_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ha: \sigma^{2} &lt;
+\sigma^{2}_{o}\)</span></td>
+<td align="left"><span class="math inline">\(Ha: \sigma^{2} &gt;
+\sigma^{2}_{o}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+<div id="pruebas-de-hipótesis-sobre-una-media" class="section level3">
+<h3><strong>Pruebas de hipótesis sobre una media</strong></h3>
+<p>Dependiendo de las condiciones podemos optar por tres diferentes EdeP
+para la realización de la prueba para una media, aunque tenemos una
+cuarta posibilidad en el caso de realizarla mediante un método no
+paramétrico:</p>
+<p><br/><br/></p>
+<p><img src="img/EdeP_media.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><br/><br/><br/></p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="img/ej1.png" /></td>
+<td align="left">Un informe indica que el precio medio del pasaje de
+avión entre Cali y San Andrés es de $120 mil pesos y su desviación
+estándar de $40 mil pesos. Se toma una muestra que se registra a
+continuación. ¿Se puede aceptar, con un nivel de significación igual a
+<span class="math inline">\(\alpha=0.1\)</span>, las afirmaciones acerca
+de la media?</td>
+</tr>
+</tbody>
+</table>
+<p>165.1, 91.8, 128.3, 160.3, 103.6, 153.2, 50.7, 150.3, 160.8, 38.1,
+98.8, 88.7, 123.1, 106.5, 79.5, 84.1, 216.1, 139.8, 98.4, 127.1, 103.0,
+83.7, 158.8, 126.1, 113.4, 61.3, 79.8, 121.8, 89.9, 97.4, 134.0, 141.2,
+154.3, 122.4, 107.6, 137.7, 121.0, 187.7, 56.8, 79.5, 183.8, 114.7,
+80.2, 97.3, 113.8, 92.4, 123.5, 138.4, 114.7, 48.8, 178.1, 106.0, 103.1,
+100.8, 180.7, 113.1, 121.4, 163.0, 51.4, 135.5,104.5, 202.1, 171.0,
+100.7, 56.4, 99.7, 93.0, 118.3, 110.4, 136.9, 112.3, 69.8, 138.3, 87.2,
+121.8, 118.6, 174.5, 77.7, 158.5, 85.3, 71.4, 63.0, 140.9, 126.9, 194.2,
+136.7, 98.8, 222.5, 131.3, 175.0, 127.7, 88.5, 104.5, 144.7, 73.0, 97.2,
+131.0, 120.5, 166.6, 96.0 .</p>
+<p><br/></p>
+<p><strong>Solución</strong></p>
+<p>Las pruebas a contrastar son:</p>
+<p><span class="math inline">\(Ho: \mu= 120\)</span> <br/> <span
+class="math inline">\(Ha: \mu \neq 120\)</span></p>
+<p><br/><br/></p>
+<p>Antes de realizar la prueba debemos de determinar si la distribución
+de la población de precios es normal, para lo cual realizaremos la
+prueba de normalidad de Shapiro Wilk</p>
+<p><span class="math inline">\(Ho: X \hspace{0.3cm}\sim norm\)</span>
+<br/> <span class="math inline">\(Ha: X \hspace{.3cm} no \sim
+norm\)</span> <br/></p>
+<pre class="r"><code>precio=c(165.1, 91.8, 128.3, 160.3, 103.6, 153.2, 50.7, 150.3, 160.8, 38.1, 98.8, 88.7, 123.1, 106.5, 79.5, 84.1, 216.1, 139.8, 98.4, 127.1, 103.0, 83.7, 158.8, 126.1, 113.4, 61.3, 79.8, 121.8, 89.9, 97.4, 134.0, 141.2, 154.3, 122.4, 107.6, 137.7, 121.0, 187.7, 56.8, 79.5, 183.8, 114.7, 80.2, 97.3, 113.8, 92.4, 123.5, 138.4, 114.7, 48.8, 178.1, 106.0, 103.1, 100.8,180.7,113.1,121.4,163.0,51.4,135.5,104.5,202.1,171.0,100.7, 56.4, 99.7, 93.0, 118.3, 110.4, 136.9, 112.3, 69.8, 138.3, 87.2, 121.8, 118.6, 174.5, 77.7, 158.5, 85.3, 71.4, 63.0, 140.9, 126.9, 194.2, 136.7, 98.8, 222.5, 131.3, 175.0, 127.7, 88.5, 104.5, 144.7, 73.0, 97.2, 131.0, 120.5, 166.6, 96.0)</code></pre>
+<pre class="r"><code>boxplot(precio, horizontal = TRUE, col = c2, xlab=&quot;precio ($000)&quot;)</code></pre>
+<p><img src="recurso311_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><br/></p>
+<pre class="r"><code>shapiro.test(precio)</code></pre>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  precio
+W = 0.9853, p-value = 0.3337</code></pre>
+<p><br/></p>
+<p>De acuerdo con los resultados obtenidos en la prueba de Shapiro
+podemos suponer y aplicando la regla 3 (que se trata más adelante)
+podemos suponer que los datos siguen una distribucion aproximadamente
+normal. Cumplido este supuesto y al no tener conocimiento del valor de
+la varianza utilizaremos una prueba t para una media</p>
+<pre class="r"><code>t.test(precio,
+       alternative = &quot;two.sided&quot;, # tipo de prueba
+       mu = 120,                  # valor a contrastar
+       conf.level = 0.90)         # nivel de confianza</code></pre>
+<pre><code>
+    One Sample t-test
+
+data:  precio
+t = -0.39343, df = 99, p-value = 0.6949
+alternative hypothesis: true mean is not equal to 120
+90 percent confidence interval:
+ 112.159 124.837
+sample estimates:
+mean of x 
+  118.498 </code></pre>
+<p><br/></p>
+<p>Para tomar una decisión sobre las hipótesis de acuerdo con los
+resultados podemos utilizar tres reglas:</p>
+<p><br/><br/></p>
+<p><strong>Regla 1</strong> : Si el <code>EdeP</code> cae en la
+<code>RdeR</code>, entonce se RECHAZA la <code>Ho</code> y se
+<strong>acepta</strong> <code>Ha</code> como verdadera. Si por el
+contrario el <code>EdeP</code> NO cae en la <code>RdeR</code>, entonces
+NO SE RECHAZA <code>Ho</code>, no existe suficiente evidencia para
+rechazarla, <strong>asumimos</strong> que <code>Ho</code> es verdad.</p>
+<p>En este caso es necesario determinar la región de rechazo
+(<code>RdeR</code>) de acuerdo al tipo de hipótesis y a la distribución
+del estadistico de prueba. En esta caso estamos realizando una prueba de
+dos colas, para un estadistico de prueba con distribución t-Student con
+99 grados de libertad.</p>
+<p><br/><br/></p>
+<p><strong>Región de Rechazo</strong></p>
+<p>Para determinar la <code>RdeR</code>, a a prtir del nivel de
+significancia asumido, se buscan los percentiles <span
+class="math inline">\(t_{0.025; v=59}\)</span> y <span
+class="math inline">\(t_{0.975;v=59}\)</span> para la distribución
+t-Student.</p>
+<pre class="r"><code>qt(c(0.025,0.975),99)</code></pre>
+<pre><code>[1] -1.984217  1.984217</code></pre>
+<p><br/></p>
+<pre class="r"><code>library(ggdistribute)
+p=ggdistribution(dt, seq(-3, +3, 0.1), df = 99, colour = &quot;blue&quot;)
+p=ggdistribution(dt, seq(-3, qt(0.025,99), 0.1), df = 99, colour = &#39;blue&#39;, fill=&quot;red&quot;, p=p)   
+p=ggdistribution(dt, seq(qt(0.975,99),+3, 0.1), df = 99, colour = &#39;blue&#39;, fill=&quot;red&quot;, p=p)+ 
+     ggtitle(&quot;Región de rechazo : (-Inf, -1.984217)  (1.984217, +Inf)&quot;)
+p</code></pre>
+<p><img src="img/RdeR1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p><br/></p>
+<p><strong>Conclusión</strong>: Como el <code>EdeP</code>
+(<code>t = -0.39343</code>) NO cae en la <code>RdeR</code>, entonces NO
+rechazamos <code>Ho</code>, asuminos <code>Ho</code> es verdadera, es
+decir <span class="math inline">\(\mu\)</span> de los precios es igual a
+120 mil pesos.</p>
+<p><br/><br/></p>
+<p><strong>Regla 2</strong>: Si <span class="math inline">\(\alpha
+&gt;\)</span> <strong>valor-p</strong> entonces rechazamos <span
+class="math inline">\(H_{0}\)</span>, se <strong>acepta</strong>
+<code>Ha</code> como verdadera. Si por el contrario <span
+class="math inline">\(\alpha &lt;\)</span> <code>valor-p</code>, no
+rechazamos <code>Ho</code>, <strong>asumimos</strong> que
+<code>Ho</code> es verdad.</p>
+<p><br/><br/><br/></p>
+</div>
+<div id="valor-p" class="section level3">
+<h3><strong>Valor-p</strong></h3>
+<p>El valor-p corresponde al área delimitada por el <code>EdeP</code> en
+el sentido que indica la <code>RdeR</code> de la prueba a contrastar. Es
+decir que corresponde a la probilidad máxima de cometer
+<code>error tipo I</code>.</p>
+<p><a href="https://www.redalyc.org/pdf/806/80634308.pdf">Gil, Jacky F.;
+Castañeda, Javier A (2005)</a> lo definen como :</p>
+<p><em>El resultado de la prueba de hipótesis se basa principalmente en
+el cálculo, en términos de probabilidad, de la fuerza de los hallazgos a
+favor de la hipótesis nula. Esta probabilidad recibe el nombre de
+valor-p, y se define como la probabilidad de cometer un falso positivo
+por efecto del azar, cuando la hipótesis nula es verdadera.</em></p>
+<p><br/></p>
+<p><strong>Conclusión</strong> : Como el valor de <span
+class="math inline">\(\alpha &gt;\)</span> <code>valor-p</code> (0.05
+&gt; p-value = 0.6949) entonces No se rechaza <code>Ho</code>, se
+<code>ASUME</code> que <code>Ho</code> es verdad. El promedio de los
+precios es igual a $ 120.</p>
+<p><br/><br/></p>
+<p><strong>Regla 3</strong> : El <code>valor-p</code> se interpreta como
+el error que puedo cometer al rechazar <code>Ho</code>, siendo esta
+verdadera (cometer <code>error tipo I</code>). Si este valor es
+considerado como pequeño, rechazo <code>Ho</code>, se
+<code>ACEPTA</code> <code>Ha</code>. Si por el contrario se considera
+este valor grande, entonce no rechazo <code>Ho</code>, asumo que
+<code>Ho</code> es verdad.</p>
+<p><br/></p>
+<p><strong>Conclusión</strong> : En este caso valoramos si el
+<code>valor-p</code> (p-value = 0.6949) es grande o pequeño. En esta
+caso se puede considerar que su valor es muy grande y por lo tanto no
+nos atrevemos a rechazar <code>Ho</code>, asumimos que <span
+class="math inline">\(Ho\)</span> es verdadera, es decir que la media de
+los precios es igual a $ 120.</p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="img/nota.png" /></td>
+<td align="left">Al aplicar las últimas dos reglas (2 y 3) no se
+requiere la construcción de una <span
+class="math inline">\(RdeR\)</span> para tomar la decisión. Solo con
+revisar el valor-p entregado por la prueba y aplicar la regla se toma la
+decisión. En adelante utilizaremos las reglas 2 y 3 dado que al ejecutar
+las funciones en R nos sumunistran información sobre valor-p.</td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="img/reto.png" /></td>
+<td align="left">Una operación en una línea de producción debe llenar
+cajas con detergente hasta un peso promedio de 32 onzas. Periódicamente
+se selecciona una muestra de cajas llenas, que se pesan para determinar
+a partir del promedio, si están faltas o sobradas de detergente. Si los
+datos de la muestra llevan a la conclusión de que les falta o sobra
+detergente, se debe parar la línea de producción y hacer los ajustes
+necesarios para que el llenado sea correcto. Con el fin de afianzar los
+conceptos expuestos, te invito a responder los siguientes interrogantes
+:</td>
+</tr>
+</tbody>
+</table>
+<p>(a.) Formule la hipótesis nula y alternativa que lleven a decidir si
+es conveniente parar y ajustar la línea de producción o no.</p>
+<p>(b.) Comente la conclusión a que se llegaría en caso de que no se
+rechazase <span class="math inline">\(Ho\)</span> y cuando si
+ocurriese.</p>
+<p>(c.) Cuándo se comete error tipo I y cuando el tipo II.</p>
+<p>(d.) Bajo condiciones de distribución normal, determine la región de
+rechazo para una <span class="math inline">\(\alpha= 0.05\)</span> y
+para <span class="math inline">\(\alpha= 0.08\)</span></p>
+<p><br/><br/></p>
+</div>
+<div id="pruebas-de-hipótesis-sobre-una-proporción"
+class="section level3">
+<h3><strong>Pruebas de hipótesis sobre una proporción</strong></h3>
+<p>En este caso debemos tener en cuenta que la muestra sea mayor a 30
+con el fin de tener estimaciones mas robustas para estimar la proporción
+poblacional.</p>
+<p><br/><br/></p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="img/ej2.png" /></td>
+<td align="left">Una empresa al seleccionar su personal, lo somete a un
+curso de entrenamiento. Por su experiencia se conoce que el 76% de los
+aspirantes aprueban el curso. Durante el último proceso, los encargados
+efectúan cambios al programa de entrenamiento, con el fin de realizar
+una selección más exigente. Para esta versión se inscriben 40 aspirantes
+de los cuales lo aprueban el proceso 24. ¿Podría afirmarse que los
+cambios realizados en el programa de entrenamiento reducen la
+selección?</td>
+</tr>
+</tbody>
+</table>
+<p>Debemos realizar una prueba de cola inferior debido al sentido que
+tienen la afirmación que queremos verificar <em>los cambios realizados
+en el programa de entrenamiento reducen la selección</em>.</p>
+<p>Ho: <span class="math inline">\(p \geq 0.76\)</span> <br/><br />
+Ha :<span class="math inline">\(p &lt; 0.76\)</span> <br/>
+<br/><br/></p>
+<pre class="r"><code>prop.test(24, 40, p = 0.76,
+          alternative = &quot;less&quot;,
+          conf.level = 0.95)</code></pre>
+<pre><code>
+    1-sample proportions test with continuity correction
+
+data:  24 out of 40, null probability 0.76
+X-squared = 4.7711, df = 1, p-value = 0.01447
+alternative hypothesis: true p is less than 0.76
+95 percent confidence interval:
+ 0.0000000 0.7282033
+sample estimates:
+  p 
+0.6 </code></pre>
+<p><br/><br/></p>
+<p><strong>Conclusión</strong></p>
+<p>Como el valor-p (p-value = 0.01447) es menor que el nivel de
+significancia (<span class="math inline">\(\alpha=0.05\)</span>),
+rechazamos la hipótesis nula, aceptamos la hipótesis alterna. Podemos
+afirmar que <span class="math inline">\(p&lt;0.76\)</span> . Tienen
+razón al afirmar que los cambios realizados en el proceso de selección
+provocaron una disminución significativa en la proporción de
+aprobación.</p>
+<p><br/><br/></p>
+</div>
+<div id="pruebas-de-hipótesis-sobre-una-varianza"
+class="section level3">
+<h3><strong>Pruebas de hipótesis sobre una varianza</strong></h3>
+<p><br/><br/></p>
+<table>
+<colgroup>
+<col width="9%" />
+<col width="90%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="img/ej3.png" /></td>
+<td align="left">Un fabricante de baterías para celulares afirma que el
+tiempo de duración de sus baterías se distribuyen aproximadamente normal
+con una desviación estándar de 9 horas. Un comprador antes de realizar
+un pedido de este producto solicita al fabricante una muestra de 10
+baterías para verificar la información que le esta dando. Con este
+propósito son enviadas al laboratorio y se obtienen los siguientes datos
+Es cierta la información suministrada por el fabricante?</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="left">11.1, 15.6, 11.1, 7.5, 7.9, 14.7, 6.3, 8.5, 8.0 ,
+7.6</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<pre class="r"><code>library(ggdistribute)
+pRdeR=qchisq(c(0.025,0.975),9)
+p=ggdistribution(dchisq, seq(0, 30, 0.1), df = 9, colour = &#39;blue&#39;)
+p=ggdistribution(dchisq, seq(0, pRdeR[1], 0.1), df = 9, colour = &#39;blue&#39;, fill=&quot;blue&quot;, p=p)
+p=ggdistribution(dchisq, seq(pRdeR[2], 30, 0.1), df = 9, colour = &#39;blue&#39;, fill=&quot;blue&quot;, p=p)+
+       ggtitle(&quot;Región de rechazo:  (0; 2.70) (19.0, Inf) &quot;)
+p
+pRdeR</code></pre>
+<p><img src="img/RdeR2.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>t=c(11.1, 15.6, 11.1, 7.5, 7.9, 14.7, 6.3, 8.5, 8.0 , 7.6)
+varx=var(t)
+EdeP=(length(t)-1)*varx/81
+EdeP</code></pre>
+<pre><code>[1] 1.135074</code></pre>
+<p><br/><br/></p>
+<p><strong>Conclusión</strong></p>
+<p>Como el <span class="math inline">\(EdeP\)</span> (1.135074) caen en
+la <span class="math inline">\(RdeR\)</span>, entonces rechazamos la
+hipótesis nula, aceptamos la hipótesis alterna como verdadera.</p>
+<p>Podemos entonce concluir que <span class="math inline">\(\sigma^{2}
+\neq 81\)</span></p>
+<p><br/><br/><br/></p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

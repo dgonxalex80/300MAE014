@@ -47,7 +47,7 @@ Cuando se compraran dos poblaciones se puede estar interesado en la diferencia d
 
 Se consideran muestras pareadas cuando existen una fuerte dependencia entre pares de observaciones de dos poblaciones. Es el caso de experimentos donde se observan individuos en dos momentos diferentes de tiempo, por ejemplo estudiantes a los que se les realiza un examen de entrada y un examen de salida. En este caso se compara la evolución de cada individuo consigo mismo conformando parejas de mediciones.
 
-<div style="padding: 15px; border: 1px solid transparent; border-color: transparent; margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #f9f9ec ; border-color: #000000;">
+<<div class="content-box-blue">
 
 $$IC_{d=\bar{x}_{1}-\bar{x}_{2}}: \bar{d} \pm t_{\alpha/2} \frac{s_{d}}{\sqrt{n}}$$
 
@@ -140,7 +140,7 @@ La diferencia entre la estimación promedio de la inflación pronosticada por lo
 
 <br/><br/>
 
-<<div class="content-box-blue">
+<div class="content-box-blue">
 
 ### **CASO 2** 
 
@@ -343,6 +343,16 @@ install_github("dgonxalex80/paqueteDEG", force = TRUE) # solo una vez
 
 learnr::run_tutorial("Taller-Intervalos2", "paqueteDEG")
 ```
+
+<pre>
+install.packages("learnr") # solo una vez
+install.packages('remotes')  # solo una vez
+library(remotes) # solo una vez
+install_github("dgonxalex80/paqueteDEG", force = TRUE) # solo una vez
+
+learnr::run_tutorial("Taller-Intervalos2", "paqueteDEG")
+
+</pre>
 
 <br/><br/>
 
