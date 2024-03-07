@@ -429,3 +429,9 @@ Podemos entonce concluir que $\sigma^{2} \neq 81$
 
 
 <br/><br/><br/>
+
+
+
+```{r, echo=FALSE, out.width="80%", fig.align = "center"}
+knitr::include_graphics("img/formulario1.png")
+```
