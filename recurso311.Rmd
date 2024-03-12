@@ -1,7 +1,7 @@
 ---
-title: " "
-subtitle: "  "
-author: " "
+title: "**Pruebas de hipótesis conceptos básicos**"
+subtitle: "Módulo 3"
+author: "dgonzalez"
 date: " "
 output:
   html_document:
@@ -23,9 +23,6 @@ c4 ="#686868"  # gris - color texto
 ```
 
 
-```{r, echo=FALSE, out.width="100%", fig.align = "center"}
-knitr::include_graphics("img/banner_guia.png")
-```
 
 
 
