@@ -470,6 +470,7 @@ sobre las distribuciones de las variables, como por ejemplo que se
 distribuyan normal.</p>
 <p>Note que la distribución normal esta relacionada con las
 distribuciones t-student, chi-cuadrado y F entre otras.</p>
+<p><br/><br/></p>
 <div id="cuando-utilizar-pruebas-no-parametricas"
 class="section level3">
 <h3><strong>Cuando utilizar pruebas no parametricas</strong>:</h3>
@@ -480,16 +481,23 @@ class="section level3">
 <li>Número igual de elementos en cada muestra</li>
 <li>Homogeneidad de varianza, etc</li>
 </ul></li>
+</ul>
+<p><br/></p>
+<ul>
 <li>Cuando se usan tamaños de muestra pequeños
 <ul>
 <li>Menores a 30 que no permiten comprobar supuestos sobre la
 población.</li>
 </ul></li>
+</ul>
+<p><br/></p>
+<ul>
 <li>Cuando se convierten datos cualitativas (escalas nominales u
 ordinales ) a información útil para la toma de decisiones (escala de
 intervalo). Utilizado en estudios mercadeo para medir variables como
 gustos, satisfacción, nivel de necesidad etc.</li>
 </ul>
+<p><br/><br/></p>
 </div>
 <div id="ventajas-de-utilizar-pruebas-no-paramétricas"
 class="section level3">
@@ -501,6 +509,7 @@ ambas se corren con una línea)</li>
 <li>Se pueden usar con muestras pequeñas</li>
 <li>Se pueden usar con variables cualitativas</li>
 </ul>
+<p><br/><br/></p>
 </div>
 <div id="desventajas" class="section level3">
 <h3><strong>Desventajas</strong></h3>
@@ -511,6 +520,7 @@ potencia.</li>
 <li>Llevan a una mayor probabilidad de cometer error tipo II ( no
 rechazar Ho falsa)</li>
 </ul>
+<p><br/><br/></p>
 <p>Entre las principales pruebas no paramétricas estan :</p>
 <ul>
 <li>Prueba Chi-Cuadrado de Independencia</li>
@@ -1217,8 +1227,8 @@ runs.test(y)</code></pre>
     Runs Test
 
 data:  y
-statistic = 0.80407, runs = 55, n1 = 50, n2 = 50, n = 100, p-value =
-0.4214
+statistic = -2.0102, runs = 41, n1 = 50, n2 = 50, n = 100, p-value =
+0.04441
 alternative hypothesis: nonrandomness</code></pre>
 <p><strong>Conclusión</strong></p>
 <p>Como el valor-p (0.3149) es mayor al nivel de significancia, no se
@@ -1253,7 +1263,7 @@ plot(density(x), main=&quot; &quot;, las=1, xlab = &quot; &quot;, ylab=&quot; &q
     Shapiro-Wilk normality test
 
 data:  x
-W = 0.99519, p-value = 0.7776</code></pre>
+W = 0.9842, p-value = 0.02428</code></pre>
 <p>Esta prueba no requiere la instalación de paquetes adicionales, pues
 está disponible en la configuración básica de R</p>
 <p>Como el valor-p es superior al nivel de significancia <span

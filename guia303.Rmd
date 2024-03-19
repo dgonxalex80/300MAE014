@@ -70,9 +70,9 @@ Para alcanzar los objetivos planteados se propone realizar las siguientes activi
 |:-----------------|:-----------------------------  |
 |**Actividad 331** | Resuelva las preguntas y problemas planteadas en el **Taller 331** y entregue su solución  en formato  pdf en el enlace correspondiente de  Brightspace   |
 |Trabajo individual|                                |
-|Fecha             | abril 2  de 2024            |
+|Fecha             | abril 2  de 2024               |
 |Hora              | 23:59 hora local               |
-
+|                  |                                |
 <br/><br/>
 
 ## **Criterios de evaluación**
@@ -88,9 +88,9 @@ Para alcanzar los objetivos planteados se propone realizar las siguientes activi
 
 |               |                              | 
 |:--------------|:-----------------------------|
-| Actividad 431 | Solucionario taller 431 de problemas sobre pruebas de hipótesis no paramétricas| 
-| Fecha         | 2 de abril de 2024 |
-| Hora          | 23:59 hora local       |
+| Actividad 431 | Solucionario taller 431 de problemas sobre pruebas de hipótesis no paramétricas| | Fecha         | 2 de abril de 2024           |
+| Hora          | 23:59 hora local             |
+|               |                              |
 
 <br/><br/>
 
@@ -99,5 +99,20 @@ Para alcanzar los objetivos planteados se propone realizar las siguientes activi
 
 ### **Recursos**: 
 
+### **Video no paramétricas**
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m3YIdS2TVHk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</center>
+
+
+<br/><br/>
+
+
+<br/><br/>
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/resumen331.png")
+```
 
 

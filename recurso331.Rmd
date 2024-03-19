@@ -29,6 +29,8 @@ Hasta el momento nos hemos dedicado a la estadística parametrica, que exige la 
 
 Note que la distribución normal esta relacionada con las distribuciones t-student, chi-cuadrado y F entre otras.
 
+<br/><br/>
+
 ### **Cuando utilizar pruebas no parametricas**:
 
 + Cuando no se cumplen los supuestos como Normalidad
@@ -36,10 +38,17 @@ Note que la distribución normal esta relacionada con las distribuciones t-stude
   + Número igual de elementos  en cada muestra
   + Homogeneidad de varianza, etc
 
+<br/>
+
 + Cuando se usan tamaños de muestra pequeños
   + Menores a 30 que no permiten comprobar supuestos sobre la población.
 
+<br/>
+
 + Cuando se convierten datos cualitativas (escalas nominales u ordinales ) a información útil para la toma de decisiones (escala de intervalo). Utilizado en estudios mercadeo para medir variables como gustos, satisfacción, nivel de necesidad etc.
+
+
+<br/><br/>
 
 ### **Ventajas de utilizar pruebas no paramétricas**
 
@@ -48,12 +57,15 @@ Note que la distribución normal esta relacionada con las distribuciones t-stude
 + Se pueden usar con muestras  pequeñas
 + Se pueden usar con variables  cualitativas
 
+<br/><br/>
+
 ### **Desventajas** 
 
 + Ignoran información
 + No son tan eficientes como las pruebas parametricas, tienen menor potencia.
 + Llevan a una mayor probabilidad de cometer error tipo II ( no rechazar Ho falsa)
 
+<br/><br/>
 
 Entre las principales pruebas no paramétricas estan :
 
