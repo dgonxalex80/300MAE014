@@ -65,7 +65,14 @@ navbar:
           href: recurso321.html   
         - text: "Taller 321"  
           href: taller321.html          
-        - text: "----"          
+        - text: "----"  
+        - text: "Guía de aprendizaje 3.3"
+          href: guia303.html
+        - text: "Pruebas de hipótesis no paramétricas"
+          href: recurso331.html   
+        - text: "Taller 331"  
+          href: taller331.html          
+        - text: "----"         
     - text: "Módulo 4"
       menu:
         - text: "Módulo 4"
