@@ -201,7 +201,7 @@ chisq.test(x=obs.nf,p=esp.nf)
 |:--------------|----------:|-------:|------:|
 |Calificación   |           |        |       |
 |Bueno          |20         |11      |31     |
-|Regular        |40         | 8      |18     |
+|Regular        |40         | 8      |48     |
 |Malo           |15         | 6      |21     |
 |Total          |75         |25      |100    |   
 
