@@ -46,7 +46,7 @@ La compañía de dulces Mars publica en su sitio web información relacionada co
 
 <br/><br/>
 
-```{r, echo=FALSE, out.width="60%", fig.align = "center"}
+```{r, echo=FALSE, out.width="80%", fig.align = "center"}
 knitr::include_graphics("img/tabla_p10.png")
 ```
 
@@ -121,7 +121,7 @@ x
 Una muestra aleatoria de 90 adultos se cla- sifica de acuerdo al genero y el n ́ umero de horas que dedica a ver el celular durante una semana:
 
 
-```{r, echo=FALSE, out.width="35%", fig.align = "center"}
+```{r, echo=FALSE, out.width="55%", fig.align = "center"}
 knitr::include_graphics("img/problema123.png")
 ```
 
@@ -131,10 +131,8 @@ Utilice un nivel de significancia del 0 . 05 y pruebe la hip ́ otesis de que el
 
 ## **Problema 6**
 
-Realiza un mapa mental sobre las pruebas de hipótesis relacionadas con la distribución normal. Que incluya:
-nombre de la prueba, su estadístico de prueba, la distribución que sigue el estadístico de prueba y en que casos se utiliza.
-
-
+Realiza un mapa mental sobre las pruebas de hipótesis, que incluya:
+nombre de la prueba, Ho, Ha, su estadístico de prueba, la distribución que sigue el estadístico de prueba y en que casos se utiliza.
 
 
 <br/><br/><br/>
