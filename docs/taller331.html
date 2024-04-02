@@ -34,6 +34,8 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -375,6 +377,9 @@ $(document).ready(function () {
     <li>
       <a href="taller331.html">Taller 331</a>
     </li>
+    <li>
+      <a href="problemas3.html">Problemas 331</a>
+    </li>
     <li class="divider"></li>
   </ul>
 </li>
@@ -470,15 +475,48 @@ $(document).ready(function () {
 relacionada con los porcentajes de los distintos colores de sus dulces
 M|M para la variedad de chocolate con leche.</p>
 <p><br/><br/></p>
-<p><img src="img/tabla_p10.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Color contenido en la bolsa</p>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="13%" />
+<col width="12%" />
+<col width="9%" />
+<col width="10%" />
+<col width="10%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">café</th>
+<th align="center">amarillo</th>
+<th align="center">rojo</th>
+<th align="center">azul</th>
+<th align="left">naranja</th>
+<th align="center">verde</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Porcentaje (%)</td>
+<td align="center">13</td>
+<td align="center">14</td>
+<td align="center">13</td>
+<td align="center">24</td>
+<td align="left">20</td>
+<td align="center">16</td>
+</tr>
+</tbody>
+</table>
 <p><br/><br/></p>
-<!-- |Color contenido en la bolsa | café       | amarillo  | rojo    | azul     | naranja  | verde     | -->
-<!-- |:---------------------------|:----------:|:---------:|:-------:|:--------:|:---------|:---------:| -->
-<!-- |Porcentaje (\%)             | 13         | 14        | 13      | 24       | 20       | 16        | -->
-<p>Se realiza una verificación mediante el conteo delos dulces
-contenidos e n una bolsa de 14 onzas de dulces M|M, obteniendo los
-siguientes resultados: 70 duces cafés, 72 amarillos, 61 rojos, 118
-azules, 108 naranjas y 85 verdes.</p>
+<p>Con el fin de validar los publicado por la compañia en su página web,
+se compra una bolsa de dulces y se cuentan las frecuencias de los
+colores contenidos en la bolsa</p>
+<p><br/><br/></p>
+<p><img src="img/mym.jpg" width="35%" style="display: block; margin: auto;" /></p>
+<p><br/><br/></p>
+<!-- Se realiza una verificación mediante el conteo delos dulces contenidos e n una bolsa de 14 onzas de dulces M\|M, obteniendo los siguientes resultados: 70 duces cafés, 72 amarillos, 61 rojos, 118 azules, 108 naranjas y 85 verdes.  -->
 <p>Se podria afirmar que los datos anteriores respaldan la información
 suministrada por la compañía en su sitio web? Sustente su respuesta.</p>
 <p><br/><br/><br/></p>
@@ -491,9 +529,9 @@ artículos defectuosos (D) y no defectuosos (N) corresponde a la
 producción de uno de los turnos.</p>
 <pre class="r"><code>inspeccion = sample(c(&quot;D&quot;, &quot;N&quot;), 50, replace = TRUE)
 inspeccion</code></pre>
-<pre><code> [1] &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot;
-[20] &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot;
-[39] &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot;</code></pre>
+<pre><code> [1] &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot;
+[20] &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot;
+[39] &quot;D&quot; &quot;N&quot; &quot;N&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;D&quot;</code></pre>
 <p>Se puede afirmar que los datos no presentan patrón alguno y que la
 generación de artículos defectuosos se debe al azar? . Utilice un <span
 class="math inline">\(\alpha= 0.05\)</span>.</p>
@@ -543,13 +581,80 @@ x</code></pre>
 </div>
 <div id="problema-5" class="section level2">
 <h2><strong>Problema 5</strong></h2>
-<p>Una muestra aleatoria de 90 adultos se cla- sifica de acuerdo al
-genero y el n ́ umero de horas que dedica a ver el celular durante una
+<p>Una muestra aleatoria de 90 adultos se clasifica de acuerdo al genero
+y el núumero de horas que dedica a ver el celular durante una
 semana:</p>
-<p><img src="img/problema123.png" width="55%" style="display: block; margin: auto;" /></p>
-<p>Utilice un nivel de significancia del 0 . 05 y pruebe la hip ́ otesis
-de que el tiempo dedica- do a ver televisi ́ on es independiente de si
-el espectador es hombre o mujer.</p>
+<pre class="r"><code>library(knitr)
+library(kableExtra)
+
+# Datos
+datos &lt;- matrix(c(29, 19, 15, 27), nrow = 2, byrow = TRUE)
+colnames(datos) &lt;- c(&quot;Masculino&quot;, &quot;Femenino&quot;)
+rownames(datos) &lt;- c(&quot;más de 25 horas&quot;, &quot;menos de 25 horas&quot;)
+
+# Crear tabla
+tabla &lt;- kable(datos, align = &quot;c&quot;, caption = &quot;Horas diarias dedicadas a ver televisión&quot;)
+
+# Estilizar tabla
+tabla &lt;- tabla %&gt;%
+  kable_styling(full_width = FALSE) %&gt;%
+  add_header_above(c(&quot; &quot; = 1, &quot;género&quot; = 2))
+
+# Mostrar tabla
+tabla</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Horas diarias dedicadas a ver televisión
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+género
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Masculino
+</th>
+<th style="text-align:center;">
+Femenino
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+más de 25 horas
+</td>
+<td style="text-align:center;">
+29
+</td>
+<td style="text-align:center;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+menos de 25 horas
+</td>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+</tbody>
+</table>
+<p>Utilice un nivel de significancia del 0 . 05 y pruebe la hipótesis de
+que el tiempo dedicado a ver televisión es independiente de si el
+espectador es hombre o mujer.</p>
 <p><br/><br/><br/></p>
 </div>
 <div id="problema-6" class="section level2">

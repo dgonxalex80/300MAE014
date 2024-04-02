@@ -71,7 +71,9 @@ navbar:
         - text: "Pruebas de hipótesis no paramétricas"
           href: recurso331.html   
         - text: "Taller 331"  
-          href: taller331.html          
+          href: taller331.html  
+        - text: "Problemas 331"  
+          href: problemas3.html 
         - text: "----"         
     - text: "Módulo 4"
       menu:

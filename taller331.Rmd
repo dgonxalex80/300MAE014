@@ -41,23 +41,30 @@ c5= "#5B84C4"
 
 ## **Problema 1**	
 
-
 La compañía de dulces Mars publica en su sitio web información relacionada con los porcentajes de los distintos colores de sus dulces M\|M para la variedad de chocolate con leche.
 
 <br/><br/>
 
-```{r, echo=FALSE, out.width="80%", fig.align = "center"}
-knitr::include_graphics("img/tabla_p10.png")
+Color contenido en la bolsa  
+
+|                            | café       | amarillo  | rojo    | azul     | naranja  | verde     |
+|:---------------------------|:----------:|:---------:|:-------:|:--------:|:---------|:---------:|
+|Porcentaje (\%)             | 13         | 14        | 13      | 24       | 20       | 16        |
+
+<br/><br/>
+
+Con el fin de validar los publicado por la compañia en su página web, se compra una bolsa de dulces y se cuentan las frecuencias de los colores contenidos en la bolsa
+
+
+<br/><br/>
+
+```{r, echo=FALSE, out.width="35%", fig.align = "center"}
+knitr::include_graphics("img/mym.jpg")
 ```
 
 <br/><br/>
 
-<!-- |Color contenido en la bolsa | café       | amarillo  | rojo    | azul     | naranja  | verde     | -->
-<!-- |:---------------------------|:----------:|:---------:|:-------:|:--------:|:---------|:---------:| -->
-<!-- |Porcentaje (\%)             | 13         | 14        | 13      | 24       | 20       | 16        | -->
-
-	
-Se realiza una verificación mediante el conteo delos dulces contenidos e n una bolsa de 14 onzas de dulces M\|M, obteniendo los siguientes resultados: 70 duces cafés, 72 amarillos, 61 rojos, 118 azules, 108 naranjas y 85 verdes. 
+<!-- Se realiza una verificación mediante el conteo delos dulces contenidos e n una bolsa de 14 onzas de dulces M\|M, obteniendo los siguientes resultados: 70 duces cafés, 72 amarillos, 61 rojos, 118 azules, 108 naranjas y 85 verdes.  -->
 	
 Se podria afirmar que los datos anteriores respaldan la información suministrada por la compañía en su sitio web? Sustente su respuesta.
 	
@@ -118,14 +125,34 @@ x
 
 ## **Problema 5**
 
-Una muestra aleatoria de 90 adultos se cla- sifica de acuerdo al genero y el n ́ umero de horas que dedica a ver el celular durante una semana:
+Una muestra aleatoria de 90 adultos se clasifica de acuerdo al genero y el núumero de horas que dedica a ver el celular durante una semana:
 
+```{r}
+library(knitr)
+library(kableExtra)
 
-```{r, echo=FALSE, out.width="55%", fig.align = "center"}
-knitr::include_graphics("img/problema123.png")
+# Datos
+datos <- matrix(c(29, 19, 15, 27), nrow = 2, byrow = TRUE)
+colnames(datos) <- c("Masculino", "Femenino")
+rownames(datos) <- c("más de 25 horas", "menos de 25 horas")
+
+# Crear tabla
+tabla <- kable(datos, align = "c", caption = "Horas diarias dedicadas a ver televisión")
+
+# Estilizar tabla
+tabla <- tabla %>%
+  kable_styling(full_width = FALSE) %>%
+  add_header_above(c(" " = 1, "género" = 2))
+
+# Mostrar tabla
+tabla
+
 ```
 
-Utilice un nivel de significancia del 0 . 05 y pruebe la hip ́ otesis de que el tiempo dedica- do a ver televisi ́ on es independiente de si el espectador es hombre o mujer.
+
+
+
+Utilice un nivel de significancia del 0 . 05 y pruebe la hipótesis de que el tiempo dedicado a ver televisión es independiente de si el espectador es hombre o mujer.
 
 <br/><br/><br/>
 
