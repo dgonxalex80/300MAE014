@@ -32,19 +32,22 @@ Se está evaluando la calidad de dos métodos de enseñanza en una universidad. 
 #### Problema 5
 Un fabricante de envases de vidrio afirma que la variabilidad en el peso de sus envases es de máximo 2 gramos. Se toma una muestra de 50 envases y se encuentra que la desviación estándar muestral es de 1.8 gramos. ¿Hay suficiente evidencia para rechazar la afirmación del fabricante a un nivel de significancia del 5%?
 
+
+<br/><br/><br/>
+
 #### Problema 6
 Se quiere determinar si existe una diferencia significativa en la resistencia a la compresión entre dos tipos de concreto. Se toman muestras de ambos tipos y se encuentran los siguientes resultados para la resistencia media: Concreto A tiene una resistencia promedio de 35 MPa con una desviación estándar de 3 MPa, mientras que el concreto B tiene una resistencia promedio de 32 MPa con una desviación estándar de 2.5 MPa. ¿Hay suficiente evidencia para afirmar que existe una diferencia significativa en la resistencia a la compresión a un nivel de significancia del 5%?
+
+<br/><br/><br/>
 
 #### Problema 7
 En un estudio sobre la efectividad de dos tratamientos para reducir la contaminación del agua, se observa que el tratamiento A logra reducir la contaminación en un promedio de 40% con una desviación estándar de 5%, mientras que el tratamiento B logra reducir la contaminación en un promedio de 35% con una desviación estándar de 4%. ¿Hay suficiente evidencia para concluir que uno de los tratamientos es más efectivo que el otro a un nivel de significancia del 1%?
 
-Problema 8
+<br/><br/><br/>
+
+####Problema 8
 Se desea determinar si el número de accidentes en una planta industrial sigue una distribución de Poisson con una tasa de 2 accidentes por semana. Se registra el número de accidentes durante 10 semanas y se encuentra que la media muestral es de 1.8 accidentes por semana. ¿Hay suficiente evidencia para rechazar la hipótesis de que los accidentes siguen una distribución de Poisson con tasa de 2 accidentes por semana a un nivel de significancia del 5%?
 
-User
-continua
-ChatGPT
-¡Claro! Aquí tienes cuatro problemas más:
 
 Problema 9
 Se está evaluando la eficacia de dos métodos de enseñanza de seguridad laboral en una fábrica. Se asignan aleatoriamente 50 empleados a cada método y se registra el número de accidentes laborales durante un período de 6 meses. Los resultados muestran que el método A tiene un promedio de 2 accidentes por empleado con una desviación estándar de 1.5, mientras que el método B tiene un promedio de 1.5 accidentes por empleado con una desviación estándar de 1. ¿Hay suficiente evidencia para concluir que uno de los métodos es más seguro que el otro a un nivel de significancia del 5%?
