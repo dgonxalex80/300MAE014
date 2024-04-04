@@ -1,0 +1,164 @@
+---
+title: "**ANOVA**"
+subtitle: "Módulo 3"
+author: "dgonzalez"
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+<br/><br/>
+
+**ANOVA**, o Análisis de la Varianza, es un método estadístico utilizado para analizar las diferencias entre las medias de varios grupos en una muestra. Prueba la hipótesis nula de que las medias de múltiples grupos son iguales, comparando la varianza entre las medias de los grupos con la varianza dentro de los grupos. ANOVA se utiliza frecuentemente para analizar los efectos de variables independientes categóricas (factores) en una variable dependiente continua. Proporciona un estadístico F y un valor p para determinar si las medias de los grupos son significativamente diferentes. Si el valor p es menor que un nivel de significancia elegido, típicamente 0,05, se rechaza la hipótesis nula, lo que indica que al menos una de las medias de los grupos es diferente de las demás.
+
+
+
+```{r}
+# Crear datos ficticios
+set.seed(123)
+grupo1 <- rnorm(30, mean = 10, sd = 2)
+grupo2 <- rnorm(30, mean = 12, sd = 2)
+grupo3 <- rnorm(30, mean = 15, sd = 2)
+
+datos <- data.frame(
+  valor = c(grupo1, grupo2, grupo3),
+  grupo = rep(c("A", "B", "C"), each = 30)
+)
+
+# Gráfico de cajas
+library(ggplot2)
+# Gráfico de cajas con puntos y mayor opacidad
+ggplot(datos, aes(x = grupo, y = valor, fill = grupo)) +
+  geom_boxplot(alpha = 0.7, outlier.shape = NA) +  # Hacer el gráfico de cajas más opaco y ocultar los puntos atípicos
+  geom_point(position = position_jitter(width = 0.3), alpha = 0.47, size = 2) +  # Mostrar puntos con jitter y mayor opacidad
+  labs(
+    title = "ANOVA evaluación",
+    x = "Grupo",
+    y = "Valor"
+  ) +
+  theme_minimal()
+
+
+```
+
+```{r}
+# Realizar ANOVA
+modelo_anova <- aov(valor ~ grupo, data = datos)
+summary(modelo_anova)
+
+# Realizar comparaciones múltiples
+comparaciones <- TukeyHSD(modelo_anova)
+print(comparaciones)
+
+
+```
+
+
+
+
+### Priblema 1
+
+**Comparación de la eficiencia de tres métodos de producción**
+
+Supongamos que queremos comparar la eficiencia de tres métodos de producción en una fábrica. Tomamos una muestra de 20 productos fabricados con cada método y medimos el tiempo de producción en minutos.
+
+
+```{r}
+# Crear datos ficticios
+set.seed(123)
+n=10
+metodo1 <- rnorm(n, mean = 30, sd = 5)
+metodo2 <- rnorm(n, mean = 35, sd = 5)
+metodo3 <- rnorm(n, mean = 40, sd = 5)
+
+datos <- data.frame(
+  tiempo = c(round(metodo1,0), round(metodo2,0), round(metodo3,0)),
+  metodo = rep(c("A", "B", "C"), each = n)
+)
+```
+
+<pre>
+ [1] 27 29 38 30 31 39 32 24 27 28 
+ [2] 41 37 37 36 32 44 37 25 39 33 
+ [3] 35 39 35 36 37 32 44 41 34 46
+</pre>
+
+```{r}
+# datos
+# Realizar ANOVA
+modelo_anova1 <- aov(tiempo ~ metodo, data = datos)
+summary(modelo_anova)
+
+```
+
+
+```{r}
+# Realizar comparaciones múltiples
+comparaciones1<- TukeyHSD(modelo_anova1)
+print(comparaciones1)
+```
+
+
+
+
+## Problema 2
+
+**Comparación de la resistencia de tres tipos de materiales**
+
+Imaginemos que queremos comparar la resistencia a la tracción de tres tipos de materiales utilizados en la construcción. Medimos la resistencia en megapascales (MPa) de 15 muestras de cada material.
+
+```{r}
+n = 5
+set.seed(456)
+material1 <- rnorm(n, mean = 50, sd = 10)
+material2 <- rnorm(n, mean = 45, sd = 10)
+material3 <- rnorm(n, mean = 55, sd = 10)
+
+datos2 <- data.frame(
+  resistencia = c(round(material1,0), round(material2,0), round(material3,0)),
+  material = rep(c("M1", "M2", "M3"), each = 15)
+)
+
+#datos2
+
+# Realizar ANOVA
+#modelo_anova <- aov(resistencia ~ material, data = datos)
+#summary(modelo_anova)
+
+
+```
+
+ <pre>
+ [M1] 37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
+ [M2]  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
+ [M3]  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41
+</pre>
+
+
+* Determine las hipótesis
+* Construya la ANOVA
+* De ser necesario realice la prueba de comparaciones multiples
+
+
+<!-- ### Problemaq 3 -->
+
+<!-- **Comparación de la productividad en diferentes turnos de trabajo** -->
+
+
+<!-- Supongamos que queremos comparar la productividad en términos de unidades producidas por hora en tres turnos de trabajo diferentes. Registramos la productividad de 25 días laborables para cada turno. -->

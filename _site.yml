@@ -75,6 +75,8 @@ navbar:
         - text: "Problemas 331"  
           href: problemas3.html 
         - text: "----"         
+        - text: "ANOVA"
+          href: recurso333.html         
     - text: "Módulo 4"
       menu:
         - text: "Módulo 4"
