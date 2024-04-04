@@ -123,33 +123,38 @@ print(comparaciones1)
 
 Imaginemos que queremos comparar la resistencia a la tracción de tres tipos de materiales utilizados en la construcción. Medimos la resistencia en megapascales (MPa) de 15 muestras de cada material.
 
-```{r}
-n = 5
+```{r, eval=FALSE}
+n = 15
 set.seed(456)
 material1 <- rnorm(n, mean = 50, sd = 10)
 material2 <- rnorm(n, mean = 45, sd = 10)
 material3 <- rnorm(n, mean = 55, sd = 10)
 
 datos2 <- data.frame(
-  resistencia = c(round(material1,0), round(material2,0), round(material3,0)),
+  resistencia = c(material1, material2, material3),
   material = rep(c("M1", "M2", "M3"), each = 15)
 )
 
 #datos2
 
 # Realizar ANOVA
-#modelo_anova <- aov(resistencia ~ material, data = datos)
-#summary(modelo_anova)
+modelo_anova <- aov(resistencia ~ material, data = datos2)
+summary(modelo_anova)
 
 
 ```
 
  <pre>
- [M1] 37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
- [M2]  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
- [M3]  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41
+           Df   Sum Sq    Mean Sq        F       value Pr(>F)
+material     2    336      
+Residuals   42             122.9        
 </pre>
 
+```{r, eval=FALSE}
+ M1=c(37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
+ M2=  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
+ [M3]  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41
+```
 
 * Determine las hipótesis
 * Construya la ANOVA
