@@ -25,145 +25,203 @@ c4 ="#686868"  # gris - color texto
 
 <br/><br/>
 
-**ANOVA**, o Análisis de la Varianza, es un método estadístico utilizado para analizar las diferencias entre las medias de varios grupos en una muestra. Prueba la hipótesis nula de que las medias de múltiples grupos son iguales, comparando la varianza entre las medias de los grupos con la varianza dentro de los grupos. ANOVA se utiliza frecuentemente para analizar los efectos de variables independientes categóricas (factores) en una variable dependiente continua. Proporciona un estadístico F y un valor p para determinar si las medias de los grupos son significativamente diferentes. Si el valor p es menor que un nivel de significancia elegido, típicamente 0,05, se rechaza la hipótesis nula, lo que indica que al menos una de las medias de los grupos es diferente de las demás.
+**ANOVA**, o Análisis de la Varianza, es un método estadístico utilizado para analizar las diferencias entre las medias de varios grupos en una muestra ($k>2$). Prueba la hipótesis nula de que las medias de múltiples grupos son iguales, comparando la varianza entre las medias de los grupos ($S^2_{E}$) con la varianza dentro de los grupos ($S^2_{D}$). La **ANOVA** se utiliza frecuentemente para analizar los efectos de variables independientes categóricas (factores) en una variable dependiente continua (Diseños Experimentales) . Proporciona un estadístico **F*-* y un **valor p** para determinar si las medias de los grupos son significativamente diferentes. Si el valor p es menor que un nivel de significancia elegido, típicamente 0,05, se rechaza la hipótesis nula, lo que indica que al menos una de las medias de los grupos es diferente de las demás y en consecuencia se deben realizar pruebas adicionales para determinar que grupos son diferentes (pruebas de comparaciones múltiples).
 
+<br/><br/>
+
+$Ho: \mu_1 = \mu_2 = \dots \mu_k$ <br/>
+$Ha: \text{alguna } \mu_i \text{ es diferente}$
+
+<br/><br/>
+
+Para la construcción del Estadístico de Prueba se plantea la siguiente tabla
+
+**ANOVA**
+
+<br/>
+
+|Fuentes de variación     | Suma de cuadrados | grados de libertad | Cuadrados medios | F      | valor-p  |
+|:------------------------|:-----------------:|:------------------:|:----------------:|:------:|:--------:|
+|**Grupos Entre**         | $SC_{E} = n \displaystyle\sum_{j=1}^k (\bar{x_{j}} - \bar{\bar{x}})^2$        |$k-1$    |$CM_{E} = \dfrac{SC_{E}}{gl_{E}}$ | $F = \displaystyle\dfrac{CM_{E}}{CM_{D}}$|`qf(F,v1,v2)` |
+|**Grupos Dentro**        | $SC_{D} = \displaystyle\sum_{j=1}^{m} \sum_{i=1}^{n} (x_{ij} - \bar{x_{j}})^2$|$k(n-1)$|$CM_{D} = \dfrac{SC_{D}}{gl_{D}}$||
+|**Total**                | $SCT = \displaystyle \sum_{j=1}^{k} \sum_{i=1}^{n} (x_{ij}- \bar{\bar{x}})^2$|$kn-1$  ||||
+||||||
+
+<br/><br/>
+
+
+### **Ejemplo:**
+
+Se cuenta con los precios USD de comidas en tres regiones diferentes 
+
+
+|            | Tienda 1| Tienda 2 | Tienda 3  |
+|-----------:|:-------:|:--------:|:---------:|
+|            | 12.05   | 15.17    |  9.48     | 
+|            | 23.93   | 18.52    |  6.92     |
+|            | 14.78   | 19.57    | 10.47     |
+|            | 25.78   | 21.40    |  7.63     |
+|            | 17.52   | 13.59    | 11.90     |
+|            | 18.45   | 20.57    |  5.92     |
+|media tiendas ($\bar{x_{j}}$)| 18.73  | 18.18    | 8.72      |
+|media total ($\bar{\bar{x}}$)| 15.20   |          |           |
+|número de grupos ($k$) | 3  |          |           |
+|número datos por grupo ($n$)|  7 |     |           |
+
+
+<br/><br/><br/>
+
+### **Cálculo de la Suma de Cuadrados Dentro de los grupos (SCd)**
+
+<br/>
+
+#### **Tienda 1**
+
+|                                                                           |
+|:--------------------------------------------------------------------------|
+|$(12.05 - 18.73)^{2} + (23.93- 18.73)^{2} +  (14.78- 18.73)^{2} +$         |
+|$(28.78- 18.73)^{2} +  (17.52- 18.73)^{2} +  (18.73- 18.73)^{2} = 139.82$  |
+
+<br/>
+
+#### **Tienda 2**
+
+
+|                                                                             |
+|:----------------------------------------------------------------------------|
+|$(5.17 - 18.14)^{2} + (18.52 - 18.14)^{2} + (19.57- 18.14)^{2} +$            |
+|$(21.40 - 18.14)^{2} + (13.59- 18.14)^{2} +  (20.57 - 18.14)^{2} = 48.25$    |
+
+<br/>
+
+#### **Tienda 3**
+
+
+|                                                                             |
+|:----------------------------------------------------------------------------|
+|$(9.48 - 8.72)^2 +  (6.92 - 8.72)^2 + (10.47- 8.72)^2 +$                     | 
+|$(7.63 - 8.72)^2 + (11.90 - 8.72)^2 + (5.92 - 8.72)^2 = 214.09$              |
+
+
+<br/><br/>
+
+
+$$SCd = \displaystyle\sum_{j=1}^{3} \sum_{i=1}^{6} (x_{ij} - \bar{x_{j}})^{2} = 139.82 + 48.25 + 214.09 = 402.16$$
+<br/><br/><br/>
+
+### **Cálculo de la Suma de Cuadrados Entre los grupos (SCe)**
+
+$$SCe = \displaystyle\sum_{j=1}^{3} (\bar{x_{j}}- \bar{\bar{x}})^{2} = (18.73 -15.20)^{2} + (18.14 -15.20)^{2}  +( 8.72-15.20)^{2} = 63.09$$
+
+Con esto valores calculados, podemos construir la tabla ANOVA
+
+
+|Fuentes de variación     | Suma de cuadrados | grados de libertad | Cuadrados medios | F      | valor-p  |
+|:-----------------------:|:-----------------:|:------------------:|:----------------:|:------:|:--------:|
+|**Grupos Entre**         |       378.54      |   2                | 189.27           |  13.26 |  0.00048 |
+|**Grupos Dentro**        |       214.09      |   15               | 14.27            |        |          |   
+|**Total**                |       592.63      |   17               |                  |        |          |
+|                         |                   |                    |                  |        |          |
+
+<br/><br/><br/>
+
+### Cálculos en R
 
 
 ```{r}
-# Crear datos ficticios
-set.seed(123)
-grupo1 <- rnorm(30, mean = 10, sd = 2)
-grupo2 <- rnorm(30, mean = 12, sd = 2)
-grupo3 <- rnorm(30, mean = 15, sd = 2)
+library(ggplot2)
 
-datos <- data.frame(
-  valor = c(grupo1, grupo2, grupo3),
-  grupo = rep(c("A", "B", "C"), each = 30)
+# Datos de las tiendas
+tiendas <- data.frame(
+  tienda1 = c(12.05, 23.94, 14.63, 25.78, 17.52, 18.45),
+  tienda2 = c(15.17, 18.52, 19.57, 21.40, 13.59, 20.57),
+  tienda3 = c(9.48, 6.92, 10.47, 7.63, 11.90, 5.92)
 )
 
-# Gráfico de cajas
-library(ggplot2)
-# Gráfico de cajas con puntos y mayor opacidad
-ggplot(datos, aes(x = grupo, y = valor, fill = grupo)) +
-  geom_boxplot(alpha = 0.7, outlier.shape = NA) +  # Hacer el gráfico de cajas más opaco y ocultar los puntos atípicos
-  geom_point(position = position_jitter(width = 0.3), alpha = 0.47, size = 2) +  # Mostrar puntos con jitter y mayor opacidad
-  labs(
-    title = "ANOVA evaluación",
-    x = "Grupo",
-    y = "Valor"
-  ) +
-  theme_minimal()
+# Convertir a formato largo
+tiendas_largo <- tidyr::gather(tiendas, tienda, ventas)
 
+# Gráfico de cajas con ggplot2
+ggplot(tiendas_largo, aes(x = tienda, y = ventas, fill = tienda)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Precios por tienda",
+    x = "Tiendas",
+    y = "Precios"
+  ) +
+  scale_fill_brewer(palette = "Pastel1") +  # Colores suaves
+  theme_minimal()
 
 ```
 
-```{r}
-# Realizar ANOVA
-modelo_anova <- aov(valor ~ grupo, data = datos)
-summary(modelo_anova)
+<br/><br/>
 
+```{r}
+summary(tiendas)
+```
+
+<br/><br/>
+
+```{r}
+library(tidyr)
+tiendasL <- tiendas %>%
+  gather(tienda, precio, everything())
+# Realizar ANOVA
+modelo_anova <- aov(precio ~ tienda, data = tiendasL)
+```
+
+<br/><br/>
+
+```{r}
+library(knitr)
+library(kableExtra)
+
+# Modelo ANOVA
+modelo_anova <- aov(precio ~ tienda, data = tiendasL)
+
+# Resumen del modelo
+resumen_anova <- summary(modelo_anova)
+
+# Convertir resumen a tabla
+tabla_anova <- resumen_anova$aov
+tabla_anova <- as.data.frame(tabla_anova)
+rownames(tabla_anova) <- NULL
+
+# Mostrar tabla con kableExtra
+kable(tabla_anova, "html") %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+<br/><br/><br/>
+
+
+### Comparaciones múltiples
+
+
+```{r, eval=FALSE}
 # Realizar comparaciones múltiples
 comparaciones <- TukeyHSD(modelo_anova)
 print(comparaciones)
 
-
 ```
 
-
-
-
-### Priblema 1
-
-**Comparación de la eficiencia de tres métodos de producción**
-
-Supongamos que queremos comparar la eficiencia de tres métodos de producción en una fábrica. Tomamos una muestra de 20 productos fabricados con cada método y medimos el tiempo de producción en minutos.
-
+<br/><br/><br/>
 
 ```{r}
-# Crear datos ficticios
-set.seed(123)
-n=10
-metodo1 <- rnorm(n, mean = 30, sd = 5)
-metodo2 <- rnorm(n, mean = 35, sd = 5)
-metodo3 <- rnorm(n, mean = 40, sd = 5)
+library(knitr)
+library(kableExtra)
 
-datos <- data.frame(
-  tiempo = c(round(metodo1,0), round(metodo2,0), round(metodo3,0)),
-  metodo = rep(c("A", "B", "C"), each = n)
-)
-```
+# Comparaciones múltiples Tukey
+comparaciones <- TukeyHSD(modelo_anova)
 
-<pre>
- [1] 27 29 38 30 31 39 32 24 27 28 
- [2] 41 37 37 36 32 44 37 25 39 33 
- [3] 35 39 35 36 37 32 44 41 34 46
-</pre>
+# Convertir a tabla
+tabla_comparaciones <- as.data.frame(comparaciones$`tienda`)
 
-```{r}
-# datos
-# Realizar ANOVA
-modelo_anova1 <- aov(tiempo ~ metodo, data = datos)
-summary(modelo_anova)
+# Mostrar tabla con kableExtra
+kable(tabla_comparaciones, "html") %>%
+  kable_styling(full_width = FALSE)
 
 ```
 
 
-```{r}
-# Realizar comparaciones múltiples
-comparaciones1<- TukeyHSD(modelo_anova1)
-print(comparaciones1)
-```
-
-
-
-
-## Problema 2
-
-**Comparación de la resistencia de tres tipos de materiales**
-
-Imaginemos que queremos comparar la resistencia a la tracción de tres tipos de materiales utilizados en la construcción. Medimos la resistencia en megapascales (MPa) de 15 muestras de cada material.
-
-```{r, eval=FALSE}
-n = 15
-set.seed(456)
-material1 <- rnorm(n, mean = 50, sd = 10)
-material2 <- rnorm(n, mean = 45, sd = 10)
-material3 <- rnorm(n, mean = 55, sd = 10)
-
-datos2 <- data.frame(
-  resistencia = c(material1, material2, material3),
-  material = rep(c("M1", "M2", "M3"), each = 15)
-)
-
-#datos2
-
-# Realizar ANOVA
-modelo_anova <- aov(resistencia ~ material, data = datos2)
-summary(modelo_anova)
-
-
-```
-
- <pre>
-           Df   Sum Sq    Mean Sq        F       value Pr(>F)
-material     2    336      
-Residuals   42             122.9        
-</pre>
-
-```{r, eval=FALSE}
- M1=c(37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
- M2=  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
- [M3]  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41
-```
-
-* Determine las hipótesis
-* Construya la ANOVA
-* De ser necesario realice la prueba de comparaciones multiples
-
-
-<!-- ### Problemaq 3 -->
-
-<!-- **Comparación de la productividad en diferentes turnos de trabajo** -->
-
-
-<!-- Supongamos que queremos comparar la productividad en términos de unidades producidas por hora en tres turnos de trabajo diferentes. Registramos la productividad de 25 días laborables para cada turno. -->

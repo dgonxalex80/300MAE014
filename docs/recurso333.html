@@ -34,6 +34,8 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -471,147 +473,462 @@ $(document).ready(function () {
 <p><br/><br/></p>
 <p><strong>ANOVA</strong>, o Análisis de la Varianza, es un método
 estadístico utilizado para analizar las diferencias entre las medias de
-varios grupos en una muestra. Prueba la hipótesis nula de que las medias
-de múltiples grupos son iguales, comparando la varianza entre las medias
-de los grupos con la varianza dentro de los grupos. ANOVA se utiliza
-frecuentemente para analizar los efectos de variables independientes
-categóricas (factores) en una variable dependiente continua. Proporciona
-un estadístico F y un valor p para determinar si las medias de los
-grupos son significativamente diferentes. Si el valor p es menor que un
-nivel de significancia elegido, típicamente 0,05, se rechaza la
-hipótesis nula, lo que indica que al menos una de las medias de los
-grupos es diferente de las demás.</p>
-<pre class="r"><code># Crear datos ficticios
-set.seed(123)
-grupo1 &lt;- rnorm(30, mean = 10, sd = 2)
-grupo2 &lt;- rnorm(30, mean = 12, sd = 2)
-grupo3 &lt;- rnorm(30, mean = 15, sd = 2)
+varios grupos en una muestra (<span
+class="math inline">\(k&gt;2\)</span>). Prueba la hipótesis nula de que
+las medias de múltiples grupos son iguales, comparando la varianza entre
+las medias de los grupos (<span class="math inline">\(S^2_{E}\)</span>)
+con la varianza dentro de los grupos (<span
+class="math inline">\(S^2_{D}\)</span>). La <strong>ANOVA</strong> se
+utiliza frecuentemente para analizar los efectos de variables
+independientes categóricas (factores) en una variable dependiente
+continua (Diseños Experimentales) . Proporciona un estadístico
+<strong>F<em>-</em> y un </strong>valor p** para determinar si las
+medias de los grupos son significativamente diferentes. Si el valor p es
+menor que un nivel de significancia elegido, típicamente 0,05, se
+rechaza la hipótesis nula, lo que indica que al menos una de las medias
+de los grupos es diferente de las demás y en consecuencia se deben
+realizar pruebas adicionales para determinar que grupos son diferentes
+(pruebas de comparaciones múltiples).</p>
+<p><br/><br/></p>
+<p><span class="math inline">\(Ho: \mu_1 = \mu_2 = \dots \mu_k\)</span>
+<br/> <span class="math inline">\(Ha: \text{alguna } \mu_i \text{ es
+diferente}\)</span></p>
+<p><br/><br/></p>
+<p>Para la construcción del Estadístico de Prueba se plantea la
+siguiente tabla</p>
+<p><strong>ANOVA</strong></p>
+<p><br/></p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="19%" />
+<col width="20%" />
+<col width="18%" />
+<col width="8%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Fuentes de variación</th>
+<th align="center">Suma de cuadrados</th>
+<th align="center">grados de libertad</th>
+<th align="center">Cuadrados medios</th>
+<th align="center">F</th>
+<th align="center">valor-p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Grupos Entre</strong></td>
+<td align="center"><span class="math inline">\(SC_{E} = n
+\displaystyle\sum_{j=1}^k (\bar{x_{j}} - \bar{\bar{x}})^2\)</span></td>
+<td align="center"><span class="math inline">\(k-1\)</span></td>
+<td align="center"><span class="math inline">\(CM_{E} =
+\dfrac{SC_{E}}{gl_{E}}\)</span></td>
+<td align="center"><span class="math inline">\(F =
+\displaystyle\dfrac{CM_{E}}{CM_{D}}\)</span></td>
+<td align="center"><code>qf(F,v1,v2)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Grupos Dentro</strong></td>
+<td align="center"><span class="math inline">\(SC_{D} =
+\displaystyle\sum_{j=1}^{m} \sum_{i=1}^{n} (x_{ij} -
+\bar{x_{j}})^2\)</span></td>
+<td align="center"><span class="math inline">\(k(n-1)\)</span></td>
+<td align="center"><span class="math inline">\(CM_{D} =
+\dfrac{SC_{D}}{gl_{D}}\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Total</strong></td>
+<td align="center"><span class="math inline">\(SCT = \displaystyle
+\sum_{j=1}^{k} \sum_{i=1}^{n} (x_{ij}- \bar{\bar{x}})^2\)</span></td>
+<td align="center"><span class="math inline">\(kn-1\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+<div id="ejemplo" class="section level3">
+<h3><strong>Ejemplo:</strong></h3>
+<p>Se cuenta con los precios USD de comidas en tres regiones
+diferentes</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right"></th>
+<th align="center">Tienda 1</th>
+<th align="center">Tienda 2</th>
+<th align="center">Tienda 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"></td>
+<td align="center">12.05</td>
+<td align="center">15.17</td>
+<td align="center">9.48</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="center">23.93</td>
+<td align="center">18.52</td>
+<td align="center">6.92</td>
+</tr>
+<tr class="odd">
+<td align="right"></td>
+<td align="center">14.78</td>
+<td align="center">19.57</td>
+<td align="center">10.47</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="center">25.78</td>
+<td align="center">21.40</td>
+<td align="center">7.63</td>
+</tr>
+<tr class="odd">
+<td align="right"></td>
+<td align="center">17.52</td>
+<td align="center">13.59</td>
+<td align="center">11.90</td>
+</tr>
+<tr class="even">
+<td align="right"></td>
+<td align="center">18.45</td>
+<td align="center">20.57</td>
+<td align="center">5.92</td>
+</tr>
+<tr class="odd">
+<td align="right">media tiendas (<span
+class="math inline">\(\bar{x_{j}}\)</span>)</td>
+<td align="center">18.73</td>
+<td align="center">18.18</td>
+<td align="center">8.72</td>
+</tr>
+<tr class="even">
+<td align="right">media total (<span
+class="math inline">\(\bar{\bar{x}}\)</span>)</td>
+<td align="center">15.20</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="right">número de grupos (<span
+class="math inline">\(k\)</span>)</td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="right">número datos por grupo (<span
+class="math inline">\(n\)</span>)</td>
+<td align="center">7</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/><br/></p>
+</div>
+<div id="cálculo-de-la-suma-de-cuadrados-dentro-de-los-grupos-scd"
+class="section level3">
+<h3><strong>Cálculo de la Suma de Cuadrados Dentro de los grupos
+(SCd)</strong></h3>
+<p><br/></p>
+<div id="tienda-1" class="section level4">
+<h4><strong>Tienda 1</strong></h4>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\((12.05 - 18.73)^{2} +
+(23.93- 18.73)^{2} + (14.78- 18.73)^{2} +\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\((28.78- 18.73)^{2} +
+(17.52- 18.73)^{2} + (18.73- 18.73)^{2} = 139.82\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+</div>
+<div id="tienda-2" class="section level4">
+<h4><strong>Tienda 2</strong></h4>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\((5.17 - 18.14)^{2} + (18.52
+- 18.14)^{2} + (19.57- 18.14)^{2} +\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\((21.40 - 18.14)^{2} +
+(13.59- 18.14)^{2} + (20.57 - 18.14)^{2} = 48.25\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+</div>
+<div id="tienda-3" class="section level4">
+<h4><strong>Tienda 3</strong></h4>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\((9.48 - 8.72)^2 + (6.92 -
+8.72)^2 + (10.47- 8.72)^2 +\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\((7.63 - 8.72)^2 + (11.90 -
+8.72)^2 + (5.92 - 8.72)^2 = 214.09\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+<p><span class="math display">\[SCd = \displaystyle\sum_{j=1}^{3}
+\sum_{i=1}^{6} (x_{ij} - \bar{x_{j}})^{2} = 139.82 + 48.25 + 214.09 =
+402.16\]</span> <br/><br/><br/></p>
+</div>
+</div>
+<div id="cálculo-de-la-suma-de-cuadrados-entre-los-grupos-sce"
+class="section level3">
+<h3><strong>Cálculo de la Suma de Cuadrados Entre los grupos
+(SCe)</strong></h3>
+<p><span class="math display">\[SCe = \displaystyle\sum_{j=1}^{3}
+(\bar{x_{j}}- \bar{\bar{x}})^{2} = (18.73 -15.20)^{2} + (18.14
+-15.20)^{2}  +( 8.72-15.20)^{2} = 63.09\]</span></p>
+<p>Con esto valores calculados, podemos construir la tabla ANOVA</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="19%" />
+<col width="20%" />
+<col width="18%" />
+<col width="8%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Fuentes de variación</th>
+<th align="center">Suma de cuadrados</th>
+<th align="center">grados de libertad</th>
+<th align="center">Cuadrados medios</th>
+<th align="center">F</th>
+<th align="center">valor-p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Grupos Entre</strong></td>
+<td align="center">378.54</td>
+<td align="center">2</td>
+<td align="center">189.27</td>
+<td align="center">13.26</td>
+<td align="center">0.00048</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Grupos Dentro</strong></td>
+<td align="center">214.09</td>
+<td align="center">15</td>
+<td align="center">14.27</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Total</strong></td>
+<td align="center">592.63</td>
+<td align="center">17</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/><br/></p>
+</div>
+<div id="cálculos-en-r" class="section level3">
+<h3>Cálculos en R</h3>
+<pre class="r"><code>library(ggplot2)
 
-datos &lt;- data.frame(
-  valor = c(grupo1, grupo2, grupo3),
-  grupo = rep(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), each = 30)
+# Datos de las tiendas
+tiendas &lt;- data.frame(
+  tienda1 = c(12.05, 23.94, 14.63, 25.78, 17.52, 18.45),
+  tienda2 = c(15.17, 18.52, 19.57, 21.40, 13.59, 20.57),
+  tienda3 = c(9.48, 6.92, 10.47, 7.63, 11.90, 5.92)
 )
 
-# Gráfico de cajas
-library(ggplot2)
-# Gráfico de cajas con puntos y mayor opacidad
-ggplot(datos, aes(x = grupo, y = valor, fill = grupo)) +
-  geom_boxplot(alpha = 0.7, outlier.shape = NA) +  # Hacer el gráfico de cajas más opaco y ocultar los puntos atípicos
-  geom_point(position = position_jitter(width = 0.3), alpha = 0.47, size = 2) +  # Mostrar puntos con jitter y mayor opacidad
+# Convertir a formato largo
+tiendas_largo &lt;- tidyr::gather(tiendas, tienda, ventas)
+
+# Gráfico de cajas con ggplot2
+ggplot(tiendas_largo, aes(x = tienda, y = ventas, fill = tienda)) +
+  geom_boxplot(alpha = 0.7) +
   labs(
-    title = &quot;ANOVA evaluación&quot;,
-    x = &quot;Grupo&quot;,
-    y = &quot;Valor&quot;
+    title = &quot;Precios por tienda&quot;,
+    x = &quot;Tiendas&quot;,
+    y = &quot;Precios&quot;
   ) +
+  scale_fill_brewer(palette = &quot;Pastel1&quot;) +  # Colores suaves
   theme_minimal()</code></pre>
 <p><img src="recurso333_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code># Realizar ANOVA
-modelo_anova &lt;- aov(valor ~ grupo, data = datos)
-summary(modelo_anova)</code></pre>
-<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
-grupo        2  397.1  198.53   61.62 &lt;2e-16 ***
-Residuals   87  280.3    3.22                   
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br/><br/></p>
+<pre class="r"><code>summary(tiendas)</code></pre>
+<pre><code>    tienda1         tienda2         tienda3      
+ Min.   :12.05   Min.   :13.59   Min.   : 5.920  
+ 1st Qu.:15.35   1st Qu.:16.01   1st Qu.: 7.098  
+ Median :17.98   Median :19.05   Median : 8.555  
+ Mean   :18.73   Mean   :18.14   Mean   : 8.720  
+ 3rd Qu.:22.57   3rd Qu.:20.32   3rd Qu.:10.223  
+ Max.   :25.78   Max.   :21.40   Max.   :11.900  </code></pre>
+<p><br/><br/></p>
+<pre class="r"><code>library(tidyr)
+tiendasL &lt;- tiendas %&gt;%
+  gather(tienda, precio, everything())
+# Realizar ANOVA
+modelo_anova &lt;- aov(precio ~ tienda, data = tiendasL)</code></pre>
+<p><br/><br/></p>
+<pre class="r"><code>library(knitr)
+library(kableExtra)
+
+# Modelo ANOVA
+modelo_anova &lt;- aov(precio ~ tienda, data = tiendasL)
+
+# Resumen del modelo
+resumen_anova &lt;- summary(modelo_anova)
+
+# Convertir resumen a tabla
+tabla_anova &lt;- resumen_anova$aov
+tabla_anova &lt;- as.data.frame(tabla_anova)
+rownames(tabla_anova) &lt;- NULL
+
+# Mostrar tabla con kableExtra
+kable(tabla_anova, &quot;html&quot;) %&gt;%
+  kable_styling(full_width = FALSE)</code></pre>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<p><br/><br/><br/></p>
+</div>
+<div id="comparaciones-múltiples" class="section level3">
+<h3>Comparaciones múltiples</h3>
 <pre class="r"><code># Realizar comparaciones múltiples
 comparaciones &lt;- TukeyHSD(modelo_anova)
 print(comparaciones)</code></pre>
-<pre><code>  Tukey multiple comparisons of means
-    95% family-wise confidence level
+<p><br/><br/><br/></p>
+<pre class="r"><code>library(knitr)
+library(kableExtra)
 
-Fit: aov(formula = valor ~ grupo, data = datos)
+# Comparaciones múltiples Tukey
+comparaciones &lt;- TukeyHSD(modelo_anova)
 
-$grupo
-        diff      lwr      upr   p adj
-B-A 2.450884 1.345783 3.555985 2.7e-06
-C-A 5.143048 4.037948 6.248149 0.0e+00
-C-B 2.692164 1.587063 3.797265 3.0e-07</code></pre>
-<div id="priblema-1" class="section level3">
-<h3>Priblema 1</h3>
-<p><strong>Comparación de la eficiencia de tres métodos de
-producción</strong></p>
-<p>Supongamos que queremos comparar la eficiencia de tres métodos de
-producción en una fábrica. Tomamos una muestra de 20 productos
-fabricados con cada método y medimos el tiempo de producción en
-minutos.</p>
-<pre class="r"><code># Crear datos ficticios
-set.seed(123)
-n=10
-metodo1 &lt;- rnorm(n, mean = 30, sd = 5)
-metodo2 &lt;- rnorm(n, mean = 35, sd = 5)
-metodo3 &lt;- rnorm(n, mean = 40, sd = 5)
+# Convertir a tabla
+tabla_comparaciones &lt;- as.data.frame(comparaciones$`tienda`)
 
-datos &lt;- data.frame(
-  tiempo = c(round(metodo1,0), round(metodo2,0), round(metodo3,0)),
-  metodo = rep(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), each = n)
-)</code></pre>
-<pre>
- [1] 27 29 38 30 31 39 32 24 27 28 
- [2] 41 37 37 36 32 44 37 25 39 33 
- [3] 35 39 35 36 37 32 44 41 34 46
-</pre>
-<pre class="r"><code># datos
-# Realizar ANOVA
-modelo_anova1 &lt;- aov(tiempo ~ metodo, data = datos)
-summary(modelo_anova)</code></pre>
-<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
-grupo        2  397.1  198.53   61.62 &lt;2e-16 ***
-Residuals   87  280.3    3.22                   
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre class="r"><code># Realizar comparaciones múltiples
-comparaciones1&lt;- TukeyHSD(modelo_anova1)
-print(comparaciones1)</code></pre>
-<pre><code>  Tukey multiple comparisons of means
-    95% family-wise confidence level
-
-Fit: aov(formula = tiempo ~ metodo, data = datos)
-
-$metodo
-    diff        lwr       upr     p adj
-B-A  5.6  0.2086785 10.991322 0.0405842
-C-A  7.4  2.0086785 12.791322 0.0057448
-C-B  1.8 -3.5913215  7.191322 0.6893117</code></pre>
-</div>
-<div id="problema-2" class="section level2">
-<h2>Problema 2</h2>
-<p><strong>Comparación de la resistencia de tres tipos de
-materiales</strong></p>
-<p>Imaginemos que queremos comparar la resistencia a la tracción de tres
-tipos de materiales utilizados en la construcción. Medimos la
-resistencia en megapascales (MPa) de 15 muestras de cada material.</p>
-<pre class="r"><code>n = 15
-set.seed(456)
-material1 &lt;- rnorm(n, mean = 50, sd = 10)
-material2 &lt;- rnorm(n, mean = 45, sd = 10)
-material3 &lt;- rnorm(n, mean = 55, sd = 10)
-
-datos2 &lt;- data.frame(
-  resistencia = c(material1, material2, material3),
-  material = rep(c(&quot;M1&quot;, &quot;M2&quot;, &quot;M3&quot;), each = 15)
-)
-
-#datos2
-
-# Realizar ANOVA
-modelo_anova &lt;- aov(resistencia ~ material, data = datos2)
-summary(modelo_anova)</code></pre>
-<pre>
-           Df   Sum Sq    Mean Sq        F       value Pr(>F)
-material     2    336      
-Residuals   42             122.9        
-</pre>
-<pre class="r"><code> M1=c(37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
- M2=  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41 
- [M3]  37 56 58 36 43 42 52 48 55 51 46 68 65 72 41</code></pre>
-<ul>
-<li>Determine las hipótesis</li>
-<li>Construya la ANOVA</li>
-<li>De ser necesario realice la prueba de comparaciones multiples</li>
-</ul>
-<!-- ### Problemaq 3 -->
-<!-- **Comparación de la productividad en diferentes turnos de trabajo** -->
-<!-- Supongamos que queremos comparar la productividad en términos de unidades producidas por hora en tres turnos de trabajo diferentes. Registramos la productividad de 25 días laborables para cada turno. -->
+# Mostrar tabla con kableExtra
+kable(tabla_comparaciones, &quot;html&quot;) %&gt;%
+  kable_styling(full_width = FALSE)</code></pre>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+diff
+</th>
+<th style="text-align:right;">
+lwr
+</th>
+<th style="text-align:right;">
+upr
+</th>
+<th style="text-align:right;">
+p adj
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+tienda2-tienda1
+</td>
+<td style="text-align:right;">
+-0.5916667
+</td>
+<td style="text-align:right;">
+-6.257186
+</td>
+<td style="text-align:right;">
+5.073852
+</td>
+<td style="text-align:right;">
+0.9603554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tienda3-tienda1
+</td>
+<td style="text-align:right;">
+-10.0083333
+</td>
+<td style="text-align:right;">
+-15.673852
+</td>
+<td style="text-align:right;">
+-4.342815
+</td>
+<td style="text-align:right;">
+0.0009736
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tienda3-tienda2
+</td>
+<td style="text-align:right;">
+-9.4166667
+</td>
+<td style="text-align:right;">
+-15.082185
+</td>
+<td style="text-align:right;">
+-3.751148
+</td>
+<td style="text-align:right;">
+0.0016621
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
