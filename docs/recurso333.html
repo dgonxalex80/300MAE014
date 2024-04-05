@@ -384,6 +384,9 @@ $(document).ready(function () {
     <li>
       <a href="recurso333.html">ANOVA</a>
     </li>
+    <li>
+      <a href="taller332.html">Taller 332</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -642,11 +645,11 @@ class="math inline">\(n\)</span>)</td>
 </table>
 <p><br/><br/><br/></p>
 </div>
-<div id="cálculo-de-la-suma-de-cuadrados-dentro-de-los-grupos-scd"
+<div id="cálculo-de-la-suma-de-cuadrados-dentro-de-los-grupos-sc_d"
 class="section level3">
-<h3><strong>Cálculo de la Suma de Cuadrados Dentro de los grupos
-(SCd)</strong></h3>
-<p><br/></p>
+<h3><strong>Cálculo de la Suma de Cuadrados Dentro de los
+grupos</strong> (<span class="math inline">\(SC_D\)</span>)</h3>
+<p><br/><br/></p>
 <div id="tienda-1" class="section level4">
 <h4><strong>Tienda 1</strong></h4>
 <table>
@@ -664,7 +667,7 @@ class="section level3">
 </tr>
 </tbody>
 </table>
-<p><br/></p>
+<p><br/><br/></p>
 </div>
 <div id="tienda-2" class="section level4">
 <h4><strong>Tienda 2</strong></h4>
@@ -683,7 +686,7 @@ class="section level3">
 </tr>
 </tbody>
 </table>
-<p><br/></p>
+<p><br/><br/></p>
 </div>
 <div id="tienda-3" class="section level4">
 <h4><strong>Tienda 3</strong></h4>
@@ -708,13 +711,20 @@ class="section level3">
 402.16\]</span> <br/><br/><br/></p>
 </div>
 </div>
-<div id="cálculo-de-la-suma-de-cuadrados-entre-los-grupos-sce"
+<div id="cálculo-de-la-suma-de-cuadrados-entre-los-grupos-sc_e"
 class="section level3">
-<h3><strong>Cálculo de la Suma de Cuadrados Entre los grupos
-(SCe)</strong></h3>
+<h3><strong>Cálculo de la Suma de Cuadrados Entre los grupos</strong>
+(<span class="math inline">\(SC_E\)</span>)</h3>
 <p><span class="math display">\[SCe = \displaystyle\sum_{j=1}^{3}
 (\bar{x_{j}}- \bar{\bar{x}})^{2} = (18.73 -15.20)^{2} + (18.14
--15.20)^{2}  +( 8.72-15.20)^{2} = 63.09\]</span></p>
+-15.20)^{2}  +( 8.72-15.20)^{2} = 63.09\]</span> <br/><br/><br/></p>
+</div>
+<div id="cálculo-de-la-sumna-de-cuadrados-totales"
+class="section level3">
+<h3><strong>Cálculo de la Sumna de Cuadrados Totales</strong></h3>
+<p><span class="math display">\[SC_T = SC_D + SC_E = 378.54 v+ 214.09 =
+592.63\]</span></p>
+<p><br/><br/><br/></p>
 <p>Con esto valores calculados, podemos construir la tabla ANOVA</p>
 <table>
 <colgroup>
@@ -773,14 +783,14 @@ class="section level3">
 <p><br/><br/><br/></p>
 </div>
 <div id="cálculos-en-r" class="section level3">
-<h3>Cálculos en R</h3>
+<h3><strong>Cálculos en R</strong></h3>
 <pre class="r"><code>library(ggplot2)
 
 # Datos de las tiendas
 tiendas &lt;- data.frame(
-  tienda1 = c(12.05, 23.94, 14.63, 25.78, 17.52, 18.45),
-  tienda2 = c(15.17, 18.52, 19.57, 21.40, 13.59, 20.57),
-  tienda3 = c(9.48, 6.92, 10.47, 7.63, 11.90, 5.92)
+  t1 = c(12.05, 23.94, 14.63, 25.78, 17.52, 18.45),
+  t2 = c(15.17, 18.52, 19.57, 21.40, 13.59, 20.57),
+  t3 = c(9.48, 6.92, 10.47, 7.63, 11.90, 5.92)
 )
 
 # Convertir a formato largo
@@ -799,7 +809,7 @@ ggplot(tiendas_largo, aes(x = tienda, y = ventas, fill = tienda)) +
 <p><img src="recurso333_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p><br/><br/></p>
 <pre class="r"><code>summary(tiendas)</code></pre>
-<pre><code>    tienda1         tienda2         tienda3      
+<pre><code>       t1              t2              t3        
  Min.   :12.05   Min.   :13.59   Min.   : 5.920  
  1st Qu.:15.35   1st Qu.:16.01   1st Qu.: 7.098  
  Median :17.98   Median :19.05   Median : 8.555  
@@ -814,9 +824,13 @@ tiendasL &lt;- tiendas %&gt;%
 modelo_anova &lt;- aov(precio ~ tienda, data = tiendasL)</code></pre>
 <p><br/><br/></p>
 <pre class="r"><code>library(knitr)
-library(kableExtra)
+library(kableExtra)</code></pre>
+<pre><code>
+Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:dplyr&#39;:
 
-# Modelo ANOVA
+    group_rows</code></pre>
+<pre class="r"><code># Modelo ANOVA
 modelo_anova &lt;- aov(precio ~ tienda, data = tiendasL)
 
 # Resumen del modelo
@@ -830,7 +844,7 @@ rownames(tabla_anova) &lt;- NULL
 # Mostrar tabla con kableExtra
 kable(tabla_anova, &quot;html&quot;) %&gt;%
   kable_styling(full_width = FALSE)</code></pre>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
 </tr>
@@ -839,11 +853,11 @@ kable(tabla_anova, &quot;html&quot;) %&gt;%
 <p><br/><br/><br/></p>
 </div>
 <div id="comparaciones-múltiples" class="section level3">
-<h3>Comparaciones múltiples</h3>
-<pre class="r"><code># Realizar comparaciones múltiples
-comparaciones &lt;- TukeyHSD(modelo_anova)
-print(comparaciones)</code></pre>
-<p><br/><br/><br/></p>
+<h3><strong>Comparaciones múltiples</strong></h3>
+<p>En caso de rechazar la hipótesis nula (Ho) se requiere realizar la
+prueba de comparaciones múltiples para determinar los grupos que
+conforman</p>
+<p><br/></p>
 <pre class="r"><code>library(knitr)
 library(kableExtra)
 
@@ -856,7 +870,7 @@ tabla_comparaciones &lt;- as.data.frame(comparaciones$`tienda`)
 # Mostrar tabla con kableExtra
 kable(tabla_comparaciones, &quot;html&quot;) %&gt;%
   kable_styling(full_width = FALSE)</code></pre>
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -878,7 +892,7 @@ p adj
 <tbody>
 <tr>
 <td style="text-align:left;">
-tienda2-tienda1
+t2-t1
 </td>
 <td style="text-align:right;">
 -0.5916667
@@ -895,7 +909,7 @@ tienda2-tienda1
 </tr>
 <tr>
 <td style="text-align:left;">
-tienda3-tienda1
+t3-t1
 </td>
 <td style="text-align:right;">
 -10.0083333
@@ -912,7 +926,7 @@ tienda3-tienda1
 </tr>
 <tr>
 <td style="text-align:left;">
-tienda3-tienda2
+t3-t2
 </td>
 <td style="text-align:right;">
 -9.4166667
@@ -929,6 +943,8 @@ tienda3-tienda2
 </tr>
 </tbody>
 </table>
+<pre class="r"><code>plot(comparaciones, las=1)</code></pre>
+<p><img src="recurso333_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 
 

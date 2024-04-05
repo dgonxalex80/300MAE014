@@ -12,12 +12,12 @@
 <meta name="author" content="dgonzalez80" />
 
 
-<title>** **</title>
+<title>Taller 332</title>
 
 <script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -31,7 +31,6 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
@@ -62,6 +61,7 @@ if (window.hljs) {
 
 
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 
 
 
@@ -220,9 +220,6 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
 
 
 
@@ -453,24 +450,104 @@ $(document).ready(function () {
 
 <div id="header">
 
-<div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-</ul>
-</div>
 
 
-
-<h1 class="title toc-ignore"><span style="color:#034a94">**
-**</span></h1>
+<h1 class="title toc-ignore"><span style="color:#034a94"><strong>Taller
+332</strong></span></h1>
 <h4 class="author">dgonzalez80</h4>
 
 </div>
 
 
-
+<p><br/><br/><br/></p>
+<div
+id="problema-1-eficiencia-de-producción-en-una-planta-de-fabricación-de-productos-electrónicos"
+class="section level2">
+<h2><strong>Problema 1</strong> Eficiencia de producción en una planta
+de fabricación de productos electrónicos:</h2>
+<p>Se están evaluando tres métodos diferentes para la producción de
+productos electrónicos en una planta de fabricación. Cada método implica
+un proceso de producción diferente, y se espera que afecte la eficiencia
+y la calidad de los productos electrónicos. Se han recopilado datos de
+producción diaria durante 30 días para cada método.</p>
+<pre class="r"><code>Metodo1 =c(500, 520, 480, 530, 550, 520, 480, 530, 550, 500, 520, 480, 530, 550, 500, 520, 480, 530, 550, 500)
+Metodo2 = c(480, 500, 510, 490, 520, 500, 510, 490, 520, 480, 500, 510, 490, 520, 480, 500, 510, 490, 520, 480)
+Metodo3 = c(520, 550, 540, 530, 560, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520)</code></pre>
+<p>¿Qué método de producción muestra la mayor eficiencia en términos de
+producción de productos electrónicos? Qué recomendación se podría
+realizar a partir de los resultados obtenidos?.</p>
+<p><br/><br/><br/></p>
+</div>
+<div
+id="problema-2-producción-de-paneles-solares-en-una-planta-de-energía-renovable"
+class="section level2">
+<h2><strong>Problema 2</strong> Producción de paneles solares en una
+planta de energía renovable:</h2>
+<p>Se están evaluando tres métodos de producción para fabricar paneles
+solares en una planta de energía renovable. Cada método implica un
+proceso de fabricación diferente, y se espera que afecte la eficiencia y
+la calidad de los paneles solares. Se han recopilado datos de producción
+por día durante 30 días para cada método.</p>
+<pre class="r"><code>Metodo1 = c(100, 105, 98, 110, 115, 105, 98, 110, 115, 100, 105, 98, 110, 115, 100, 105, 98, 
+            110, 115, 100, 105, 98, 110, 115)
+Metodo2 = c(95, 100, 102, 97, 105, 100, 102, 97, 105, 95, 100, 102, 97, 105, 95, 100, 102, 97, 
+            105, 95, 100, 102, 97, 105)
+Metodo3 = c(110, 115, 112, 108, 120, 115, 112, 108, 120, 110, 115, 112, 108, 120, 110, 115, 112, 
+            108, 120, 110, 115, 112, 108, 120)</code></pre>
+<p>Basándonos en los resultados de la prueba ANOVA, decidiremos si se
+debe implementar un nuevo método de producción en toda la planta de
+energía renovable. ¿Es el método 3 el que eficencia mayor nivel de
+eficiencia en términos de producción de paneles solares?</p>
+<p><br/><br/><br/></p>
+</div>
+<div id="problema-3-eficiencia-de-maquinaria-en-una-fábrica-textil"
+class="section level2">
+<h2><strong>Problema 3</strong> Eficiencia de maquinaria en una fábrica
+textil:</h2>
+<p>Se están evaluando tres máquinas diferentes para tejer telas en una
+fábrica textil. Cada máquina tiene un diseño y tecnología diferente, y
+se espera que afecte la eficiencia y calidad del tejido. Se han
+recopilado datos de producción por hora durante 25 horas para cada
+máquina.</p>
+<pre class="r"><code>Maquina1 = c(50, 55, 48, 52, 60, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60)
+Maquina2 = c(45, 50, 52, 47, 55, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55)
+Maquina3 = c(55, 60, 58, 62, 50, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50)</code></pre>
+<p>¿Qué máquina muestra la mayor eficiencia en términos de producción de
+telas? De acuerdo a los resultados que decisión se puede derivar de
+ellos?.</p>
+<p><br/><br/><br/></p>
+</div>
+<div id="problema-4-desempeño-de-estudiantes-en-un-curso-de-ingeniería"
+class="section level2">
+<h2><strong>Problema 4</strong> Desempeño de estudiantes en un curso de
+ingeniería:</h2>
+<p>Se desea evaluar el desempeño de tres grupos de estudiantes en un
+curso de ingeniería. Cada grupo ha seguido un método de estudio
+diferente y se han registrado las calificaciones finales obtenidas por
+cada grupo en un examen.</p>
+<pre class="r"><code>Grupo1 = c(70, 75, 78, 72, 80, 75, 78, 72, 80, 70, 75, 78, 72, 80, 70, 75, 78, 72, 80, 70)
+Grupo2 = c(65, 70, 72, 67, 75, 70, 72, 67, 75, 65, 70, 72, 67, 75, 65, 70, 72, 67, 75, 65)
+Grupo3 =  c(75, 78, 82, 76, 80, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75)</code></pre>
+<p>¿Cuál grupo de estudiantes muestra el mejor desempeño en términos de
+calificaciones en el Estadística?</p>
+<p><br/><br/><br/></p>
+</div>
+<div id="problema-5-eficiencia-de-producción-en-una-fábrica-de-muebles"
+class="section level2">
+<h2><strong>Problema 5</strong> Eficiencia de producción en una fábrica
+de muebles:</h2>
+<p>Se están evaluando tres métodos diferentes para la producción de
+muebles en una fábrica. Cada método implica un proceso de producción
+diferente, y se espera que afecte la eficiencia y la calidad de los
+muebles. Se han recopilado datos de producción semanal durante 25
+semanas para cada método.</p>
+<pre class="r"><code>Metodo1 = c(200, 210, 195, 220, 230, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200)
+Metodo2 = c(180, 190, 205, 195, 200, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180)
+Metodo3 = c(220, 230, 225, 210, 240, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220)</code></pre>
+<p>¿Qué método de producción muestra la mayor eficiencia? Qué
+recomendació se podría formular a partir de los resultados obtenidos?
+Qué supuestos se deben tener en cuenta?</p>
+</div>
 
 
 
@@ -505,11 +582,6 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
-});
-</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

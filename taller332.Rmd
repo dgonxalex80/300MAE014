@@ -1,0 +1,117 @@
+---
+title: <span style="color:#034a94">**Taller 332**</span>
+subtitle: " "
+author: "dgonzalez80"
+date: ""
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA)
+library(psych)
+library(summarytools)
+
+# install.packages("devtools")
+#devtools::install_github("dgonxalex80/paquete014")
+#library(paquete014)
+library(TeachingSampling)
+data("BigLucy")
+# colores
+c0= "#F7AA00"
+c1= "#235784"
+c2= "#40A8C4"
+c3= "#EEF6F7"
+
+c4= "#11224D"
+c5= "#5B84C4"
+
+
+```
+
+<br/><br/><br/>
+
+## **Problema 1** Eficiencia de producción en una planta de fabricación de productos electrónicos: 
+Se están evaluando tres métodos diferentes para la producción de productos electrónicos en una planta de fabricación. Cada método implica un proceso de producción diferente, y se espera que afecte la eficiencia y la calidad de los productos electrónicos. Se han recopilado datos de producción diaria durante 30 días para cada método.
+
+```{r}
+Metodo1 =c(500, 520, 480, 530, 550, 520, 480, 530, 550, 500, 520, 480, 530, 550, 500, 520, 480, 530, 550, 500)
+Metodo2 = c(480, 500, 510, 490, 520, 500, 510, 490, 520, 480, 500, 510, 490, 520, 480, 500, 510, 490, 520, 480)
+Metodo3 = c(520, 550, 540, 530, 560, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520)
+```
+
+¿Qué método de producción muestra la mayor eficiencia en términos de producción de productos electrónicos? Qué recomendación se podría realizar a partir de los resultados obtenidos?.
+
+
+<br/><br/><br/>
+
+## **Problema 2**	Producción de paneles solares en una planta de energía renovable: 
+
+Se están evaluando tres métodos de producción para fabricar paneles solares en una planta de energía renovable. Cada método implica un proceso de fabricación diferente, y se espera que afecte la eficiencia y la calidad de los paneles solares. Se han recopilado datos de producción por día durante 30 días para cada método.
+
+```{r}
+Metodo1 = c(100, 105, 98, 110, 115, 105, 98, 110, 115, 100, 105, 98, 110, 115, 100, 105, 98, 
+            110, 115, 100, 105, 98, 110, 115)
+Metodo2 = c(95, 100, 102, 97, 105, 100, 102, 97, 105, 95, 100, 102, 97, 105, 95, 100, 102, 97, 
+            105, 95, 100, 102, 97, 105)
+Metodo3 = c(110, 115, 112, 108, 120, 115, 112, 108, 120, 110, 115, 112, 108, 120, 110, 115, 112, 
+            108, 120, 110, 115, 112, 108, 120)
+```
+
+
+Basándonos en los resultados de la prueba ANOVA, decidiremos si se debe implementar un nuevo método de producción en toda la planta de energía renovable. ¿Es el método  3 el que eficencia mayor nivel de  eficiencia en términos de producción de paneles solares? 
+
+<br/><br/><br/>
+
+## **Problema 3**  Eficiencia de maquinaria en una fábrica textil: 
+
+Se están evaluando tres máquinas diferentes para tejer telas en una fábrica textil. Cada máquina tiene un diseño y tecnología diferente, y se espera que afecte la eficiencia y calidad del tejido. Se han recopilado datos de producción por hora durante 25 horas para cada máquina.
+
+```{r}
+Maquina1 = c(50, 55, 48, 52, 60, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60)
+Maquina2 = c(45, 50, 52, 47, 55, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55)
+Maquina3 = c(55, 60, 58, 62, 50, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50)
+```
+
+¿Qué máquina muestra la mayor eficiencia en términos de producción de telas? De acuerdo a los resultados que decisión se puede derivar de ellos?.
+
+
+<br/><br/><br/>
+
+## **Problema 4**	Desempeño de estudiantes en un curso de ingeniería: 
+
+Se desea evaluar el desempeño de tres grupos de estudiantes en un curso de ingeniería. Cada grupo ha seguido un método de estudio diferente y se han registrado las calificaciones finales obtenidas por cada grupo en un examen.
+
+```{r}
+Grupo1 = c(70, 75, 78, 72, 80, 75, 78, 72, 80, 70, 75, 78, 72, 80, 70, 75, 78, 72, 80, 70)
+Grupo2 = c(65, 70, 72, 67, 75, 70, 72, 67, 75, 65, 70, 72, 67, 75, 65, 70, 72, 67, 75, 65)
+Grupo3 =  c(75, 78, 82, 76, 80, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75)
+```
+
+¿Cuál grupo de estudiantes muestra el mejor desempeño en términos de calificaciones en el Estadística? 
+
+
+
+<br/><br/><br/>
+
+## **Problema 5** Eficiencia de producción en una fábrica de muebles: 
+
+Se están evaluando tres métodos diferentes para la producción de muebles en una fábrica. Cada método implica un proceso de producción diferente, y se espera que afecte la eficiencia y la calidad de los muebles. Se han recopilado datos de producción semanal durante 25 semanas para cada método.
+
+```{r}
+Metodo1 = c(200, 210, 195, 220, 230, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200)
+Metodo2 = c(180, 190, 205, 195, 200, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180)
+Metodo3 = c(220, 230, 225, 210, 240, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220)
+```
+
+¿Qué método de producción muestra la mayor eficiencia? Qué recomendació se podría formular a partir de los resultados obtenidos?
+Qué supuestos se deben tener en cuenta?
+
+
+
+
