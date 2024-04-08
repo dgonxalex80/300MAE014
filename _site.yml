@@ -90,18 +90,8 @@ navbar:
     - text: "Proyecto"
       menu:
         - text: "Guía proyecto"
-          href: recurso000.html
-    - text: "RStudio-R"
-      menu:
-        - text: "Introducción a R"
-          href: recurso000.html
-        - text: "Recursos 1"
-          href: recurso000.html
-        - text: "Recursos 2"
-          href: recurso000.html 
-        - text: "Recursos 3"
-          href: recurso000.html           
-          
+          href: proyecto.html
+
           
           
           
