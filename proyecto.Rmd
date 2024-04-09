@@ -49,7 +49,7 @@ Los estudiantes deberán realizar un proyecto que les permita poner en práctica
   
 ## <span style="color:#235784"> **Temática**</span> 
   
-En **equipos** de hasta tres estudiantes deberán desarrollar un trabajo que corresponda a un problema de  interés para el  grupo, que permita la aplicación de la Estadística en un tema específico. 
+En **equipos** de dos estudiantes deberán desarrollar un trabajo que corresponda a un problema de  interés para el  grupo, que permita la aplicación de la Estadística en un tema específico. 
 
 El producto de este trabajo deberá ser entregado en formato  **poster** $A1$ (Ancho: 594 mm, Alto: 841 mm) impreso y en formato pdf  y ser presentado por los integrantes del grupo, contando de un tiempo de 10 minutos para ello.
 
@@ -57,7 +57,7 @@ El producto de este trabajo deberá ser entregado en formato  **poster** $A1$ (A
   
 ## <span style="color:#235784"> **Requisitos**</span> 
   
-+ Equipos conformados por hastaq tres  estudiantes. No se permiten trabajos individuales.
++ Equipos conformados por dos estudiantes. No se permiten trabajos individuales.
 
 + Seleccionar un problema de interés propio para el grupo que  permita la aplicación de los conocimientos de estadística vistos en el curso. El tema propuesto deberá contar con el visto bueno del profesor.
 
