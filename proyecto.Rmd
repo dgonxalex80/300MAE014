@@ -128,6 +128,7 @@ El proyecto se puede basar en los datos contenidos en las plataformas de bases d
 
 * [**Datos abiertos Colombia**](https://www.datos.gov.co/)
 * [**kaggle**](https://www.kaggle.com/)
+* [**Bases datos Banco Mundial**](https://datos.bancomundial.org/)
 
 <br/><br/><br/><br/>
 
