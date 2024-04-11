@@ -135,7 +135,9 @@ Maquina2 = c(45, 50, 52, 47, 55, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52,
 Maquina3 = c(55, 60, 58, 62, 50, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50)
 
 data3 = data.frame(maquina = rep(c("Maquina1", "Maquina2", "Maquina3"),each = 24),
-                    produccion = c(Maquina1, Maquina2, Maquina3))                      
+                    produccion = c(Maquina1, Maquina2, Maquina3))    
+
+summary(data.frame(Maquina1, Maquina2, Maquina3))
                    
 ```
 
@@ -152,7 +154,7 @@ summary(anova3)
 <br/>
 
 ```{r}
-TukeyHSD(anova2)
+TukeyHSD(anova3)
 ```
 
 <br/>

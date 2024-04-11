@@ -586,7 +586,16 @@ Maquina2 = c(45, 50, 52, 47, 55, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52,
 Maquina3 = c(55, 60, 58, 62, 50, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50)
 
 data3 = data.frame(maquina = rep(c(&quot;Maquina1&quot;, &quot;Maquina2&quot;, &quot;Maquina3&quot;),each = 24),
-                    produccion = c(Maquina1, Maquina2, Maquina3))                      </code></pre>
+                    produccion = c(Maquina1, Maquina2, Maquina3))    
+
+summary(data.frame(Maquina1, Maquina2, Maquina3))</code></pre>
+<pre><code>    Maquina1        Maquina2     Maquina3    
+ Min.   :48.00   Min.   :45   Min.   :50.00  
+ 1st Qu.:50.00   1st Qu.:47   1st Qu.:55.00  
+ Median :52.00   Median :50   Median :58.00  
+ Mean   :53.12   Mean   :50   Mean   :57.08  
+ 3rd Qu.:55.00   3rd Qu.:52   3rd Qu.:60.00  
+ Max.   :60.00   Max.   :55   Max.   :62.00  </code></pre>
 <p><br/></p>
 <pre class="r"><code># Modelo ANOVA
 anova3 &lt;- aov(produccion ~ maquina, data =data3)
@@ -598,17 +607,17 @@ Residuals   69 1156.5   16.76
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p><br/></p>
-<pre class="r"><code>TukeyHSD(anova2)</code></pre>
+<pre class="r"><code>TukeyHSD(anova3)</code></pre>
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level
 
-Fit: aov(formula = produccion ~ metodo, data = data2)
+Fit: aov(formula = produccion ~ maquina, data = data3)
 
-$metodo
-                     diff       lwr       upr     p adj
-Metodo2-Metodo1 -5.833333 -9.239134 -2.427533 0.0003211
-Metodo3-Metodo1  7.291667  3.885866 10.697467 0.0000076
-Metodo3-Metodo2 13.125000  9.719199 16.530801 0.0000000</code></pre>
+$maquina
+                       diff       lwr        upr     p adj
+Maquina2-Maquina1 -3.125000 -5.955818 -0.2941823 0.0270285
+Maquina3-Maquina1  3.958333  1.127516  6.7891510 0.0037196
+Maquina3-Maquina2  7.083333  4.252516  9.9141510 0.0000002</code></pre>
 <p><br/></p>
 <p>¿Qué máquina muestra la mayor eficiencia en términos de producción de
 telas? De acuerdo a los resultados que decisión se puede derivar de
