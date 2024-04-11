@@ -170,6 +170,27 @@ Se desea evaluar el desempeño de tres grupos de estudiantes en un curso de inge
 Grupo1 = c(70, 75, 78, 72, 80, 75, 78, 72, 80, 70, 75, 78, 72, 80, 70, 75, 78, 72, 80, 70)
 Grupo2 = c(65, 70, 72, 67, 75, 70, 72, 67, 75, 65, 70, 72, 67, 75, 65, 70, 72, 67, 75, 65)
 Grupo3 =  c(75, 78, 82, 76, 80, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75)
+
+
+summary(data.frame(Grupo1, Grupo2, Grupo3))
+```
+
+<br/>
+
+```{r}
+data4 = data.frame(grupo = rep(c("Grupo1", "Grupo2", "Grupo3"),each = 20),
+                   evaluacion = c(Grupo1, Grupo2, Grupo3))
+
+# Modelo ANOVA
+anova4 <- aov(evaluacion ~ grupo, data =data4)
+# Resumen del modelo
+summary(anova4)
+```
+
+<br/>
+
+```{r}
+TukeyHSD(anova4)
 ```
 
 ¿Cuál grupo de estudiantes muestra el mejor desempeño en términos de calificaciones en el Estadística? 
@@ -188,6 +209,26 @@ Se están evaluando tres métodos diferentes para la producción de muebles en u
 Metodo1 = c(200, 210, 195, 220, 230, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200)
 Metodo2 = c(180, 190, 205, 195, 200, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180)
 Metodo3 = c(220, 230, 225, 210, 240, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220)
+
+summary(data.frame(Metodo1,Metodo2,Metodo3))
+```
+
+<br/>
+
+```{r}
+data5 = data.frame(metodo = rep(c("Metodo1", "Metodo2", "Metodo3"),each = 20),
+                   produccion = c(Metodo1,Metodo2,Metodo3))
+
+# Modelo ANOVA
+anova5 <- aov(produccion ~ metodo, data =data5)
+# Resumen del modelo
+summary(anova5)
+```
+
+<br/>
+
+```{r}
+TukeyHSD(anova5)
 ```
 
 ¿Qué método de producción muestra la mayor eficiencia? Qué recomendació se podría formular a partir de los resultados obtenidos?

@@ -613,7 +613,42 @@ diferente y se han registrado las calificaciones finales obtenidas por
 cada grupo en un examen.</p>
 <pre class="r"><code>Grupo1 = c(70, 75, 78, 72, 80, 75, 78, 72, 80, 70, 75, 78, 72, 80, 70, 75, 78, 72, 80, 70)
 Grupo2 = c(65, 70, 72, 67, 75, 70, 72, 67, 75, 65, 70, 72, 67, 75, 65, 70, 72, 67, 75, 65)
-Grupo3 =  c(75, 78, 82, 76, 80, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75)</code></pre>
+Grupo3 =  c(75, 78, 82, 76, 80, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75)
+
+
+summary(data.frame(Grupo1, Grupo2, Grupo3))</code></pre>
+<pre><code>     Grupo1       Grupo2         Grupo3    
+ Min.   :70   Min.   :65.0   Min.   :75.0  
+ 1st Qu.:72   1st Qu.:67.0   1st Qu.:76.0  
+ Median :75   Median :70.0   Median :78.0  
+ Mean   :75   Mean   :69.8   Mean   :78.2  
+ 3rd Qu.:78   3rd Qu.:72.0   3rd Qu.:80.0  
+ Max.   :80   Max.   :75.0   Max.   :82.0  </code></pre>
+<p><br/></p>
+<pre class="r"><code>data4 = data.frame(grupo = rep(c(&quot;Grupo1&quot;, &quot;Grupo2&quot;, &quot;Grupo3&quot;),each = 20),
+                   evaluacion = c(Grupo1, Grupo2, Grupo3))
+
+# Modelo ANOVA
+anova4 &lt;- aov(evaluacion ~ grupo, data =data4)
+# Resumen del modelo
+summary(anova4)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+grupo        2  718.9   359.5   31.31 6.68e-10 ***
+Residuals   57  654.4    11.5                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br/></p>
+<pre class="r"><code>TukeyHSD(anova4)</code></pre>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = evaluacion ~ grupo, data = data4)
+
+$grupo
+              diff        lwr      upr     p adj
+Grupo2-Grupo1 -5.2 -7.7784298 -2.62157 0.0000290
+Grupo3-Grupo1  3.2  0.6215702  5.77843 0.0114042
+Grupo3-Grupo2  8.4  5.8215702 10.97843 0.0000000</code></pre>
 <p>¿Cuál grupo de estudiantes muestra el mejor desempeño en términos de
 calificaciones en el Estadística?</p>
 <p><br/><br/><br/></p>
@@ -630,7 +665,41 @@ semanas para cada método.</p>
 <p><br/></p>
 <pre class="r"><code>Metodo1 = c(200, 210, 195, 220, 230, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200)
 Metodo2 = c(180, 190, 205, 195, 200, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180)
-Metodo3 = c(220, 230, 225, 210, 240, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220)</code></pre>
+Metodo3 = c(220, 230, 225, 210, 240, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220)
+
+summary(data.frame(Metodo1,Metodo2,Metodo3))</code></pre>
+<pre><code>    Metodo1       Metodo2       Metodo3   
+ Min.   :195   Min.   :180   Min.   :210  
+ 1st Qu.:200   1st Qu.:190   1st Qu.:220  
+ Median :210   Median :195   Median :225  
+ Mean   :211   Mean   :194   Mean   :225  
+ 3rd Qu.:220   3rd Qu.:200   3rd Qu.:230  
+ Max.   :230   Max.   :205   Max.   :240  </code></pre>
+<p><br/></p>
+<pre class="r"><code>data5 = data.frame(metodo = rep(c(&quot;Metodo1&quot;, &quot;Metodo2&quot;, &quot;Metodo3&quot;),each = 20),
+                   produccion = c(Metodo1,Metodo2,Metodo3))
+
+# Modelo ANOVA
+anova5 &lt;- aov(produccion ~ metodo, data =data5)
+# Resumen del modelo
+summary(anova5)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+metodo       2   9640    4820   40.64 1.07e-11 ***
+Residuals   57   6760     119                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br/></p>
+<pre class="r"><code>TukeyHSD(anova5)</code></pre>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = produccion ~ metodo, data = data5)
+
+$metodo
+                diff        lwr       upr     p adj
+Metodo2-Metodo1  -17 -25.287185 -8.712815 0.0000215
+Metodo3-Metodo1   14   5.712815 22.287185 0.0004316
+Metodo3-Metodo2   31  22.712815 39.287185 0.0000000</code></pre>
 <p>¿Qué método de producción muestra la mayor eficiencia? Qué
 recomendació se podría formular a partir de los resultados obtenidos?
 Qué supuestos se deben tener en cuenta?</p>
