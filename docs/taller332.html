@@ -438,6 +438,15 @@ $(document).ready(function () {
 </div>
 
 
+<p><br/><br/></p>
+<p>Para cada uno de los siguientes problemas realice:</p>
+<ul>
+<li>un bosquejo gráfico de los datos</li>
+<li>plantee las hipótesis necesarias</li>
+<li>enuncie los supuestos requeridos</li>
+<li>con los resultados obtenidos concluya y realice por lo menos una
+recomendación</li>
+</ul>
 <p><br/><br/><br/></p>
 <div
 id="problema-1-eficiencia-de-producción-en-una-planta-de-fabricación-de-productos-electrónicos"
@@ -451,7 +460,42 @@ y la calidad de los productos electrónicos. Se han recopilado datos de
 producción diaria durante 30 días para cada método.</p>
 <pre class="r"><code>Metodo1 =c(500, 520, 480, 530, 550, 520, 480, 530, 550, 500, 520, 480, 530, 550, 500, 520, 480, 530, 550, 500)
 Metodo2 = c(480, 500, 510, 490, 520, 500, 510, 490, 520, 480, 500, 510, 490, 520, 480, 500, 510, 490, 520, 480)
-Metodo3 = c(520, 550, 540, 530, 560, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520)</code></pre>
+Metodo3 = c(520, 550, 540, 530, 560, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520)
+
+summary(data.frame(Metodo1,Metodo2,Metodo3))</code></pre>
+<pre><code>    Metodo1       Metodo2       Metodo3   
+ Min.   :480   Min.   :480   Min.   :520  
+ 1st Qu.:500   1st Qu.:490   1st Qu.:530  
+ Median :520   Median :500   Median :540  
+ Mean   :516   Mean   :500   Mean   :540  
+ 3rd Qu.:530   3rd Qu.:510   3rd Qu.:550  
+ Max.   :550   Max.   :520   Max.   :560  </code></pre>
+<p><br/></p>
+<pre class="r"><code>data1 = data.frame(metodo = rep(c(&quot;Metodo1&quot;, &quot;Metodo2&quot;, &quot;Metodo3&quot;),each = 20),
+                   produccion = c(Metodo1,Metodo2,Metodo3))
+
+# Modelo ANOVA
+anova1 &lt;- aov(produccion ~ metodo, data =data1)
+# Resumen del modelo
+summary(anova1)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+metodo       2  16213    8107   23.48 3.65e-08 ***
+Residuals   57  19680     345                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br/></p>
+<pre class="r"><code>TukeyHSD(anova1)</code></pre>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = produccion ~ metodo, data = data1)
+
+$metodo
+                diff        lwr       upr     p adj
+Metodo2-Metodo1  -16 -30.139896 -1.860104 0.0229661
+Metodo3-Metodo1   24   9.860104 38.139896 0.0004052
+Metodo3-Metodo2   40  25.860104 54.139896 0.0000000</code></pre>
+<p><br/></p>
 <p>¿Qué método de producción muestra la mayor eficiencia en términos de
 producción de productos electrónicos? Qué recomendación se podría
 realizar a partir de los resultados obtenidos?.</p>
@@ -472,7 +516,43 @@ por día durante 30 días para cada método.</p>
 Metodo2 = c(95, 100, 102, 97, 105, 100, 102, 97, 105, 95, 100, 102, 97, 105, 95, 100, 102, 97, 
             105, 95, 100, 102, 97, 105)
 Metodo3 = c(110, 115, 112, 108, 120, 115, 112, 108, 120, 110, 115, 112, 108, 120, 110, 115, 112, 
-            108, 120, 110, 115, 112, 108, 120)</code></pre>
+            108, 120, 110, 115, 112, 108, 120)
+
+summary(data.frame(Metodo1,Metodo2,Metodo3))</code></pre>
+<pre><code>    Metodo1         Metodo2       Metodo3     
+ Min.   : 98.0   Min.   : 95   Min.   :108.0  
+ 1st Qu.:100.0   1st Qu.: 97   1st Qu.:110.0  
+ Median :105.0   Median :100   Median :112.0  
+ Mean   :105.8   Mean   :100   Mean   :113.1  
+ 3rd Qu.:110.0   3rd Qu.:102   3rd Qu.:115.0  
+ Max.   :115.0   Max.   :105   Max.   :120.0  </code></pre>
+<p><br/></p>
+<pre class="r"><code>data2 = data.frame(metodo = rep(c(&quot;Metodo1&quot;, &quot;Metodo2&quot;, &quot;Metodo3&quot;),each = 24),
+                   produccion = c(Metodo1,Metodo2,Metodo3))
+
+
+# Modelo ANOVA
+anova2 &lt;- aov(produccion ~ metodo, data =data2)
+# Resumen del modelo
+summary(anova2)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+metodo       2   2076  1037.8   42.78 8.25e-13 ***
+Residuals   69   1674    24.3                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br/></p>
+<pre class="r"><code>TukeyHSD(anova2)</code></pre>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = produccion ~ metodo, data = data2)
+
+$metodo
+                     diff       lwr       upr     p adj
+Metodo2-Metodo1 -5.833333 -9.239134 -2.427533 0.0003211
+Metodo3-Metodo1  7.291667  3.885866 10.697467 0.0000076
+Metodo3-Metodo2 13.125000  9.719199 16.530801 0.0000000</code></pre>
+<p><br/></p>
 <p>Basándonos en los resultados de la prueba ANOVA, decidiremos si se
 debe implementar un nuevo método de producción en toda la planta de
 energía renovable. ¿Es el método 3 el que eficencia mayor nivel de
@@ -486,11 +566,38 @@ textil:</h2>
 <p>Se están evaluando tres máquinas diferentes para tejer telas en una
 fábrica textil. Cada máquina tiene un diseño y tecnología diferente, y
 se espera que afecte la eficiencia y calidad del tejido. Se han
-recopilado datos de producción por hora durante 25 horas para cada
+recopilado datos de producción por hora durante 24 horas para cada
 máquina.</p>
+<p><br/></p>
 <pre class="r"><code>Maquina1 = c(50, 55, 48, 52, 60, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60)
 Maquina2 = c(45, 50, 52, 47, 55, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55)
-Maquina3 = c(55, 60, 58, 62, 50, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50)</code></pre>
+Maquina3 = c(55, 60, 58, 62, 50, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50)
+
+data3 = data.frame(maquina = rep(c(&quot;Maquina1&quot;, &quot;Maquina2&quot;, &quot;Maquina3&quot;),each = 24),
+                    produccion = c(Maquina1, Maquina2, Maquina3))                      </code></pre>
+<p><br/></p>
+<pre class="r"><code># Modelo ANOVA
+anova3 &lt;- aov(produccion ~ maquina, data =data3)
+# Resumen del modelo
+summary(anova3)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+maquina      2  604.9  302.43   18.04 4.97e-07 ***
+Residuals   69 1156.5   16.76                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br/></p>
+<pre class="r"><code>TukeyHSD(anova2)</code></pre>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = produccion ~ metodo, data = data2)
+
+$metodo
+                     diff       lwr       upr     p adj
+Metodo2-Metodo1 -5.833333 -9.239134 -2.427533 0.0003211
+Metodo3-Metodo1  7.291667  3.885866 10.697467 0.0000076
+Metodo3-Metodo2 13.125000  9.719199 16.530801 0.0000000</code></pre>
+<p><br/></p>
 <p>¿Qué máquina muestra la mayor eficiencia en términos de producción de
 telas? De acuerdo a los resultados que decisión se puede derivar de
 ellos?.</p>
@@ -520,12 +627,14 @@ muebles en una fábrica. Cada método implica un proceso de producción
 diferente, y se espera que afecte la eficiencia y la calidad de los
 muebles. Se han recopilado datos de producción semanal durante 25
 semanas para cada método.</p>
+<p><br/></p>
 <pre class="r"><code>Metodo1 = c(200, 210, 195, 220, 230, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200)
 Metodo2 = c(180, 190, 205, 195, 200, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180)
 Metodo3 = c(220, 230, 225, 210, 240, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220, 230, 225, 210, 240, 220)</code></pre>
 <p>¿Qué método de producción muestra la mayor eficiencia? Qué
 recomendació se podría formular a partir de los resultados obtenidos?
 Qué supuestos se deben tener en cuenta?</p>
+<p><br/><br/></p>
 </div>
 
 

@@ -34,6 +34,15 @@ c5= "#5B84C4"
 
 ```
 
+<br/><br/>
+
+Para cada uno de los siguientes problemas realice:
+
+* un bosquejo gráfico de los datos
+* plantee las hipótesis necesarias
+* enuncie los supuestos requeridos
+* con los resultados obtenidos concluya y realice por lo menos una recomendación 
+
 <br/><br/><br/>
 
 ## **Problema 1** Eficiencia de producción en una planta de fabricación de productos electrónicos: 
@@ -43,7 +52,30 @@ Se están evaluando tres métodos diferentes para la producción de productos el
 Metodo1 =c(500, 520, 480, 530, 550, 520, 480, 530, 550, 500, 520, 480, 530, 550, 500, 520, 480, 530, 550, 500)
 Metodo2 = c(480, 500, 510, 490, 520, 500, 510, 490, 520, 480, 500, 510, 490, 520, 480, 500, 510, 490, 520, 480)
 Metodo3 = c(520, 550, 540, 530, 560, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520, 550, 540, 530, 560, 520)
+
+summary(data.frame(Metodo1,Metodo2,Metodo3))
 ```
+
+<br/>
+
+```{r}
+data1 = data.frame(metodo = rep(c("Metodo1", "Metodo2", "Metodo3"),each = 20),
+                   produccion = c(Metodo1,Metodo2,Metodo3))
+
+# Modelo ANOVA
+anova1 <- aov(produccion ~ metodo, data =data1)
+# Resumen del modelo
+summary(anova1)
+```
+
+<br/>
+
+```{r}
+TukeyHSD(anova1)
+```
+
+
+<br/>
 
 ¿Qué método de producción muestra la mayor eficiencia en términos de producción de productos electrónicos? Qué recomendación se podría realizar a partir de los resultados obtenidos?.
 
@@ -61,8 +93,30 @@ Metodo2 = c(95, 100, 102, 97, 105, 100, 102, 97, 105, 95, 100, 102, 97, 105, 95,
             105, 95, 100, 102, 97, 105)
 Metodo3 = c(110, 115, 112, 108, 120, 115, 112, 108, 120, 110, 115, 112, 108, 120, 110, 115, 112, 
             108, 120, 110, 115, 112, 108, 120)
+
+summary(data.frame(Metodo1,Metodo2,Metodo3))
 ```
 
+<br/>
+
+```{r}
+data2 = data.frame(metodo = rep(c("Metodo1", "Metodo2", "Metodo3"),each = 24),
+                   produccion = c(Metodo1,Metodo2,Metodo3))
+
+
+# Modelo ANOVA
+anova2 <- aov(produccion ~ metodo, data =data2)
+# Resumen del modelo
+summary(anova2)
+```
+
+<br/>
+
+```{r}
+TukeyHSD(anova2)
+```
+
+<br/>
 
 Basándonos en los resultados de la prueba ANOVA, decidiremos si se debe implementar un nuevo método de producción en toda la planta de energía renovable. ¿Es el método  3 el que eficencia mayor nivel de  eficiencia en términos de producción de paneles solares? 
 
@@ -70,15 +124,40 @@ Basándonos en los resultados de la prueba ANOVA, decidiremos si se debe impleme
 
 ## **Problema 3**  Eficiencia de maquinaria en una fábrica textil: 
 
-Se están evaluando tres máquinas diferentes para tejer telas en una fábrica textil. Cada máquina tiene un diseño y tecnología diferente, y se espera que afecte la eficiencia y calidad del tejido. Se han recopilado datos de producción por hora durante 25 horas para cada máquina.
+Se están evaluando tres máquinas diferentes para tejer telas en una fábrica textil. Cada máquina tiene un diseño y tecnología diferente, y se espera que afecte la eficiencia y calidad del tejido. Se han recopilado datos de producción por hora durante 24 horas para cada máquina.
+
+<br/>
 
 ```{r}
 Maquina1 = c(50, 55, 48, 52, 60, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60)
 Maquina2 = c(45, 50, 52, 47, 55, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55)
 Maquina3 = c(55, 60, 58, 62, 50, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50)
+
+data3 = data.frame(maquina = rep(c("Maquina1", "Maquina2", "Maquina3"),each = 24),
+                    produccion = c(Maquina1, Maquina2, Maquina3))                      
+                   
 ```
 
+<br/>
+
+```{r}
+
+# Modelo ANOVA
+anova3 <- aov(produccion ~ maquina, data =data3)
+# Resumen del modelo
+summary(anova3)
+```
+
+<br/>
+
+```{r}
+TukeyHSD(anova2)
+```
+
+<br/>
+
 ¿Qué máquina muestra la mayor eficiencia en términos de producción de telas? De acuerdo a los resultados que decisión se puede derivar de ellos?.
+
 
 
 <br/><br/><br/>
@@ -103,6 +182,8 @@ Grupo3 =  c(75, 78, 82, 76, 80, 78, 82, 76, 80, 75, 78, 82, 76, 80, 75, 78, 82, 
 
 Se están evaluando tres métodos diferentes para la producción de muebles en una fábrica. Cada método implica un proceso de producción diferente, y se espera que afecte la eficiencia y la calidad de los muebles. Se han recopilado datos de producción semanal durante 25 semanas para cada método.
 
+<br/>
+
 ```{r}
 Metodo1 = c(200, 210, 195, 220, 230, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200, 210, 195, 220, 230, 200)
 Metodo2 = c(180, 190, 205, 195, 200, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180, 190, 205, 195, 200, 180)
@@ -113,5 +194,5 @@ Metodo3 = c(220, 230, 225, 210, 240, 230, 225, 210, 240, 220, 230, 225, 210, 240
 Qué supuestos se deben tener en cuenta?
 
 
-
+<br/><br/>
 
