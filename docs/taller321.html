@@ -708,6 +708,18 @@ ggplot(llantas, aes(x = marca, y = rendimiento, fill = marca)) +
 respuesta. Suponga que la distancia recorrida por un neumático se
 distribuye aproximadamente normal y un <span
 class="math inline">\(\alpha\)</span> = 0,05.</p>
+<pre class="r"><code>t.test(llantas$rendimiento  ~ llantas$marca)</code></pre>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  llantas$rendimiento by llantas$marca
+t = -2.6721, df = 18.506, p-value = 0.0153
+alternative hypothesis: true difference in means between group FB and group KT is not equal to 0
+95 percent confidence interval:
+ -8.804570 -1.062096
+sample estimates:
+mean in group FB mean in group KT 
+        37.20833         42.14167 </code></pre>
 <p><br/><br/><br/></p>
 </div>
 <div id="section-4" class="section level3">

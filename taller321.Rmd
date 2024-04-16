@@ -147,6 +147,10 @@ ggplot(llantas, aes(x = marca, y = rendimiento, fill = marca)) +
 
 Cuál marca de neumáticos recomendaría comprar. Justifique su respuesta. Suponga que la distancia recorrida por un neumático se distribuye aproximadamente normal y un $\alpha$ = 0,05.
 
+```{r}
+t.test(llantas$rendimiento  ~ llantas$marca)
+```
+
 
 <br/><br/><br/>
 
