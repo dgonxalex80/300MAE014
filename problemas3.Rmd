@@ -16,7 +16,7 @@ En un proceso de fabricación de tarjetas electrónicas, se afirma que el tiempo
 
 #### Problema 2
 
-Se está evaluando la resistencia a la tracción de dos materiales diferentes para uso en la construcción de puentes. Se toman muestras de ambos materiales y se encuentran los siguientes resultados para la resistencia media: Material A tiene una resistencia promedio de 450 MPa con una desviación estándar de 30 MPa, mientras que el material B tiene una resistencia promedio de 440 MPa con una desviación estándar de 25 MPa. ¿Hay suficiente evidencia para concluir que uno de los materiales es superior al otro a un nivel de significancia del 1%?
+Se está evaluando la resistencia a la tracción de dos materiales diferentes para uso en la construcción de puentes. Se toman muestras de tamaño `n=20` de ambos materiales y se encuentran los siguientes resultados para la resistencia media: Material A tiene una resistencia promedio de 450 MPa con una desviación estándar de 30 MPa, mientras que el material B tiene una resistencia promedio de 440 MPa con una desviación estándar de 25 MPa. ¿Hay suficiente evidencia para concluir que uno de los materiales es superior al otro a un nivel de significancia del 1%?
 
 <br/><br/><br/>
 
@@ -42,13 +42,13 @@ Un fabricante de envases de vidrio afirma que la variabilidad en el peso de sus 
 
 #### Problema 6
 
-Se quiere determinar si existe una diferencia significativa en la resistencia a la compresión entre dos tipos de concreto. Se toman muestras de ambos tipos y se encuentran los siguientes resultados para la resistencia media: Concreto A tiene una resistencia promedio de 35 MPa con una desviación estándar de 3 MPa, mientras que el concreto B tiene una resistencia promedio de 32 MPa con una desviación estándar de 2.5 MPa. ¿Hay suficiente evidencia para afirmar que existe una diferencia significativa en la resistencia a la compresión a un nivel de significancia del 5%?
+Se quiere determinar si existe una diferencia significativa en la resistencia a la compresión entre dos tipos de concreto. Se toman muestras de tamaño `n=30` de ambos tipos y se encuentran los siguientes resultados para la resistencia media: Concreto A tiene una resistencia promedio de 35 MPa con una desviación estándar de 3 MPa, mientras que el concreto B tiene una resistencia promedio de 32 MPa con una desviación estándar de 2.5 MPa. ¿Hay suficiente evidencia para afirmar que existe una diferencia significativa en la resistencia a la compresión a un nivel de significancia del 5%?
 
 <br/><br/><br/>
 
 #### Problema 7
 
-En un estudio sobre la efectividad de dos tratamientos para reducir la contaminación del agua, se observa que el tratamiento A logra reducir la contaminación en un promedio de 40% con una desviación estándar de 5%, mientras que el tratamiento B logra reducir la contaminación en un promedio de 35% con una desviación estándar de 4%. ¿Hay suficiente evidencia para concluir que uno de los tratamientos es más efectivo que el otro a un nivel de significancia del 1%?
+En un estudio sobre la efectividad de dos tratamientos para reducir la contaminación del agua, se toman muestras de tamaño `n=15` en ambos casos. Se observa que el tratamiento A logra reducir la contaminación en un promedio de 40% con una desviación estándar de 5%, mientras que el tratamiento B logra reducir la contaminación en un promedio de 35% con una desviación estándar de 4%. ¿Hay suficiente evidencia para concluir que uno de los tratamientos es más efectivo que el otro a un nivel de significancia del 1%?
 
 <br/><br/><br/>
 
