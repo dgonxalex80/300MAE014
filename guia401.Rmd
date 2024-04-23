@@ -41,7 +41,7 @@ Al finalizar la unidad el estudiante estará en capacidad de PROPONER soluciones
 
 ## **3. Duración**
 
-La presente  unidad será desarrollada durante la comprendida entre 8 y el 11 de noviembre. Ademas del material suministrado  contaran con el acompañamiento del profesor en dos sesiones (Miércoles y Viernes) . Debido al corto tiempo y del volumen de actividades esta unidad se presenta de menera informativa y por tanto no se realizarán actividades de entrega no formará parte de la evaluación final
+La presente  unidad será desarrollada durante la comprendida entre 22 y el 26 de abril. Ademas del material suministrado  contaran con el acompañamiento del profesor en dos sesiones (Martes y Jueves) . Debido al corto tiempo y del volumen de actividades esta unidad se presenta de menera informativa y por tanto no se realizarán actividades de entrega no formará parte de la evaluación final
 
 De manera voluntaria se exorta  a realizar la actividad planteada 
 
@@ -73,5 +73,6 @@ De manera voluntaria se exorta  a realizar la actividad planteada
 
 |                   |                                       |
 |:------------------|:--------------------------------------|
-| Caso aplicado     |   enlace de RPubl                     |
-|                   |                                       |
+| Caso aplicado     | enlace de RPubl                       |
+|Fecha              | abril 26                              |
+|Hora:              | 18:00                                 |
