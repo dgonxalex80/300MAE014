@@ -71,7 +71,7 @@ gen.corr.data<- function(rho,n){
   return(result)
 }
 par(mfrow = c(1, 2),
-    mar = c(1, 1, 1, 1) + 0.1,
+    mar = c(1, 1, 2, 1) + 0.1,
                 cex.lab=.5,  # tamaño de etiqueta ejes
                 cex.axis=.5, # tamaño escalas de los ejes 
                 cex.main=1.5, # tamaño del titulo
@@ -460,7 +460,7 @@ Los errores se distribuyen normal $u\sim$ $N(0,\sigma^{2})$}
 |                                                           |
 |:----------------------------------------------------------|
 |$Ho$ : $u \sim norm$                                       |
-|$Ha$ : $u no \sim  norm$                                   |
+|$Ha$ : $u \hspace{.5cm} \sim no \hspace{.2cm} norm$                                   |
 
 ```{r}
 shapiro.test(u)
