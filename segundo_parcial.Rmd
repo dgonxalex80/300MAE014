@@ -1,0 +1,211 @@
+---
+title: "**Segundo parcial**"
+subtitle: "Módulo 4"
+author: "dgonzalez"
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ <br/>
+
+<br/>
+
+### **SEGUNDO EXAMEN PARCIAL**
+
+<br/>
+
+Instrucciones: Apague y guarde su celular. Mientras dure la prueba no se podrá ausentarse del salón de clases ni prestar objetos. Concéntrese en la prueba y use la hoja cuadriculada entregada para realizar los precesos que justifique su respuesta. Marque el cuestionario como la hoja de respuestas. Cada punto tiene su valor porcentual descrito en su inicio.
+
+<br/><br/><br/>
+
+##### Nombre :
+
+Fecha: Abril 18 de 2024  <br/>
+
+<br/>
+
+Habilidades evaluadas: <br/>
+
+* Habilidad para aplicar conocimiento de estadística
+
+* Habilidad para comunicar efectivamente 
+
+<br/><br/><br/>
+
+#### **Punto 1** 
+
+Los jóvenes colombianos se han vuelto más consientes con respecto a la importancia de una buena nutrición acompañada de actividad deportiva para tener buena salud. Una asociación de médicos opina que quizás los jóvenes estén modificando sus dietas para para incluir menos carnes rojas y más frutas y verduras. 
+
+<br/>
+
+Para verificar esta teoría ,un grupo de estudiantes de la Javeriana Cali decide seleccionar registros nutricionales delos estudiantes (consignados en una encuesta realizada por VMU) de hace 10 años y comparar la cantidad promedio de carne de res consumida por año, con las cantidades consumidas por un número de jóvenes que serían entrevistados este año. De acuerdo con  la información actual se estima que el consumo de carne de res por año varia entre 0 y 104  libras por año. 
+
+<br/>
+
+* ¿Cuántos jóvenes deben seleccionar los investigadores de cada grupo si desean estimar la diferencia en el consumo anual promedio per cápita de carne de res correcta dentro  de 2 libras con un 98% de confianza?
+
+```{r}
+# estimación del tamaño de muestra para estimar una media
+e= 2 # error de muestreo
+z = qnorm(0.99) # confianza
+s = 104/4 # estimacion de la desviacion estandar 
+n= z^{2}*s^{2}/e^{2}
+cat(" n = ", round(n),  "estudiantes")
+
+```
+
+
+* Si además se desea estimar la proporción de jóvenes que son vegetarianos con un error de muestreo del 5%, ¿que tamaño debe tener la muestra?
+
+
+```{r}
+# estimación del tamaño de la muestra para la estimación de una proporción con varianza máxima
+# var[p] = 0.5*0.5 =0.25
+e =0.05
+z = qnorm(0.975)
+n= z^{2}*0.25/e^{2}
+cat(" n = ", round(n),  "estudiantes")
+```
+
+<br/><br/><br/>
+
+#### **Punto 2**
+
+
+Una muestra aleatoria de 90 adultos se clasifica de acuerdo al genero y el núumero de horas que dedica a trabajar en su computador personal durante una semana:
+
+```{r, echo=FALSE}
+library(knitr)
+library(kableExtra)
+
+# Datos
+datos <- matrix(c(29, 19, 15, 27), nrow = 2, byrow = TRUE)
+colnames(datos) <- c("Masculino", "Femenino")
+rownames(datos) <- c("más de 40 horas", "menos de 40 horas")
+
+# Crear tabla
+tabla <- kable(datos, align = "c", caption = "Horas diarias de uso de computador")
+
+# Estilizar tabla
+tabla <- tabla %>%
+  kable_styling(full_width = FALSE) %>%
+  add_header_above(c(" " = 1, "género" = 2))
+
+# Mostrar tabla
+tabla
+```
+
+
+Se podría afirmar que hay relación o no entre el tiempo dedicado al uso del computador y genero de la persona?. Justifique su respuesta.
+
+
+
+
+<br/><br/><br/>
+
+
+### **Problema 3** 
+
+Su ponga que una empresa desarrolla un curso de entrenamiento para sus empleados, formando dos grupos y aplicándoles dos métodos distintos de entrenamiento. El primer grupo lo componen 36 empleados que obtuvieron un puntaje promedio de 6 ( en escala de 0 a 10 puntos) y una desviación estándar de 4 puntos y el segundo grupo de 40 empleados cuyo puntaje promedio fue de 8.2 y una desviación de 4.3. Se puede afirmar que el método aplicado al segundo grupo es superior al aplicado al primero? 	Que supuestos debe de tener en cuenta? 
+
+
+<br/><br/><br/>
+
+#### **Punto 4** 
+
+
+La compañía de dulces Mars publica en su sitio web información relacionada con los porcentajes de los distintos colores de sus dulces M&M para la variedad de chocolate con leche.
+
+<br/><br/>
+
+Color contenido en la bolsa  
+
+|                            | café       | amarillo  | rojo    | azul     | naranja  | verde     |
+|:---------------------------|:----------:|:---------:|:-------:|:--------:|:---------|:---------:|
+|Porcentaje (\%)             | 13         | 14        | 13      | 24       | 20       | 16        |
+
+<br/><br/>
+
+Con el fin de validar los publicado por la compañia en su página web, se compra una bolsa de dulces y se cuentan las frecuencias de los colores contenidos, obteniendo los siguientes resultados: 70 duces cafés, 72 amarillos, 61 rojos, 118 azules, 108 naranjas y 85 verdes.  
+
+Se podria afirmar que los datos anteriores respaldan la información suministrada por la compañía en su sitio web? Sustente su respuesta.
+	
+
+
+<!-- Se están evaluando tres máquinas diferentes para tejer telas en una fábrica textil. Cada máquina tiene un diseño y tecnología diferente, y se espera que afecte la eficiencia y calidad del tejido. Se han recopilado datos de producción por hora durante 24 horas para cada máquina, con el fin de decidir cuál de ellas comprar para renovar un grupo de 10 máquinas ya obpsoletas. -->
+
+<!-- <br/> -->
+
+<!-- <pre> -->
+
+<!--  Maquina1            Maquina2         Maquina3     -->
+<!--  Min.   :48.00       Min.   :45       Min.   :50.00   -->
+<!--  1st Qu.:50.00       1st Qu.:47       1st Qu.:55.00   -->
+<!--  Median :52.00       Median :50       Median :58.00   -->
+<!--  Mean   :53.12       Mean   :50       Mean   :57.08   -->
+<!--  3rd Qu.:55.00       3rd Qu.:52       3rd Qu.:60.00   -->
+<!--  Max.   :60.00       Max.   :55       Max.   :62.00 -->
+<!--  n      : 24.00      n      :24.00    n      :24.00       -->
+<!-- </pre>  -->
+
+<!-- ```{r, echo=FALSE} -->
+<!--  Maquina1 = c(50, 55, 48, 52, 60, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60, 50, 55, 48, 52, 60) -->
+<!--  Maquina2 = c(45, 50, 52, 47, 55, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55, 45, 50, 52, 47, 55) -->
+<!--  Maquina3 = c(55, 60, 58, 62, 50, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50, 55, 60, 58, 62, 50) -->
+<!-- #  -->
+<!--  data3 = data.frame(maquina = rep(c("Maquina1", "Maquina2", "Maquina3"),each = 24), -->
+<!--                      produccion = c(Maquina1, Maquina2, Maquina3))     -->
+
+<!-- boxplot(data3$produccion ~ data3$maquina, las =1,  -->
+<!--         xlab = "Máquina", -->
+<!--         ylab = "producción por hora") -->
+<!-- grid() -->
+
+<!-- ``` -->
+
+<!-- <br/> -->
+
+<!-- <pre> -->
+<!-- ANOVA -->
+
+<!--               Df    Sum Sq    Mean Sq    F value   Pr(>F)     -->
+<!-- maquina             604.9               -->
+<!-- Residuals          1156.5                            -->
+<!-- --- -->
+<!-- Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 -->
+
+<!-- </pre> -->
+
+<!-- <br/> -->
+
+<!-- <pre> -->
+<!--   Tukey multiple comparisons of means -->
+<!--     95% family-wise confidence level -->
+
+<!-- Fit: aov(formula = produccion ~ maquina, data = data3) -->
+
+<!-- maquina -->
+<!--                       diff       lwr         upr         p adj -->
+<!-- Maquina2-Maquina1   -3.125000   -5.955818   -0.2941823   0.0270285 -->
+<!-- Maquina3-Maquina1    3.958333    1.127516    6.7891510   0.0037196 -->
+<!-- Maquina3-Maquina2    7.083333    4.252516    9.9141510   0.0000002 -->
+
+<!-- </pre> -->
+
+
+<!-- <br/> -->
+
+<!-- ¿Qué máquina muestra la mayor eficiencia en términos de producción de telas? De acuerdo a los resultados que decisión se puede derivar de ellos?. Justifique su respuesta. -->
+
+
+

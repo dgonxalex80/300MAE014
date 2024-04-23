@@ -1,0 +1,77 @@
+---
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/banner_guia.png")
+```
+
+<br/><br/>
+
+## **1. Introducción**
+
+Una de las aplicaciones mas importantes de la estadística corresponde a al modelo de regresión lineal. Esta técnica permite medir la relación que pueda existir entre una variable llamada variable respuesta  y un conjunto de variables independientes. Casos como la estimación de las ventas a partir de los gastos en publicidad, el consumo de un producto a partir de su precio, el precio de una casa a partir de sus características, la relación entre la resistencia a la compresión de un determinado concreto y la cantidad de uno de sus componentes,  entre otros
+
+El siguiente documento contiene los pasos que deberá realizar para  alcanzar el objetivo planteado
+
+<br/><br/>
+
+## **2. Objetivos de la unidad**
+
+Al finalizar la unidad el estudiante estará en capacidad de PROPONER soluciones mediante la CONSTRUCCIÓN, VALIDACIÓN DE SUPUESTOS e INTERPRETACIÓN de resultados obtenidos de modelos de regresión en situaciones reales que permitan la toma de decisiones informadas y la generación de políticas o conclusiones.
+
+<br/><br/>
+
+## **3. Duración**
+
+La presente  unidad será desarrollada durante la comprendida entre 8 y el 11 de noviembre. Ademas del material suministrado  contaran con el acompañamiento del profesor en dos sesiones (Miércoles y Viernes) . Debido al corto tiempo y del volumen de actividades esta unidad se presenta de menera informativa y por tanto no se realizarán actividades de entrega no formará parte de la evaluación final
+
+De manera voluntaria se exorta  a realizar la actividad planteada 
+
+<br/><br/>
+
+## **4. Cronograma de trabajo**
+
+
+|Actividad      | Descripción                    | 
+|:--------------|:-----------------------------  |
+|Actividad 401  | De manera individual construya un caso en contexto que permita la construcción de un modelo de regresión lineal, a partir de datos abiertos o bases de datos en kaggle
+|Trabajo individual |                            |
+|Recursos       | **Código 501**                 |
+
+
+
+
+
+<br/><br/>
+
+## **5. Criterios de evaluación**
+
++ Plantea el modelo correcto para dar solución a la situación planteada	+ Realiza los procesos de estimación y validación de los supuestos correspondiente al modelo de regresión 
++ Realiza de manera correcta la interpretación de los resultados obtenidos y plantea recomendaciones 
+
+<br/><br/>
+
+## **6. Entregables** 
+
+|                   |                                       |
+|:------------------|:--------------------------------------|
+| Caso aplicado     |                                       |
+|                   |                                       |

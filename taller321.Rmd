@@ -41,9 +41,9 @@ knitr::include_graphics("img/vegetales.png")
 
 Para verificar esta teoría ,un grupo de estudiantes de la Javeriana Cali decide seleccionar registros nutricionales delos estudiantes (consignados en una encuesta realizada por VMU) de hace 10 años y comparar la cantidad promedio de carne de res consumida por año, con las cantidades consumidas por un número de jóvenes que serían entrevistados este año. De acuerdo con  la información actual se estima que el consumo de carne de res por año varia entre 0 y 104  libras por año. 
 
-¿Cuántos jóvenes deben seleccionar los investigadores de cada grupo si desean estimar la diferencia en el consumo anual promedio per cápita de carne de res correcta dentro  de 5 libras con un 99% de confianza?
+* ¿Cuántos jóvenes deben seleccionar los investigadores de cada grupo si desean estimar la diferencia en el consumo anual promedio per cápita de carne de res correcta dentro  de 2 libras con un 98% de confianza?
 
-Si además se desea estimar la proporción de jóvenes que son vegetarianos con un error de muestreo del 5%, ¿que tamaño debe tener la muestra?
+* Si además se desea estimar la proporción de jóvenes que son vegetarianos con un error de muestreo del 5%, ¿que tamaño debe tener la muestra?
 
 <br/><br/><br/>
 

@@ -79,10 +79,19 @@ navbar:
           href: recurso333.html  
         - text: "Taller 332"  
           href: taller332.html  
+        - text: "----"  
+        - text: "Segundo parcial"
+          href: segundo_parcial.html          
     - text: "Módulo 4"
       menu:
         - text: "Módulo 4"
           href: modulo4.html
+        - text: "----"  
+        - text: "Guía de aprendizaje 4.1"
+          href: guia401.html
+        - text: "Regresión lineal simple"
+          href: recurso401.html   
+        - text: "----"           
     - text: "Módulo 5"
       menu:
         - text: "Módulo 5"
