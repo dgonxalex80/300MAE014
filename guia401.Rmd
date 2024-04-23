@@ -52,7 +52,7 @@ De manera voluntaria se exorta  a realizar la actividad planteada
 
 |Actividad      | Descripción                    | 
 |:--------------|:-----------------------------  |
-|Actividad 401  | De manera individual construya un caso en contexto que permita la construcción de un modelo de regresión lineal, a partir de datos abiertos o bases de datos en kaggle
+|Actividad 401  | De manera individual, construya un caso en un contexto de su elección que permita la construcción de un modelo de regresión lineal utilizando datos abiertos o bases de datos disponibles en Kaggle. El caso debe incluir la elaboración de la solución, que consiste en la selección y preparación de los datos, la estimación de los parámetros del modelo, la realización de las pruebas de hipótesis correspondientes, la interpretación de los coeficientes y una estimación por intervalos de confianza para la estimación de un valor específico. Presente de manera clara y detallada cada paso del proceso y concluya con una discusión sobre la validez y las limitaciones del modelo construido. En caso de requerir realice una transformación en los datos que mejore la calidad del modelo. |
 |Trabajo individual |                            |
 |Recursos       | **Código 501**                 |
 
@@ -73,5 +73,5 @@ De manera voluntaria se exorta  a realizar la actividad planteada
 
 |                   |                                       |
 |:------------------|:--------------------------------------|
-| Caso aplicado     |                                       |
+| Caso aplicado     |   enlace de RPubl                     |
 |                   |                                       |

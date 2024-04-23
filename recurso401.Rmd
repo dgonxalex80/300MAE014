@@ -43,7 +43,23 @@ Tomado de : https://es.wikipedia.org/wiki/Regresi%C3%B3n_lineal
 
 <br/><br/>
 
-En unidades anteriores se estudiaron relaciones entre dos variables aleatorias, las cuales se puede medir a través del coeficiente de correlación ($\rho$),  el cual puede presentar valores desde  -1  hasta 1 como se representa en las siguientes gráficas :
+### Ejemplos
+
+Los siguientes son ejemplos de relaciones que pueden ser modeladas a través de un modelo de regesión lineal
+
+|Contexto     |	Variable Dependiente	            |   Variables Independientes              |
+|:------------|:----------------------------------|:----------------------------------------|
+|Educación	  | Puntaje en un examen final	      | Horas de estudio, Calificación en exámenes previos, Asistencia a clases|
+|Salud        |	Presión arterial                  |	Edad, Peso, Nivel de actividad física |
+|Economía	    | Precio de una casa	              | Área construida, Número de habitaciones, Ubicación geográfica |
+|Marketing	  | Ventas de un producto	            | Precio del producto, Gastos en publicidad, precios de los susititos |
+|Agricultura	| Rendimiento de un cultivo	        | Cantidad de agua, Tipo de fertilizante, Temperatura |
+|Deportes     |	Velocidad de un corredor	        | Edad del corredor, Tiempo de entrenamiento, Consumo de nutrientes, Raza|
+|Ciencias Ambientales|	Concentración de contaminantes en el aire |	Nivel de tráfico, Actividad industrial, Condiciones meteorológicas|
+
+<br/><br/>
+
+Para iniciar retomaremos el concepto de correlacion entre dos variables aleatorias estudiado en la unidad anterior, el cual mide la relación lineal existente entre dos variables cuantitativas ($\rho$). Este coeficiente toma  valores desde  -1  hasta 1 como se representa en las siguientes gráficas :
 	
 
 ```{r, echo=FALSE, fig.width=12}
