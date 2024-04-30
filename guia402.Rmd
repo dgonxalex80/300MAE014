@@ -53,7 +53,7 @@ De manera voluntaria se exorta  a realizar la actividad planteada
 
 |Actividad      | Descripción                    | 
 |:--------------|:-----------------------------  |
-|Actividad 402  | Plantear y resolver el Caso B&C.
+|Actividad 402  | Plantear y resolver el [Caso B&C](https://github.com/dgonxalex80/300MAE014/blob/main/pdf/Caso%20B%26C.pdf.) [base](https://github.com/dgonxalex80/300MAE014/blob/main/data/BienesyCasas1.xls)
 
 
 
