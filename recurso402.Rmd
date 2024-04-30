@@ -1,0 +1,142 @@
+---
+title: "**Regresión lineal simple**"
+subtitle: "Módulo 4"
+author: "dgonzalez"
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+<br/><br/>
+
+<br/><br/>
+
+# **Modelo de Regresión lineal múltiple**
+	
+En la regresión lineal múltiple, se busca modelar la relación entre una variable dependiente \( Y \) y dos o más variables independientes \( X_1, X_2, \ldots, X_p \) mediante una ecuación lineal. El modelo de regresión lineal múltiple se define de la siguiente manera:
+
+\[ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \ldots + \beta_p X_p + u \]
+
+Donde:
+
+- \( Y \) es la variable dependiente que queremos predecir.
+- \( X_1, X_2, \ldots, X_p \) son las variables independientes que influyen en \( Y \).
+- \( \beta_0 \) es la intersección o término independiente del modelo.
+- \( \beta_1, \beta_2, \ldots, \beta_p \) son los coeficientes de regresión que representan la relación entre las variables independientes y la variable dependiente.
+- \( u \) es el término de error, que representa la variabilidad de \( Y \) que no es explicada por las variables independientes en el modelo.
+
+El objetivo de la regresión lineal múltiple es encontrar los valores de los coeficientes \( \beta_0, \beta_1, \ldots, \beta_p \) que minimizan la suma de los cuadrados de los residuos (diferencias entre los valores observados de \( Y \) y los valores predichos por el modelo). Una vez estimados los coeficientes, el modelo puede utilizarse para predecir los valores de \( Y \) para nuevas observaciones de las variables independientes.	
+
+
+
+## **Supuestos del modelo**
+
+Los supuestos del modelo de regresión lineal múltiple son similares a los del modelo de regresión lineal simple, pero se extienden para abordar múltiples variables independientes. Estos supuestos son fundamentales para garantizar la validez de las inferencias realizadas a partir del modelo. Los principales supuestos son los siguientes:
+
+1. **Linealidad:** La relación entre las variables independientes y la variable dependiente es lineal. Esto significa que los cambios en la variable dependiente son proporcionales a los cambios en las variables independientes, manteniendo todas las demás variables constantes.
+
+2. **Homocedasticidad:** La varianza de los errores es constante en todos los niveles de las variables independientes. En otras palabras, los errores tienen una distribución constante a lo largo de toda la variable dependiente.
+
+3. **Independencia de los errores:** Los errores del modelo no están correlacionados entre sí. Esto significa que no hay patrones discernibles en los errores cuando se representan en función de las variables independientes.
+
+4. **Normalidad de los errores:** Los errores del modelo siguen una distribución normal. Esto es importante para realizar pruebas de hipótesis y construir intervalos de confianza para los coeficientes del modelo.
+
+5. **Independencia de las variables independientes:** Las variables independientes no deben estar altamente correlacionadas entre sí, ya que esto puede conducir a problemas de multicolinealidad que dificultan la interpretación de los coeficientes del modelo.
+
+Cumplir con estos supuestos es crucial para obtener estimaciones precisas y confiables de los coeficientes del modelo, así como para realizar inferencias válidas sobre la relación entre las variables. En caso de que alguno de los supuestos no se cumpla, se deben considerar técnicas alternativas o realizar ajustes al modelo.
+
+
+
+
+### Ejemplo 
+
+
+Una empresa desea estimar el ausentismo de sus empleados a su trabajo, medido como el numero de dias que un empleado falta a su trabajo durante un año.
+
+Para ello recogió la siguiente información
+
+```{r}
+library(paqueteDEG)
+data("ausentismo")
+head(ausentismo)
+```
+
+
+```{r}
+# install.packages("GGally")
+library(GGally)
+ggpairs(ausentismo[,2:6])
+```
+
+
+```{r}
+# Estimar el modelo de regresión lineal múltiple
+modelo1 <- lm(ausen ~ taller + sexo + edad + antg + sala, data = ausentismo)
+
+# Mostrar un resumen del modelo
+summary(modelo1)
+
+```
+
+```{r}
+# Estimar el modelo de regresión lineal múltiple
+modelo2 <- lm(ausen ~ sexo + antg + sala, data = ausentismo)
+
+# Mostrar un resumen del modelo
+summary(modelo2)
+
+```
+
+
+
+
+# Supuestos
+
+## Media de los errores igual a cero
+
+```{r}
+u= modelo2$residuals
+summary(u)
+```
+
+## Los errores se distribuyen normal
+
+```{r}
+shapiro.test(u)
+```
+
+
+## Los errores tienen varianza constante
+
+```{r}
+# install.packages("lmtest")
+library(lmtest)
+gqtest(modelo1)
+```
+
+## Los errores no estan correlacionados
+
+```{r}
+dwtest(modelo1)
+```
+
+
+
+
+

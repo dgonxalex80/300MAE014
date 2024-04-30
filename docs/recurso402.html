@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="dgonzalez" />
+
+
+<title>Regresión lineal simple</title>
+
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    300MAE014
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 0
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo0.html">Módulo 0</a>
+    </li>
+    <li>
+      <a href="recurso001.html">Metodología Estadística</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo1.html">Módulo 1</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia101.html">Guía de aprendizaje 1.1</a>
+    </li>
+    <li>
+      <a href="recurso100.html">Conceptos de inferencia estadística</a>
+    </li>
+    <li>
+      <a href="recurso111.html">Métodos de estimación propiedades</a>
+    </li>
+    <li>
+      <a href="Taller001.html">Taller 1</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia102.html">Guía de aprendizaje 1.2</a>
+    </li>
+    <li>
+      <a href="recurso121.html">Distribuciones muestales</a>
+    </li>
+    <li>
+      <a href="Taller002.html">Taller 2</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo2.html">Módulo 2</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia103.html">Guía de aprendizaje 2.1</a>
+    </li>
+    <li>
+      <a href="recurso131.html">Estimación una población</a>
+    </li>
+    <li>
+      <a href="recurso132.html">Estimación dos poblaciones</a>
+    </li>
+    <li>
+      <a href="Taller003.html">Taller 3</a>
+    </li>
+    <li>
+      <a href="Taller004.html">Taller 4</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 3
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo3.html">Módulo 3</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia301.html">Guía de aprendizaje 3.1</a>
+    </li>
+    <li>
+      <a href="recurso311.html">Conceptos básicos pruebas de hipótesis</a>
+    </li>
+    <li>
+      <a href="taller311.html">Taller 311</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia302.html">Guía de aprendizaje 3.2</a>
+    </li>
+    <li>
+      <a href="recurso321.html">Pruebas de hipótesis para dos poblaciones</a>
+    </li>
+    <li>
+      <a href="taller321.html">Taller 321</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia303.html">Guía de aprendizaje 3.3</a>
+    </li>
+    <li>
+      <a href="recurso331.html">Pruebas de hipótesis no paramétricas</a>
+    </li>
+    <li>
+      <a href="taller331.html">Taller 331</a>
+    </li>
+    <li>
+      <a href="problemas3.html">Problemas 331</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="recurso333.html">ANOVA</a>
+    </li>
+    <li>
+      <a href="taller332.html">Taller 332</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="segundo_parcial.html">Segundo parcial</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 4
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo4.html">Módulo 4</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia401.html">Guía de aprendizaje 4.1</a>
+    </li>
+    <li>
+      <a href="recurso401.html">Regresión lineal simple</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia402.html">Guía de aprendizaje 4.2</a>
+    </li>
+    <li>
+      <a href="recurso402.html">Regresión lineal múltiple</a>
+    </li>
+    <li class="divider"></li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 5
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo5.html">Módulo 5</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Proyecto
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="proyecto.html">Guía proyecto</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore"><strong>Regresión lineal
+simple</strong></h1>
+<h3 class="subtitle">Módulo 4</h3>
+<h4 class="author">dgonzalez</h4>
+
+</div>
+
+
+<p><br/><br/></p>
+<p><br/><br/></p>
+<div id="modelo-de-regresión-lineal-múltiple" class="section level1">
+<h1><strong>Modelo de Regresión lineal múltiple</strong></h1>
+<p>En la regresión lineal múltiple, se busca modelar la relación entre
+una variable dependiente <span class="math inline">\(Y\)</span> y dos o
+más variables independientes <span class="math inline">\(X_1, X_2,
+\ldots, X_p\)</span> mediante una ecuación lineal. El modelo de
+regresión lineal múltiple se define de la siguiente manera:</p>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2
++ \ldots + \beta_p X_p + u \]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(Y\)</span> es la variable dependiente
+que queremos predecir.</li>
+<li><span class="math inline">\(X_1, X_2, \ldots, X_p\)</span> son las
+variables independientes que influyen en <span
+class="math inline">\(Y\)</span>.</li>
+<li><span class="math inline">\(\beta_0\)</span> es la intersección o
+término independiente del modelo.</li>
+<li><span class="math inline">\(\beta_1, \beta_2, \ldots,
+\beta_p\)</span> son los coeficientes de regresión que representan la
+relación entre las variables independientes y la variable
+dependiente.</li>
+<li><span class="math inline">\(u\)</span> es el término de error, que
+representa la variabilidad de <span class="math inline">\(Y\)</span> que
+no es explicada por las variables independientes en el modelo.</li>
+</ul>
+<p>El objetivo de la regresión lineal múltiple es encontrar los valores
+de los coeficientes <span class="math inline">\(\beta_0, \beta_1,
+\ldots, \beta_p\)</span> que minimizan la suma de los cuadrados de los
+residuos (diferencias entre los valores observados de <span
+class="math inline">\(Y\)</span> y los valores predichos por el modelo).
+Una vez estimados los coeficientes, el modelo puede utilizarse para
+predecir los valores de <span class="math inline">\(Y\)</span> para
+nuevas observaciones de las variables independientes.</p>
+<div id="supuestos-del-modelo" class="section level2">
+<h2><strong>Supuestos del modelo</strong></h2>
+<p>Los supuestos del modelo de regresión lineal múltiple son similares a
+los del modelo de regresión lineal simple, pero se extienden para
+abordar múltiples variables independientes. Estos supuestos son
+fundamentales para garantizar la validez de las inferencias realizadas a
+partir del modelo. Los principales supuestos son los siguientes:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Linealidad:</strong> La relación entre las variables
+independientes y la variable dependiente es lineal. Esto significa que
+los cambios en la variable dependiente son proporcionales a los cambios
+en las variables independientes, manteniendo todas las demás variables
+constantes.</p></li>
+<li><p><strong>Homocedasticidad:</strong> La varianza de los errores es
+constante en todos los niveles de las variables independientes. En otras
+palabras, los errores tienen una distribución constante a lo largo de
+toda la variable dependiente.</p></li>
+<li><p><strong>Independencia de los errores:</strong> Los errores del
+modelo no están correlacionados entre sí. Esto significa que no hay
+patrones discernibles en los errores cuando se representan en función de
+las variables independientes.</p></li>
+<li><p><strong>Normalidad de los errores:</strong> Los errores del
+modelo siguen una distribución normal. Esto es importante para realizar
+pruebas de hipótesis y construir intervalos de confianza para los
+coeficientes del modelo.</p></li>
+<li><p><strong>Independencia de las variables independientes:</strong>
+Las variables independientes no deben estar altamente correlacionadas
+entre sí, ya que esto puede conducir a problemas de multicolinealidad
+que dificultan la interpretación de los coeficientes del
+modelo.</p></li>
+</ol>
+<p>Cumplir con estos supuestos es crucial para obtener estimaciones
+precisas y confiables de los coeficientes del modelo, así como para
+realizar inferencias válidas sobre la relación entre las variables. En
+caso de que alguno de los supuestos no se cumpla, se deben considerar
+técnicas alternativas o realizar ajustes al modelo.</p>
+<div id="ejemplo" class="section level3">
+<h3>Ejemplo</h3>
+<p>Una empresa desea estimar el ausentismo de sus empleados a su
+trabajo, medido como el numero de dias que un empleado falta a su
+trabajo durante un año.</p>
+<p>Para ello recogió la siguiente información</p>
+<pre class="r"><code>library(paqueteDEG)
+data(&quot;ausentismo&quot;)
+head(ausentismo)</code></pre>
+<pre><code># A tibble: 6 × 7
+     id ausen taller  sexo  edad  antg  sala
+  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1    10      1     1    32     8   900
+2     2    13      1     0    18     0   750
+3     3     2      0     0    53    15  1480
+4     4     0      0     1    37    16  1780
+5     5     9      0     1    19     0  1030
+6     6     4      0     0    44    20  1000</code></pre>
+<pre class="r"><code># install.packages(&quot;GGally&quot;)
+library(GGally)</code></pre>
+<pre><code>Registered S3 method overwritten by &#39;GGally&#39;:
+  method from   
+  +.gg   ggplot2</code></pre>
+<pre class="r"><code>ggpairs(ausentismo[,2:6])</code></pre>
+<p><img src="recurso402_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code># Estimar el modelo de regresión lineal múltiple
+modelo1 &lt;- lm(ausen ~ taller + sexo + edad + antg + sala, data = ausentismo)
+
+# Mostrar un resumen del modelo
+summary(modelo1)</code></pre>
+<pre><code>
+Call:
+lm(formula = ausen ~ taller + sexo + edad + antg + sala, data = ausentismo)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.0713 -0.5383  0.3031  0.9391  3.5793 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 12.4436075  1.6404323   7.586 2.14e-09 ***
+taller       0.9684600  0.6688242   1.448  0.15504    
+sexo         2.0492914  0.7122235   2.877  0.00628 ** 
+edad        -0.0372111  0.0469913  -0.792  0.43288    
+antg        -0.1507700  0.0652833  -2.309  0.02590 *  
+sala        -0.0044288  0.0007348  -6.027 3.63e-07 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.964 on 42 degrees of freedom
+Multiple R-squared:  0.7597,    Adjusted R-squared:  0.7311 
+F-statistic: 26.56 on 5 and 42 DF,  p-value: 5.282e-12</code></pre>
+<pre class="r"><code># Estimar el modelo de regresión lineal múltiple
+modelo2 &lt;- lm(ausen ~ sexo + antg + sala, data = ausentismo)
+
+# Mostrar un resumen del modelo
+summary(modelo2)</code></pre>
+<pre><code>
+Call:
+lm(formula = ausen ~ sexo + antg + sala, data = ausentismo)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.8757 -0.9888  0.2701  1.3332  4.0126 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 12.4172771  0.9559277  12.990  &lt; 2e-16 ***
+sexo         2.4035082  0.6618691   3.631 0.000732 ***
+antg        -0.2000174  0.0314808  -6.354 1.02e-07 ***
+sala        -0.0045732  0.0007366  -6.208 1.67e-07 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.983 on 44 degrees of freedom
+Multiple R-squared:  0.7432,    Adjusted R-squared:  0.7257 
+F-statistic: 42.44 on 3 and 44 DF,  p-value: 4.805e-13</code></pre>
+</div>
+</div>
+</div>
+<div id="supuestos" class="section level1">
+<h1>Supuestos</h1>
+<div id="media-de-los-errores-igual-a-cero" class="section level2">
+<h2>Media de los errores igual a cero</h2>
+<pre class="r"><code>u= modelo2$residuals
+summary(u)</code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-6.8757 -0.9888  0.2701  0.0000  1.3332  4.0126 </code></pre>
+</div>
+<div id="los-errores-se-distribuyen-normal" class="section level2">
+<h2>Los errores se distribuyen normal</h2>
+<pre class="r"><code>shapiro.test(u)</code></pre>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  u
+W = 0.92696, p-value = 0.005279</code></pre>
+</div>
+<div id="los-errores-tienen-varianza-constante" class="section level2">
+<h2>Los errores tienen varianza constante</h2>
+<pre class="r"><code># install.packages(&quot;lmtest&quot;)
+library(lmtest)
+gqtest(modelo1)</code></pre>
+<pre><code>
+    Goldfeld-Quandt test
+
+data:  modelo1
+GQ = 0.44476, df1 = 18, df2 = 18, p-value = 0.9528
+alternative hypothesis: variance increases from segment 1 to 2</code></pre>
+</div>
+<div id="los-errores-no-estan-correlacionados" class="section level2">
+<h2>Los errores no estan correlacionados</h2>
+<pre class="r"><code>dwtest(modelo1)</code></pre>
+<pre><code>
+    Durbin-Watson test
+
+data:  modelo1
+DW = 1.9755, p-value = 0.4383
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

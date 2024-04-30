@@ -91,7 +91,15 @@ navbar:
           href: guia401.html
         - text: "Regresión lineal simple"
           href: recurso401.html   
-        - text: "----"           
+        - text: "----"        
+        - text: "Guía de aprendizaje 4.2"
+          href: guia402.html
+        - text: "Regresión lineal múltiple"
+          href: recurso402.html   
+        - text: "----"        
+        
+        
+        
     - text: "Módulo 5"
       menu:
         - text: "Módulo 5"

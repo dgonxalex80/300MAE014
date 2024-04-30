@@ -1,0 +1,79 @@
+---
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/banner_guia.png")
+```
+
+<br/><br/>
+
+## **Introducción**
+
+ La regresión lineal múltiple es una extensión del modelo de regresión lineal simple que permite estudiar la relación entre una variable dependiente (también llamada variable respuesta) y dos o más variables independientes. Esta técnica es ampliamente utilizada en diversas áreas como la economía, la sociología, la psicología, entre otras, para entender cómo las variables independientes influyen en la variable dependiente.
+
+Por ejemplo, en el contexto de un estudio sobre el rendimiento académico de los estudiantes, la regresión lineal múltiple podría utilizarse para analizar cómo factores como el tiempo de estudio, el nivel socioeconómico y el número de horas de sueño afectan las calificaciones obtenidas.
+
+En este documento, se presentarán los pasos necesarios para realizar un análisis de regresión lineal múltiple y se proporcionarán ejemplos prácticos para ilustrar su aplicación en la interpretación de datos.
+
+
+## **2. Objetivos de la unidad**
+
+Al finalizar la unidad el estudiante estará en capacidad de PROPONER soluciones mediante la CONSTRUCCIÓN, VALIDACIÓN DE SUPUESTOS e INTERPRETACIÓN de resultados obtenidos de modelos de regresión múltiple  en situaciones reales que permitan la toma de decisiones informadas y la generación de políticas o conclusiones.
+
+<br/><br/>
+
+## **3. Duración**
+
+La presente  unidad será desarrollada durante la comprendida entre 30 de abril  y al 6 de mayo. Ademas del material suministrado  contaran con el acompañamiento del profesor en dos sesiones (Martes y Jueves) . 
+
+De manera voluntaria se exorta  a realizar la actividad planteada 
+
+<br/><br/>
+
+## **4. Cronograma de trabajo**
+
+
+|Actividad      | Descripción                    | 
+|:--------------|:-----------------------------  |
+|Actividad 402  | Plantear y resolver el Caso B&C.
+
+
+
+
+
+<br/><br/>
+
+## **5. Criterios de evaluación**
+
++ Plantea el modelo correcto para dar solución a la situación planteada	
++ Realiza los procesos de estimación y validación de los supuestos correspondiente al modelo de regresión 
++ Realiza de manera correcta la interpretación de los resultados obtenidos y plantea recomendaciones 
++ Informe 
+
+<br/><br/>
+
+## **6. Entregables** 
+
+|                   |                                       |
+|:------------------|:--------------------------------------|
+| Caso aplicado     | enlace de RPubl                       |
+|Fecha              | mayo 06                                |
+|Hora:              | 23:59                                 |
