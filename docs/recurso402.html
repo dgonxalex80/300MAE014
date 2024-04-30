@@ -506,48 +506,64 @@ class="math inline">\(Y\)</span> y los valores predichos por el modelo).
 Una vez estimados los coeficientes, el modelo puede utilizarse para
 predecir los valores de <span class="math inline">\(Y\)</span> para
 nuevas observaciones de las variables independientes.</p>
-<div id="supuestos-del-modelo" class="section level2">
-<h2><strong>Supuestos del modelo</strong></h2>
+<p><br/><br/></p>
+<div id="supuestos-del-modelo" class="section level3">
+<h3><strong>Supuestos del modelo</strong></h3>
 <p>Los supuestos del modelo de regresión lineal múltiple son similares a
 los del modelo de regresión lineal simple, pero se extienden para
 abordar múltiples variables independientes. Estos supuestos son
 fundamentales para garantizar la validez de las inferencias realizadas a
 partir del modelo. Los principales supuestos son los siguientes:</p>
+<p><br/><br/></p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Linealidad:</strong> La relación entre las variables
+<li><strong>Linealidad:</strong> La relación entre las variables
 independientes y la variable dependiente es lineal. Esto significa que
 los cambios en la variable dependiente son proporcionales a los cambios
 en las variables independientes, manteniendo todas las demás variables
-constantes.</p></li>
-<li><p><strong>Homocedasticidad:</strong> La varianza de los errores es
+constantes.</li>
+</ol>
+<p><br/><br/></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Homocedasticidad:</strong> La varianza de los errores es
 constante en todos los niveles de las variables independientes. En otras
 palabras, los errores tienen una distribución constante a lo largo de
-toda la variable dependiente.</p></li>
-<li><p><strong>Independencia de los errores:</strong> Los errores del
+toda la variable dependiente.</li>
+</ol>
+<p><br/><br/></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Independencia de los errores:</strong> Los errores del
 modelo no están correlacionados entre sí. Esto significa que no hay
 patrones discernibles en los errores cuando se representan en función de
-las variables independientes.</p></li>
-<li><p><strong>Normalidad de los errores:</strong> Los errores del
-modelo siguen una distribución normal. Esto es importante para realizar
-pruebas de hipótesis y construir intervalos de confianza para los
-coeficientes del modelo.</p></li>
-<li><p><strong>Independencia de las variables independientes:</strong>
-Las variables independientes no deben estar altamente correlacionadas
-entre sí, ya que esto puede conducir a problemas de multicolinealidad
-que dificultan la interpretación de los coeficientes del
-modelo.</p></li>
+las variables independientes.</li>
 </ol>
+<p><br/><br/></p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Normalidad de los errores:</strong> Los errores del modelo
+siguen una distribución normal. Esto es importante para realizar pruebas
+de hipótesis y construir intervalos de confianza para los coeficientes
+del modelo.</li>
+</ol>
+<p><br/><br/></p>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Independencia de las variables independientes:</strong> Las
+variables independientes no deben estar altamente correlacionadas entre
+sí, ya que esto puede conducir a problemas de multicolinealidad que
+dificultan la interpretación de los coeficientes del modelo.</li>
+</ol>
+<p><br/><br/></p>
 <p>Cumplir con estos supuestos es crucial para obtener estimaciones
 precisas y confiables de los coeficientes del modelo, así como para
 realizar inferencias válidas sobre la relación entre las variables. En
 caso de que alguno de los supuestos no se cumpla, se deben considerar
 técnicas alternativas o realizar ajustes al modelo.</p>
+</div>
 <div id="ejemplo" class="section level3">
-<h3>Ejemplo</h3>
+<h3><strong>Ejemplo</strong></h3>
 <p>Una empresa desea estimar el ausentismo de sus empleados a su
 trabajo, medido como el numero de dias que un empleado falta a su
 trabajo durante un año.</p>
 <p>Para ello recogió la siguiente información</p>
+<p><br/></p>
 <pre class="r"><code>library(paqueteDEG)
 data(&quot;ausentismo&quot;)
 head(ausentismo)</code></pre>
@@ -567,6 +583,10 @@ library(GGally)</code></pre>
   +.gg   ggplot2</code></pre>
 <pre class="r"><code>ggpairs(ausentismo[,2:6])</code></pre>
 <p><img src="recurso402_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><br/><br/></p>
+</div>
+<div id="estimación-del-modelo" class="section level3">
+<h3><strong>Estimación del modelo</strong></h3>
 <pre class="r"><code># Estimar el modelo de regresión lineal múltiple
 modelo1 &lt;- lm(ausen ~ taller + sexo + edad + antg + sala, data = ausentismo)
 
@@ -594,6 +614,10 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 1.964 on 42 degrees of freedom
 Multiple R-squared:  0.7597,    Adjusted R-squared:  0.7311 
 F-statistic: 26.56 on 5 and 42 DF,  p-value: 5.282e-12</code></pre>
+<p><br/><br/></p>
+</div>
+<div id="modelo-2" class="section level3">
+<h3><strong>Modelo 2</strong></h3>
 <pre class="r"><code># Estimar el modelo de regresión lineal múltiple
 modelo2 &lt;- lm(ausen ~ sexo + antg + sala, data = ausentismo)
 
@@ -619,29 +643,32 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 1.983 on 44 degrees of freedom
 Multiple R-squared:  0.7432,    Adjusted R-squared:  0.7257 
 F-statistic: 42.44 on 3 and 44 DF,  p-value: 4.805e-13</code></pre>
+<p><br/><br/></p>
 </div>
+<div id="supuestos" class="section level3">
+<h3><strong>Supuestos</strong></h3>
+<p><br/></p>
 </div>
-</div>
-<div id="supuestos" class="section level1">
-<h1>Supuestos</h1>
-<div id="media-de-los-errores-igual-a-cero" class="section level2">
-<h2>Media de los errores igual a cero</h2>
+<div id="media-de-los-errores-igual-a-cero" class="section level3">
+<h3><strong>Media de los errores igual a cero</strong></h3>
 <pre class="r"><code>u= modelo2$residuals
 summary(u)</code></pre>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 -6.8757 -0.9888  0.2701  0.0000  1.3332  4.0126 </code></pre>
+<p><br/><br/></p>
 </div>
-<div id="los-errores-se-distribuyen-normal" class="section level2">
-<h2>Los errores se distribuyen normal</h2>
+<div id="los-errores-se-distribuyen-normal" class="section level3">
+<h3><strong>Los errores se distribuyen normal</strong></h3>
 <pre class="r"><code>shapiro.test(u)</code></pre>
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  u
 W = 0.92696, p-value = 0.005279</code></pre>
+<p><br/><br/></p>
 </div>
-<div id="los-errores-tienen-varianza-constante" class="section level2">
-<h2>Los errores tienen varianza constante</h2>
+<div id="los-errores-tienen-varianza-constante" class="section level3">
+<h3><strong>Los errores tienen varianza constante</strong></h3>
 <pre class="r"><code># install.packages(&quot;lmtest&quot;)
 library(lmtest)
 gqtest(modelo1)</code></pre>
@@ -651,9 +678,10 @@ gqtest(modelo1)</code></pre>
 data:  modelo1
 GQ = 0.44476, df1 = 18, df2 = 18, p-value = 0.9528
 alternative hypothesis: variance increases from segment 1 to 2</code></pre>
+<p><br/><br/></p>
 </div>
-<div id="los-errores-no-estan-correlacionados" class="section level2">
-<h2>Los errores no estan correlacionados</h2>
+<div id="los-errores-no-estan-correlacionados" class="section level3">
+<h3><strong>Los errores no estan correlacionados</strong></h3>
 <pre class="r"><code>dwtest(modelo1)</code></pre>
 <pre><code>
     Durbin-Watson test

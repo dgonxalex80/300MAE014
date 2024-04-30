@@ -43,33 +43,47 @@ Donde:
 
 El objetivo de la regresión lineal múltiple es encontrar los valores de los coeficientes \( \beta_0, \beta_1, \ldots, \beta_p \) que minimizan la suma de los cuadrados de los residuos (diferencias entre los valores observados de \( Y \) y los valores predichos por el modelo). Una vez estimados los coeficientes, el modelo puede utilizarse para predecir los valores de \( Y \) para nuevas observaciones de las variables independientes.	
 
+<br/><br/>
 
-
-## **Supuestos del modelo**
+### **Supuestos del modelo**
 
 Los supuestos del modelo de regresión lineal múltiple son similares a los del modelo de regresión lineal simple, pero se extienden para abordar múltiples variables independientes. Estos supuestos son fundamentales para garantizar la validez de las inferencias realizadas a partir del modelo. Los principales supuestos son los siguientes:
 
+<br/><br/>
+
 1. **Linealidad:** La relación entre las variables independientes y la variable dependiente es lineal. Esto significa que los cambios en la variable dependiente son proporcionales a los cambios en las variables independientes, manteniendo todas las demás variables constantes.
+
+<br/><br/>
 
 2. **Homocedasticidad:** La varianza de los errores es constante en todos los niveles de las variables independientes. En otras palabras, los errores tienen una distribución constante a lo largo de toda la variable dependiente.
 
+<br/><br/>
+
 3. **Independencia de los errores:** Los errores del modelo no están correlacionados entre sí. Esto significa que no hay patrones discernibles en los errores cuando se representan en función de las variables independientes.
+
+<br/><br/>
 
 4. **Normalidad de los errores:** Los errores del modelo siguen una distribución normal. Esto es importante para realizar pruebas de hipótesis y construir intervalos de confianza para los coeficientes del modelo.
 
+<br/><br/>
+
 5. **Independencia de las variables independientes:** Las variables independientes no deben estar altamente correlacionadas entre sí, ya que esto puede conducir a problemas de multicolinealidad que dificultan la interpretación de los coeficientes del modelo.
+
+<br/><br/>
 
 Cumplir con estos supuestos es crucial para obtener estimaciones precisas y confiables de los coeficientes del modelo, así como para realizar inferencias válidas sobre la relación entre las variables. En caso de que alguno de los supuestos no se cumpla, se deben considerar técnicas alternativas o realizar ajustes al modelo.
 
 
 
 
-### Ejemplo 
+### **Ejemplo** 
 
 
 Una empresa desea estimar el ausentismo de sus empleados a su trabajo, medido como el numero de dias que un empleado falta a su trabajo durante un año.
 
 Para ello recogió la siguiente información
+
+<br/>
 
 ```{r}
 library(paqueteDEG)
@@ -84,6 +98,9 @@ library(GGally)
 ggpairs(ausentismo[,2:6])
 ```
 
+<br/><br/>
+
+### **Estimación del modelo**
 
 ```{r}
 # Estimar el modelo de regresión lineal múltiple
@@ -94,6 +111,10 @@ summary(modelo1)
 
 ```
 
+<br/><br/>
+
+### **Modelo 2**
+
 ```{r}
 # Estimar el modelo de regresión lineal múltiple
 modelo2 <- lm(ausen ~ sexo + antg + sala, data = ausentismo)
@@ -103,39 +124,43 @@ summary(modelo2)
 
 ```
 
+<br/><br/>
 
+### **Supuestos**
 
+<br/>
 
-# Supuestos
-
-## Media de los errores igual a cero
+### **Media de los errores igual a cero**
 
 ```{r}
 u= modelo2$residuals
 summary(u)
 ```
 
-## Los errores se distribuyen normal
+<br/><br/>
+
+### **Los errores se distribuyen normal**
 
 ```{r}
 shapiro.test(u)
 ```
 
+<br/><br/>
 
-## Los errores tienen varianza constante
+### **Los errores tienen varianza constante**
 
 ```{r}
 # install.packages("lmtest")
 library(lmtest)
 gqtest(modelo1)
 ```
+<br/><br/>
 
-## Los errores no estan correlacionados
+### **Los errores no estan correlacionados**
 
 ```{r}
 dwtest(modelo1)
 ```
-
 
 
 
