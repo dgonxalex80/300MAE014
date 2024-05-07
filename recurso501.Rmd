@@ -74,15 +74,15 @@ El análisis de un diseño de experimentos típicamente implica la comparación 
 
 <br/><br/>
 
-$$SS_{Total} = SS_{Entre} + SS_{Error}$$
+$$SS_{\text{Total}} = SS_{\text{Entre}} + SS_{\text{Error}}$$
 
 <br/>
 
 Donde:
 
-* $SS_{Total}$ es la suma de cuadrados total.
-* $SS_{Entre}$ es la suma de cuadrados entre grupos.
-* $SS_{Error}$ es la suma de cuadrados dentro de los grupos (error).
+* $SS_{\text{Total}}$ es la suma de cuadrados total.
+* $SS_{\text{Entre}}$ es la suma de cuadrados entre grupos.
+* $SS_{\text{Error}}$ es la suma de cuadrados dentro de los grupos (error).
 
 <br/><br/>
 
@@ -105,7 +105,7 @@ Permite la investigación de dos o más factores simultáneamente. Es extremadam
 Utilizado cuando el experimento involucra una variable de bloqueo que puede afectar la respuesta del tratamiento. Los tratamientos se aleatorizan dentro de cada bloque para controlar la variabilidad asociada a la variable de bloqueo.
 
 
-<br/><br/>
+<br/><br/><br/><br/>
 
 ### **Ejemplo**
 
@@ -180,7 +180,7 @@ interaction.plot(dataf$dia,dataf$tipo,dataf$moscas, main="Interacciones")
 
 
 
-<br/><br/>
+<br/><br/><br/><br/>
 
 ### **Ejemplo**
 
