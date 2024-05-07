@@ -109,6 +109,27 @@ tabla
 Se podría afirmar que hay relación o no entre el tiempo dedicado al uso del computador y genero de la persona?. Justifique su respuesta.
 
 
+```{r}
+x = c(29,15,19,27)
+m= matrix(x, nrow = 2)
+rownames(m) =c("mas de 40 horas", "menos de 40 horas")
+colnames(m) = c("Masculino", "Femenino")
+m
+```
+
+
+```{r}
+prueba2 <- chisq.test(m)
+
+prueba2$observed
+
+prueba2$expected
+
+
+prueba2$statistic
+prueba2$p.value
+
+```
 
 
 <br/><br/><br/>
@@ -118,6 +139,9 @@ Se podría afirmar que hay relación o no entre el tiempo dedicado al uso del co
 
 Su ponga que una empresa desarrolla un curso de entrenamiento para sus empleados, formando dos grupos y aplicándoles dos métodos distintos de entrenamiento. El primer grupo lo componen 36 empleados que obtuvieron un puntaje promedio de 6 ( en escala de 0 a 10 puntos) y una desviación estándar de 4 puntos y el segundo grupo de 40 empleados cuyo puntaje promedio fue de 8.2 y una desviación de 4.3. Se puede afirmar que el método aplicado al segundo grupo es superior al aplicado al primero? 	Que supuestos debe de tener en cuenta? 
 
+```{r}
+
+```
 
 <br/><br/><br/>
 

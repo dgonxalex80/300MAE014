@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="dgonzalez" />
+
+
+<title>Diseño de Experimentos</title>
+
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    300MAE014
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 0
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo0.html">Módulo 0</a>
+    </li>
+    <li>
+      <a href="recurso001.html">Metodología Estadística</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo1.html">Módulo 1</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia101.html">Guía de aprendizaje 1.1</a>
+    </li>
+    <li>
+      <a href="recurso100.html">Conceptos de inferencia estadística</a>
+    </li>
+    <li>
+      <a href="recurso111.html">Métodos de estimación propiedades</a>
+    </li>
+    <li>
+      <a href="Taller001.html">Taller 1</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia102.html">Guía de aprendizaje 1.2</a>
+    </li>
+    <li>
+      <a href="recurso121.html">Distribuciones muestales</a>
+    </li>
+    <li>
+      <a href="Taller002.html">Taller 2</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo2.html">Módulo 2</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia103.html">Guía de aprendizaje 2.1</a>
+    </li>
+    <li>
+      <a href="recurso131.html">Estimación una población</a>
+    </li>
+    <li>
+      <a href="recurso132.html">Estimación dos poblaciones</a>
+    </li>
+    <li>
+      <a href="Taller003.html">Taller 3</a>
+    </li>
+    <li>
+      <a href="Taller004.html">Taller 4</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 3
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo3.html">Módulo 3</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia301.html">Guía de aprendizaje 3.1</a>
+    </li>
+    <li>
+      <a href="recurso311.html">Conceptos básicos pruebas de hipótesis</a>
+    </li>
+    <li>
+      <a href="taller311.html">Taller 311</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia302.html">Guía de aprendizaje 3.2</a>
+    </li>
+    <li>
+      <a href="recurso321.html">Pruebas de hipótesis para dos poblaciones</a>
+    </li>
+    <li>
+      <a href="taller321.html">Taller 321</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia303.html">Guía de aprendizaje 3.3</a>
+    </li>
+    <li>
+      <a href="recurso331.html">Pruebas de hipótesis no paramétricas</a>
+    </li>
+    <li>
+      <a href="taller331.html">Taller 331</a>
+    </li>
+    <li>
+      <a href="problemas3.html">Problemas 331</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="recurso333.html">ANOVA</a>
+    </li>
+    <li>
+      <a href="taller332.html">Taller 332</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="segundo_parcial.html">Segundo parcial</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 4
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo4.html">Módulo 4</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia401.html">Guía de aprendizaje 4.1</a>
+    </li>
+    <li>
+      <a href="recurso401.html">Regresión lineal simple</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia402.html">Guía de aprendizaje 4.2</a>
+    </li>
+    <li>
+      <a href="recurso402.html">Regresión lineal múltiple</a>
+    </li>
+    <li class="divider"></li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Módulo 5
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="modulo5.html">Módulo 5</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia501.html">Guía de aprendizaje 5.1</a>
+    </li>
+    <li>
+      <a href="recurso501.html">Modelo de Diseño de Experimentos (DoE)</a>
+    </li>
+    <li class="divider"></li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Proyecto
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="proyecto.html">Guía proyecto</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore"><strong>Diseño de
+Experimentos</strong></h1>
+<h3 class="subtitle">Módulo 4</h3>
+<h4 class="author">dgonzalez</h4>
+
+</div>
+
+
+<p><br/><br/></p>
+<div id="introducción-al-diseño-de-experimentos-doe"
+class="section level2">
+<h2><strong>Introducción al Diseño de Experimentos (DoE)</strong></h2>
+<p>El Diseño de Experimentos (DoE) es una metodología estadística
+avanzada que se utiliza para planificar, conducir, analizar y
+interpretar experimentos de manera eficiente y efectiva. Esta técnica es
+fundamental en investigación y desarrollo, pues permite determinar con
+precisión las causas de variación en un conjunto de datos, optimizando
+así los recursos y maximizando la extracción de información útil.</p>
+<p><br/><br/></p>
+</div>
+<div id="historia-y-evolución-del-doe" class="section level2">
+<h2><strong>Historia y Evolución del DoE</strong></h2>
+<p>El DoE fue desarrollado inicialmente por Sir Ronald A. Fisher en la
+década de 1920, en sus trabajos en la estación experimental de
+Rothamsted en Inglaterra. Fisher introdujo conceptos revolucionarios
+como la aleatorización, la replicación y el bloqueo, que son piedras
+angulares en el diseño de experimentos moderno. Desde sus orígenes en la
+agricultura, el DoE ha evolucionado y se ha expandido a numerosas otras
+áreas incluyendo la ingeniería, la farmacología, el marketing y la
+ciencia de datos, entre otros.</p>
+<p><br/><br/></p>
+</div>
+<div id="función-y-componentes-del-doe" class="section level2">
+<h2><strong>Función y Componentes del DoE</strong></h2>
+<p>El principal objetivo del DoE es identificar y cuantificar la
+relación entre los factores controlables de un experimento (variables
+independientes) y las respuestas observadas (variables dependientes). A
+continuación, se detallan los componentes principales:</p>
+<p><br/><br/></p>
+<div id="variables-independientes" class="section level3">
+<h3><strong>Variables independientes:</strong></h3>
+<p>También conocidas como factores, son las condiciones o inputs del
+experimento que el investigador establece o modifica para observar su
+efecto sobre las respuestas. Por ejemplo, la temperatura o la presión en
+un proceso químico.</p>
+<p><br/><br/></p>
+</div>
+<div id="variables-dependientes" class="section level3">
+<h3><strong>Variables dependientes:</strong></h3>
+<p>Son los resultados o outputs del experimento, que se miden para cada
+combinación de factores. Por ejemplo, el rendimiento de un proceso o la
+resistencia de un material.</p>
+<p><br/><br/></p>
+</div>
+<div id="niveles" class="section level3">
+<h3><strong>Niveles:</strong></h3>
+<p>Cada variable independiente puede ser ajustada a diferentes estados o
+niveles. El experimento puede explorar varios niveles de un factor para
+determinar cuál es óptimo.</p>
+<p><br/><br/></p>
+</div>
+<div id="repeticiones" class="section level3">
+<h3><strong>Repeticiones:</strong></h3>
+<p>Para garantizar la fiabilidad de los resultados, cada combinación de
+niveles de factores se repite varias veces. Esto ayuda a estimar el
+error experimental y proporciona una medida de la variabilidad.</p>
+<p><br/><br/></p>
+</div>
+</div>
+<div id="ecuaciones-básicas-en-doe" class="section level2">
+<h2><strong>Ecuaciones Básicas en DoE</strong></h2>
+<p>El análisis de un diseño de experimentos típicamente implica la
+comparación de medias entre grupos utilizando el análisis de varianza
+(ANOVA). La siguiente es una representación simplificada de la ecuación
+de ANOVA:</p>
+<p><br/><br/></p>
+<p><span class="math display">\[SS_{Total} = SS_{Entre} +
+SS_{Error}\]</span></p>
+<p><br/></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(SS_{Total}\)</span> es la suma de
+cuadrados total.</li>
+<li><span class="math inline">\(SS_{Entre}\)</span> es la suma de
+cuadrados entre grupos.</li>
+<li><span class="math inline">\(SS_{Error}\)</span> es la suma de
+cuadrados dentro de los grupos (error).</li>
+</ul>
+<p><br/><br/></p>
+</div>
+<div id="tipos-de-diseños-experimentales" class="section level2">
+<h2><strong>Tipos de Diseños Experimentales</strong></h2>
+<div id="diseño-completamente-aleatorizado" class="section level3">
+<h3><strong>Diseño completamente aleatorizado:</strong></h3>
+<p>Este es el diseño más simple y se utiliza cuando se trata de un único
+factor con varios niveles. Cada unidad experimental se asigna a un
+tratamiento de forma aleatoria.</p>
+<p><br/><br/></p>
+</div>
+<div id="diseño-factorial" class="section level3">
+<h3><strong>Diseño factorial:</strong></h3>
+<p>Permite la investigación de dos o más factores simultáneamente. Es
+extremadamente eficiente, ya que evalúa no solo los efectos principales
+sino también las interacciones entre los factores.</p>
+<p><br/><br/></p>
+</div>
+<div id="diseño-en-bloques-aleatorizados" class="section level3">
+<h3><strong>Diseño en bloques aleatorizados:</strong></h3>
+<p>Utilizado cuando el experimento involucra una variable de bloqueo que
+puede afectar la respuesta del tratamiento. Los tratamientos se
+aleatorizan dentro de cada bloque para controlar la variabilidad
+asociada a la variable de bloqueo.</p>
+<p><br/><br/></p>
+</div>
+<div id="ejemplo" class="section level3">
+<h3><strong>Ejemplo</strong></h3>
+<p>Una empresa fabricante de insecticidas para controlar las moscas
+requiere realizar un estudio para medir la efectividad de tres de sus
+variedades. Para realizar el estudio cada uno de los productos se aplica
+a grupos de 100 moscas. Pasado un tiempo se cuentan el número de moscas
+muertas expresado en porcentaje. En cada caso se realizaron 6 replicas
+del experimento en dias diferentes. El estudio desea determinar si
+existen diferencias en los resultados obtenidos por los tres
+insecticidas.</p>
+<p><br/></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">tipo</th>
+<th align="right">dia 1</th>
+<th align="right">dia 2</th>
+<th align="right">dia3</th>
+<th align="right">dia 4</th>
+<th align="right">dia 5</th>
+<th align="right">dia6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">A</td>
+<td align="right">72</td>
+<td align="right">68</td>
+<td align="right">77</td>
+<td align="right">75</td>
+<td align="right">62</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="center">B</td>
+<td align="right">55</td>
+<td align="right">59</td>
+<td align="right">68</td>
+<td align="right">70</td>
+<td align="right">53</td>
+<td align="right">50</td>
+</tr>
+<tr class="odd">
+<td align="center">C</td>
+<td align="right">64</td>
+<td align="right">64</td>
+<td align="right">61</td>
+<td align="right">58</td>
+<td align="right">51</td>
+<td align="right">69</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<pre class="r"><code>dataf= data.frame(
+dia = as.factor(rep(c(1,2,3,4,5,6),times=3 )),
+tipo =as.factor(rep(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), times =c(6,6,6))),
+moscas= c(72,68,77,75,62,73,
+         55,59,68,70,53,50,
+         64,64,61,58,51,69))
+
+modelo=aov(moscas~ dia + tipo,data=dataf)
+summary(modelo)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+dia          5  331.2   66.23   1.940 0.1742  
+tipo         2  496.0  248.00   7.266 0.0113 *
+Residuals   10  341.3   34.13                 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br/><br/></p>
+<pre class="r"><code>modelo2 = lm(moscas~ tipo,data=dataf)
+summary(modelo2)</code></pre>
+<pre><code>
+Call:
+lm(formula = moscas ~ tipo, data = dataf)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-10.1667  -3.9167   0.3333   3.5833  10.8333 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   71.167      2.734  26.035 6.71e-14 ***
+tipoB        -12.000      3.866  -3.104  0.00726 ** 
+tipoC        -10.000      3.866  -2.587  0.02063 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 6.696 on 15 degrees of freedom
+Multiple R-squared:  0.4245,    Adjusted R-squared:  0.3477 
+F-statistic: 5.532 on 2 and 15 DF,  p-value: 0.01587</code></pre>
+<p><br/><br/></p>
+<pre class="r"><code>boxplot(moscas~ tipo,data=dataf,main=&quot;Comparacion de Tratamientos, según tipo de insecticida&quot;)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><br/><br/></p>
+<pre class="r"><code>boxplot(moscas ~ dia, data=dataf, main=&quot;Comparacion de Tratamientos según día de aplicación&quot;)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><br/><br/></p>
+<pre class="r"><code>tk=TukeyHSD(modelo)
+tk$tipo</code></pre>
+<pre><code>    diff        lwr        upr      p adj
+B-A  -12 -21.246652 -2.7533479 0.01313772
+C-A  -10 -19.246652 -0.7533479 0.03466281
+C-B    2  -7.246652 11.2466521 0.82695514</code></pre>
+<p><br/><br/></p>
+<pre class="r"><code>qqnorm(modelo$residual,main=&quot;Prueba de Normalidad&quot;)
+qqline(modelo$residual)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><br/><br/></p>
+<pre class="r"><code>shapiro.test(modelo$residuals)</code></pre>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  modelo$residuals
+W = 0.97785, p-value = 0.9252</code></pre>
+<pre class="r"><code>interaction.plot(dataf$dia,dataf$tipo,dataf$moscas, main=&quot;Interacciones&quot;)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><br/><br/></p>
+</div>
+<div id="ejemplo-1" class="section level3">
+<h3><strong>Ejemplo</strong></h3>
+<p>Un equipo de agrónomos está llevando a cabo un estudio para evaluar
+la eficacia de tres genotipos diferentes de una planta específica en
+términos de su rendimiento agrícola. El objetivo es determinar cuál de
+estos genotipos ofrece el mejor rendimiento bajo condiciones
+controladas, lo cual es crucial para futuras aplicaciones en programas
+de mejora genética.</p>
+<p>Los genotipos, etiquetados como g1, g2, y g3, han sido plantados en
+un campo experimental. Para garantizar la fiabilidad de los resultados y
+minimizar el efecto de variabilidad ambiental, cada genotipo ha sido
+replicado cuatro veces, resultando en un total de 12 unidades
+experimentales. El rendimiento de las plantas, medido en alguna métrica
+específica como puede ser toneladas por hectárea, se ha registrado para
+cada unidad experimental.</p>
+<pre class="r"><code>set.seed(123)
+
+datos = data.frame(
+  gen = gl(3,4,12, c(&#39;g1&#39;,&#39;g2&#39;,&#39;g3&#39;)),
+  rep = gl(4,1,12, c(&#39;r1&#39;,&#39;r2&#39;,&#39;r3&#39;,&#39;r4&#39;)),
+  rto = c(3.5, 3.8, 3.6, 3.5,
+          3.6, 3.9, 4.1, 3.8,
+          4.2, 4.9, 4.5, 4.3)
+)
+### TABLA ANÁLISIS DE VARIANZA
+boxplot(rto ~ gen, data = datos, las=1)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>boxplot(rto ~ rep, data = datos, las =1)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>modelo3 = lm(rto ~ gen, datos)
+summary(modelo3)</code></pre>
+<pre><code>
+Call:
+lm(formula = rto ~ gen, data = datos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.2750 -0.1187 -0.0250  0.0875  0.4250 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   3.6000     0.1152  31.258 1.72e-10 ***
+geng2         0.2500     0.1629   1.535 0.159172    
+geng3         0.8750     0.1629   5.372 0.000449 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.2303 on 9 degrees of freedom
+Multiple R-squared:  0.7729,    Adjusted R-squared:  0.7224 
+F-statistic: 15.31 on 2 and 9 DF,  p-value: 0.001268</code></pre>
+<pre class="r"><code>### TABLA ANÁLISIS DE VARIANZA
+modelo3 = aov(rto ~ gen, datos)
+summary(modelo3)</code></pre>
+<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+gen          2 1.6250  0.8125   15.31 0.00127 **
+Residuals    9 0.4775  0.0531                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code># Realizar la prueba de Tukey HSD
+tukey_test &lt;- TukeyHSD(modelo3, &quot;gen&quot;)
+print(tukey_test)</code></pre>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = rto ~ gen, data = datos)
+
+$gen
+       diff        lwr       upr     p adj
+g2-g1 0.250 -0.2047437 0.7047437 0.3209144
+g3-g1 0.875  0.4202563 1.3297437 0.0011682
+g3-g2 0.625  0.1702563 1.0797437 0.0100131</code></pre>
+<pre class="r"><code># Gráfico de los resultados de la prueba de Tukey
+plot(tukey_test, las=1)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="ejemplo-2" class="section level3">
+<h3><strong>Ejemplo</strong></h3>
+<pre class="r"><code># library(readr)
+# Duracion &lt;- read_table(&quot;data/duracion.csv&quot;)
+Duracion &lt;- data.frame( Material =c(&quot;Material1&quot;, &quot;Material1&quot;, &quot;Material1&quot;, &quot;Material2&quot;, &quot;Material2&quot;, &quot;Material2&quot;,
+                                    &quot;Material3&quot;, &quot;Material3&quot;, &quot;Material3&quot;, &quot;Material1&quot;, &quot;Material1&quot;, &quot;Material1&quot;,
+                                    &quot;Material2&quot;, &quot;Material2&quot;, &quot;Material2&quot;, &quot;Material3&quot;, &quot;Material3&quot;, &quot;Material3&quot;,
+                                    &quot;Material1&quot;, &quot;Material1&quot;, &quot;Material1&quot;, &quot;Material2&quot;, &quot;Material2&quot;, &quot;Material2&quot;,
+                                    &quot;Material3&quot;, &quot;Material3&quot;, &quot;Material3&quot;, &quot;Material1&quot;, &quot;Material1&quot;, &quot;Material1&quot;,
+                                    &quot;Material2&quot;, &quot;Material2&quot;, &quot;Material2&quot;, &quot;Material3&quot;, &quot;Material3&quot;, &quot;Material3&quot;),
+                        Temperatura =c(15,  80, 125,  15,  80, 125,  15,  80, 125,  15,  80, 125,  15,  80, 125,  
+                                       15,  80, 125,  15,  80, 125,  15,  80, 125,  15,  80, 125,  15,  80, 125,
+                                       15,  80, 125,  15,  80, 125),
+                        Duracion = c(155,  34,  20, 150, 126,  25, 138, 174,  96, 130,  40,  70, 188, 122,  58, 168,
+                                     150,  82,  74,  80,  82, 159, 106,  70, 110, 120, 104, 180,  75,  58, 126, 115,
+                                     45, 160, 139,  60))
+
+names(Duracion)</code></pre>
+<pre><code>[1] &quot;Material&quot;    &quot;Temperatura&quot; &quot;Duracion&quot;   </code></pre>
+<pre class="r"><code>str(Duracion)</code></pre>
+<pre><code>&#39;data.frame&#39;:   36 obs. of  3 variables:
+ $ Material   : chr  &quot;Material1&quot; &quot;Material1&quot; &quot;Material1&quot; &quot;Material2&quot; ...
+ $ Temperatura: num  15 80 125 15 80 125 15 80 125 15 ...
+ $ Duracion   : num  155 34 20 150 126 25 138 174 96 130 ...</code></pre>
+<pre class="r"><code># Cambio de variables
+FactorA_Material &lt;- factor(Duracion$Material)
+FactorB_Temperatura &lt;- factor(Duracion$Temperatura)
+Respuesta_Duracion &lt;- Duracion$Duracion
+
+# Cálculo de la tabla ANOVA
+Modelo &lt;- lm(Respuesta_Duracion ~ (FactorA_Material + FactorB_Temperatura)^2)
+ANOVA &lt;- aov(Modelo)
+summary(ANOVA)</code></pre>
+<pre><code>                                     Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+FactorA_Material                      2  10633    5317   7.983  0.00189 ** 
+FactorB_Temperatura                   2  39083   19542  29.344 1.69e-07 ***
+FactorA_Material:FactorB_Temperatura  4   9438    2359   3.543  0.01897 *  
+Residuals                            27  17981     666                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code># Coeficientes de la ecuación de regresión
+as.data.frame(coef(ANOVA))</code></pre>
+<pre><code>                                                 coef(ANOVA)
+(Intercept)                                           134.75
+FactorA_MaterialMaterial2                              21.00
+FactorA_MaterialMaterial3                               9.25
+FactorB_Temperatura80                                 -77.50
+FactorB_Temperatura125                                -77.25
+FactorA_MaterialMaterial2:FactorB_Temperatura80        39.00
+FactorA_MaterialMaterial3:FactorB_Temperatura80        79.25
+FactorA_MaterialMaterial2:FactorB_Temperatura125      -29.00
+FactorA_MaterialMaterial3:FactorB_Temperatura125       18.75</code></pre>
+<pre class="r"><code># Graficas de los efectos principales
+Efectos &lt;- data.frame(FactorA_Material, FactorB_Temperatura, Respuesta_Duracion)
+plot.design(Efectos, fun=&quot;mean&quot;, main=&quot; Gráfica de efectos principales&quot;, ylab= &quot;Duración&quot;, xlab=&quot;Factor&quot;)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code># Gráfica de interacción
+interaction.plot(FactorA_Material, FactorB_Temperatura, Respuesta_Duracion,
+                 main=&quot;Interacción Material-Temperatura&quot;, xlab=&quot;Material&quot;, ylab=&quot;Temperatura&quot;, col=c(1:3))</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<pre class="r"><code># Análisis de los residuos estándar del modelo
+plot(rstandard(Modelo), 
+     main=&quot;Gráfica de residuos estándar&quot;,
+     xlab=&quot;Observación&quot;, ylab=&quot;Residuos estandarizados&quot;)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-14-3.png" width="672" /></p>
+<pre class="r"><code>## No se observan problemas con los datos
+qqnorm(rstandard(Modelo))
+qqline(rstandard(Modelo), col=&quot;red&quot;)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-14-4.png" width="672" /></p>
+<pre class="r"><code>shapiro.test(rstandard(Modelo))</code></pre>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  rstandard(Modelo)
+W = 0.9777, p-value = 0.6672</code></pre>
+<pre class="r"><code># Los residuos se comportan de forma normal, no se observan problemas con los datos
+
+# Para ver los valores ajustados por la regresión:
+fitted(Modelo)</code></pre>
+<pre><code>     1      2      3      4      5      6      7      8      9     10     11 
+134.75  57.25  57.50 155.75 117.25  49.50 144.00 145.75  85.50 134.75  57.25 
+    12     13     14     15     16     17     18     19     20     21     22 
+ 57.50 155.75 117.25  49.50 144.00 145.75  85.50 134.75  57.25  57.50 155.75 
+    23     24     25     26     27     28     29     30     31     32     33 
+117.25  49.50 144.00 145.75  85.50 134.75  57.25  57.50 155.75 117.25  49.50 
+    34     35     36 
+144.00 145.75  85.50 </code></pre>
+<pre class="r"><code># Graficando los valores tanto los ajustados como los reales
+plot(fitted(Modelo),
+     Respuesta_Duracion, col=c(&quot;red&quot;, &quot;blue&quot;), pch=19,
+     main=&quot;Gráfica de valores ajustados y reales&quot;,
+     ylab=&quot;Valores reales&quot;, xlab=&quot;Valores ajustados&quot;)
+legend(50, 190, col=c(&quot;red&quot;,&quot;blue&quot;), legend=c(&quot;Ajustado&quot;, &quot;Real&quot;), pch=19)</code></pre>
+<p><img src="recurso501_files/figure-html/unnamed-chunk-14-5.png" width="672" /></p>
+<pre class="r"><code># Para hacer predicciones
+# Se hace la predicción con los valores que salen del análisis
+FactorA_Material2 &lt;- factor(c(&quot;Material1&quot;, &quot;Material2&quot; ,&quot;Material3&quot;))
+FactorB_Temperatura2 &lt;- factor(c(15,15,15))
+predict(lm(Respuesta_Duracion ~ (FactorA_Material + FactorB_Temperatura)^2), 
+        data.frame(FactorA_Material= FactorA_Material2, FactorB_Temperatura= FactorB_Temperatura2), 
+        level=0.95, interval=&quot;confidence&quot;)</code></pre>
+<pre><code>     fit      lwr      upr
+1 134.75 108.2751 161.2249
+2 155.75 129.2751 182.2249
+3 144.00 117.5251 170.4749</code></pre>
+<pre class="r"><code>## La predicción para Material 2 con Temperatura de 15 es de 155.75 de duración
+# Para probar el material más homogéneo
+# Se aprecia que el material 3 es el más homogéneo
+FactorA_Material2 &lt;- factor(c(&quot;Material3&quot;, &quot;Material3&quot; ,&quot;Material3&quot;))
+FactorB_Temperatura2 &lt;- factor(c(15,80, 125))
+predict(lm(Respuesta_Duracion ~ (FactorA_Material + FactorB_Temperatura)^2), 
+        data.frame(FactorA_Material= FactorA_Material2, FactorB_Temperatura= FactorB_Temperatura2), 
+        level=0.95, interval=&quot;confidence&quot;)</code></pre>
+<pre><code>     fit       lwr      upr
+1 144.00 117.52515 170.4749
+2 145.75 119.27515 172.2249
+3  85.50  59.02515 111.9749</code></pre>
+<pre class="r"><code>##### https://rpubs.com/ctellez_gdl/65342</code></pre>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

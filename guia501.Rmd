@@ -1,0 +1,85 @@
+---
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/banner_guia.png")
+```
+
+<br/><br/>
+
+## **Introducción**
+
+<br/>
+
+El Diseño de Experimentos (DoE) es una metodología estadística avanzada específicamente diseñada para planificar, llevar a cabo y analizar experimentos de manera efectiva. Esta técnica es esencial en una amplia gama de disciplinas científicas y de ingeniería, ya que permite a los investigadores y profesionales evaluar de forma exhaustiva y sistemática los efectos que diversas variables ejercen sobre un proceso o producto en estudio. Lo que hace especialmente valioso al DoE es su capacidad para optimizar el uso de recursos y maximizar la calidad de los datos recopilados, lo que a su vez facilita una toma de decisiones informada y respaldada por pruebas concretas.
+
+Ofrece un método organizado y sistemático para investigar las interacciones entre múltiples factores y sus resultados asociados. Esta metodología no solo mejora la eficiencia y efectividad en la optimización de productos y procesos sino que también demuestra una notable versatilidad. Su aplicabilidad en diversos sectores subraya su capacidad para adaptarse a las necesidades específicas y a las limitaciones particulares de cada campo de estudio. Esta flexibilidad es fundamental para diseñadores, ingenieros e investigadores que buscan soluciones innovadoras y eficaces ante problemas complejos.
+
+
+<br/><br/>
+
+## **2. Objetivos de la unidad**
+
+<br/>
+
+Al finalizar la unidad el estudiante estará en capacidad de PROPONER soluciones mediante la CONSTRUCCIÓN, VALIDACIÓN DE SUPUESTOS e INTERPRETACIÓN de resultados obtenidos de modelos de diseños experimentales  en situaciones reales que permitan la toma de decisiones informadas y la generación de políticas o conclusiones.
+
+<br/><br/>
+
+## **3. Duración**
+
+<br/>
+
+La presente  unidad será desarrollada durante la comprendida entre 07   y el 14 de mayo. Ademas del material suministrado  contaran con el acompañamiento del profesor en dos sesiones (Martes y Jueves) .  De manera voluntaria se exorta  a realizar la actividad planteada 
+
+<br/><br/>
+
+## **4. Cronograma de trabajo**
+
+<br/>
+
+|Actividad      | Descripción                    | 
+|:--------------|:-----------------------------  |
+|Actividad0 501  | Crear  y resolver un caso donde se evidencie el uso de los modelos de diseño de experimentos en el área profesional propia | 
+
+
+<br/><br/>
+
+## **5. Criterios de evaluación**
+
+<br/>
+
++ Plantea el modelo correcto para dar solución a la situación planteada	
++ Realiza los procesos de estimación y validación de los supuestos correspondiente al modelo 
++ Realiza de manera correcta la interpretación de los resultados obtenidos y plantea recomendaciones 
++ Texto del caso
+
+<br/><br/>
+
+## **6. Entregables** 
+
+|                   |                                       |
+|:------------------|:--------------------------------------|
+| Caso aplicado     | enlace de RPubl                       |
+|Fecha              | 14 de mayo                            |
+|Hora:              | 23:59                                 |
+
+<br/><br/>

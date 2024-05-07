@@ -1,0 +1,354 @@
+---
+title: "**Diseño de Experimentos**"
+subtitle: "Módulo 4"
+author: "dgonzalez"
+date: " "
+output:
+  html_document:
+    toc: no
+    toc_depth: 2
+    toc_float: yes
+    code_folding: hide
+    css: style.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1 ="#FF7F00"  # naranja - color primario 
+c2 ="#034A94"  # azul oscuro - color secundario
+c3 ="#0EB0C6"  # azul claro - color terciario
+c4 ="#686868"  # gris - color texto
+```
+
+
+<br/><br/>
+
+## **Introducción al Diseño de Experimentos (DoE)**
+
+El Diseño de Experimentos (DoE) es una metodología estadística avanzada que se utiliza para planificar, conducir, analizar y interpretar experimentos de manera eficiente y efectiva. Esta técnica es fundamental en investigación y desarrollo, pues permite determinar con precisión las causas de variación en un conjunto de datos, optimizando así los recursos y maximizando la extracción de información útil.
+
+<br/><br/>
+
+## **Historia y Evolución del DoE**
+
+El DoE fue desarrollado inicialmente por Sir Ronald A. Fisher en la década de 1920, en sus trabajos en la estación experimental de Rothamsted en Inglaterra. Fisher introdujo conceptos revolucionarios como la aleatorización, la replicación y el bloqueo, que son piedras angulares en el diseño de experimentos moderno. Desde sus orígenes en la agricultura, el DoE ha evolucionado y se ha expandido a numerosas otras áreas incluyendo la ingeniería, la farmacología, el marketing y la ciencia de datos, entre otros.
+
+<br/><br/>
+
+## **Función y Componentes del DoE**
+
+El principal objetivo del DoE es identificar y cuantificar la relación entre los factores controlables de un experimento (variables independientes) y las respuestas observadas (variables dependientes). A continuación, se detallan los componentes principales:
+
+<br/><br/>
+
+### **Variables independientes:** 
+
+También conocidas como factores, son las condiciones o inputs del experimento que el investigador establece o modifica para observar su efecto sobre las respuestas. Por ejemplo, la temperatura o la presión en un proceso químico.
+
+<br/><br/>
+
+### **Variables dependientes:** 
+
+Son los resultados o outputs del experimento, que se miden para cada combinación de factores. Por ejemplo, el rendimiento de un proceso o la resistencia de un material.
+
+<br/><br/>
+
+### **Niveles:** 
+
+Cada variable independiente puede ser ajustada a diferentes estados o niveles. El experimento puede explorar varios niveles de un factor para determinar cuál es óptimo.
+
+<br/><br/>
+
+### **Repeticiones:** 
+
+Para garantizar la fiabilidad de los resultados, cada combinación de niveles de factores se repite varias veces. Esto ayuda a estimar el error experimental y proporciona una medida de la variabilidad.
+
+
+<br/><br/>
+
+## **Ecuaciones Básicas en DoE**
+
+El análisis de un diseño de experimentos típicamente implica la comparación de medias entre grupos utilizando el análisis de varianza (ANOVA). La siguiente es una representación simplificada de la ecuación de ANOVA:
+
+<br/><br/>
+
+$$SS_{Total} = SS_{Entre} + SS_{Error}$$
+
+<br/>
+
+Donde:
+
+* $SS_{Total}$ es la suma de cuadrados total.
+* $SS_{Entre}$ es la suma de cuadrados entre grupos.
+* $SS_{Error}$ es la suma de cuadrados dentro de los grupos (error).
+
+<br/><br/>
+
+## **Tipos de Diseños Experimentales**
+
+### **Diseño completamente aleatorizado:** 
+
+Este es el diseño más simple y se utiliza cuando se trata de un único factor con varios niveles. Cada unidad experimental se asigna a un tratamiento de forma aleatoria.
+
+<br/><br/>
+
+### **Diseño factorial:** 
+
+Permite la investigación de dos o más factores simultáneamente. Es extremadamente eficiente, ya que evalúa no solo los efectos principales sino también las interacciones entre los factores.
+
+<br/><br/>
+
+### **Diseño en bloques aleatorizados:** 
+
+Utilizado cuando el experimento involucra una variable de bloqueo que puede afectar la respuesta del tratamiento. Los tratamientos se aleatorizan dentro de cada bloque para controlar la variabilidad asociada a la variable de bloqueo.
+
+
+<br/><br/>
+
+### **Ejemplo**
+
+Una empresa fabricante de insecticidas para controlar las moscas requiere realizar un estudio para medir la efectividad de tres de sus variedades. Para realizar el estudio cada uno de los productos se aplica a grupos de 100 moscas. Pasado un tiempo se cuentan el número de moscas muertas expresado en porcentaje. En cada caso se realizaron 6 replicas del experimento en dias diferentes. El estudio desea determinar si existen diferencias en los resultados obtenidos por los tres insecticidas.
+
+<br/>
+
+| tipo  |  dia 1  |  dia 2  |  dia3   |  dia 4  |  dia 5  |  dia6   |
+|:-----:|--------:|--------:|--------:|--------:|--------:|--------:|
+| A     |    72   |  68     |   77    |   75    | 62      |  73     |
+| B     |    55   |  59     |   68    |   70    | 53      |  50     |
+| C     |    64   |  64     |   61    |   58    | 51      |  69     |
+
+<br/>
+
+```{r}
+dataf= data.frame(
+dia = as.factor(rep(c(1,2,3,4,5,6),times=3 )),
+tipo =as.factor(rep(c("A", "B", "C"), times =c(6,6,6))),
+moscas= c(72,68,77,75,62,73,
+         55,59,68,70,53,50,
+         64,64,61,58,51,69))
+
+modelo=aov(moscas~ dia + tipo,data=dataf)
+summary(modelo)
+  
+```
+
+<br/><br/>
+
+```{r}
+modelo2 = lm(moscas~ tipo,data=dataf)
+summary(modelo2)
+```
+
+<br/><br/>
+
+
+```{r}
+boxplot(moscas~ tipo,data=dataf,main="Comparacion de Tratamientos, según tipo de insecticida")
+```
+
+<br/><br/>
+
+```{r}
+boxplot(moscas ~ dia, data=dataf, main="Comparacion de Tratamientos según día de aplicación")
+```
+
+<br/><br/>
+
+```{r}
+tk=TukeyHSD(modelo)
+tk$tipo
+```
+
+<br/><br/>
+
+```{r}
+qqnorm(modelo$residual,main="Prueba de Normalidad")
+qqline(modelo$residual)
+```
+
+<br/><br/>
+
+```{r}
+shapiro.test(modelo$residuals)
+```
+
+```{r}
+interaction.plot(dataf$dia,dataf$tipo,dataf$moscas, main="Interacciones")
+```
+
+
+
+<br/><br/>
+
+### **Ejemplo**
+
+
+Un equipo de agrónomos está llevando a cabo un estudio para evaluar la eficacia de tres genotipos diferentes de una planta específica en términos de su rendimiento agrícola. El objetivo es determinar cuál de estos genotipos ofrece el mejor rendimiento bajo condiciones controladas, lo cual es crucial para futuras aplicaciones en programas de mejora genética.
+
+Los genotipos, etiquetados como g1, g2, y g3, han sido plantados en un campo experimental. Para garantizar la fiabilidad de los resultados y minimizar el efecto de variabilidad ambiental, cada genotipo ha sido replicado cuatro veces, resultando en un total de 12 unidades experimentales. El rendimiento de las plantas, medido en alguna métrica específica como puede ser toneladas por hectárea, se ha registrado para cada unidad experimental.
+
+
+```{r}
+set.seed(123)
+
+datos = data.frame(
+  gen = gl(3,4,12, c('g1','g2','g3')),
+  rep = gl(4,1,12, c('r1','r2','r3','r4')),
+  rto = c(3.5, 3.8, 3.6, 3.5,
+          3.6, 3.9, 4.1, 3.8,
+          4.2, 4.9, 4.5, 4.3)
+)
+### TABLA ANÁLISIS DE VARIANZA
+boxplot(rto ~ gen, data = datos, las=1)
+```
+
+```{r}
+boxplot(rto ~ rep, data = datos, las =1)
+```
+
+```{r}
+modelo3 = lm(rto ~ gen, datos)
+summary(modelo3)
+```
+
+
+
+```{r}
+### TABLA ANÁLISIS DE VARIANZA
+modelo3 = aov(rto ~ gen, datos)
+summary(modelo3)
+
+```
+
+
+
+```{r}
+# Realizar la prueba de Tukey HSD
+tukey_test <- TukeyHSD(modelo3, "gen")
+print(tukey_test)
+
+# Gráfico de los resultados de la prueba de Tukey
+plot(tukey_test, las=1)
+```
+
+### **Ejemplo**
+
+
+```{r}
+# library(readr)
+# Duracion <- read_table("data/duracion.csv")
+Duracion <- data.frame( Material =c("Material1", "Material1", "Material1", "Material2", "Material2", "Material2",
+                                    "Material3", "Material3", "Material3", "Material1", "Material1", "Material1",
+                                    "Material2", "Material2", "Material2", "Material3", "Material3", "Material3",
+                                    "Material1", "Material1", "Material1", "Material2", "Material2", "Material2",
+                                    "Material3", "Material3", "Material3", "Material1", "Material1", "Material1",
+                                    "Material2", "Material2", "Material2", "Material3", "Material3", "Material3"),
+                        Temperatura =c(15,  80, 125,  15,  80, 125,  15,  80, 125,  15,  80, 125,  15,  80, 125,  
+                                       15,  80, 125,  15,  80, 125,  15,  80, 125,  15,  80, 125,  15,  80, 125,
+                                       15,  80, 125,  15,  80, 125),
+                        Duracion = c(155,  34,  20, 150, 126,  25, 138, 174,  96, 130,  40,  70, 188, 122,  58, 168,
+                                     150,  82,  74,  80,  82, 159, 106,  70, 110, 120, 104, 180,  75,  58, 126, 115,
+                                     45, 160, 139,  60))
+
+names(Duracion)
+str(Duracion)
+
+
+
+
+
+# Cambio de variables
+FactorA_Material <- factor(Duracion$Material)
+FactorB_Temperatura <- factor(Duracion$Temperatura)
+Respuesta_Duracion <- Duracion$Duracion
+
+# Cálculo de la tabla ANOVA
+Modelo <- lm(Respuesta_Duracion ~ (FactorA_Material + FactorB_Temperatura)^2)
+ANOVA <- aov(Modelo)
+summary(ANOVA)
+
+
+
+# Coeficientes de la ecuación de regresión
+as.data.frame(coef(ANOVA))
+
+
+# Graficas de los efectos principales
+Efectos <- data.frame(FactorA_Material, FactorB_Temperatura, Respuesta_Duracion)
+plot.design(Efectos, fun="mean", main=" Gráfica de efectos principales", ylab= "Duración", xlab="Factor")
+
+
+
+
+# Gráfica de interacción
+interaction.plot(FactorA_Material, FactorB_Temperatura, Respuesta_Duracion,
+                 main="Interacción Material-Temperatura", xlab="Material", ylab="Temperatura", col=c(1:3))
+
+
+
+
+# Análisis de los residuos estándar del modelo
+plot(rstandard(Modelo), 
+     main="Gráfica de residuos estándar",
+     xlab="Observación", ylab="Residuos estandarizados")
+
+
+
+
+## No se observan problemas con los datos
+qqnorm(rstandard(Modelo))
+qqline(rstandard(Modelo), col="red")
+
+
+
+
+shapiro.test(rstandard(Modelo))
+
+
+
+# Los residuos se comportan de forma normal, no se observan problemas con los datos
+
+# Para ver los valores ajustados por la regresión:
+fitted(Modelo)
+
+
+
+# Graficando los valores tanto los ajustados como los reales
+plot(fitted(Modelo),
+     Respuesta_Duracion, col=c("red", "blue"), pch=19,
+     main="Gráfica de valores ajustados y reales",
+     ylab="Valores reales", xlab="Valores ajustados")
+legend(50, 190, col=c("red","blue"), legend=c("Ajustado", "Real"), pch=19)
+
+
+
+
+
+# Para hacer predicciones
+# Se hace la predicción con los valores que salen del análisis
+FactorA_Material2 <- factor(c("Material1", "Material2" ,"Material3"))
+FactorB_Temperatura2 <- factor(c(15,15,15))
+predict(lm(Respuesta_Duracion ~ (FactorA_Material + FactorB_Temperatura)^2), 
+        data.frame(FactorA_Material= FactorA_Material2, FactorB_Temperatura= FactorB_Temperatura2), 
+        level=0.95, interval="confidence")
+
+
+
+
+## La predicción para Material 2 con Temperatura de 15 es de 155.75 de duración
+# Para probar el material más homogéneo
+# Se aprecia que el material 3 es el más homogéneo
+FactorA_Material2 <- factor(c("Material3", "Material3" ,"Material3"))
+FactorB_Temperatura2 <- factor(c(15,80, 125))
+predict(lm(Respuesta_Duracion ~ (FactorA_Material + FactorB_Temperatura)^2), 
+        data.frame(FactorA_Material= FactorA_Material2, FactorB_Temperatura= FactorB_Temperatura2), 
+        level=0.95, interval="confidence")
+
+
+##### https://rpubs.com/ctellez_gdl/65342
+
+```
+
+

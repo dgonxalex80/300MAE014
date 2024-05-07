@@ -97,13 +97,18 @@ navbar:
         - text: "Regresión lineal múltiple"
           href: recurso402.html   
         - text: "----"        
-        
-        
-        
     - text: "Módulo 5"
       menu:
         - text: "Módulo 5"
           href: modulo5.html
+        - text: "----"       
+        - text: "Guía de aprendizaje 5.1"
+          href: guia501.html        
+        - text: "Modelo de Diseño de Experimentos (DoE)"
+          href: recurso501.html   
+        - text: "----"              
+          
+          
     - text: "Proyecto"
       menu:
         - text: "Guía proyecto"

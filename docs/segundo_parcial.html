@@ -430,6 +430,14 @@ $(document).ready(function () {
     <li>
       <a href="modulo5.html">Módulo 5</a>
     </li>
+    <li class="divider"></li>
+    <li>
+      <a href="guia501.html">Guía de aprendizaje 5.1</a>
+    </li>
+    <li>
+      <a href="recurso501.html">Modelo de Diseño de Experimentos (DoE)</a>
+    </li>
+    <li class="divider"></li>
   </ul>
 </li>
 <li class="dropdown">
@@ -594,6 +602,29 @@ menos de 40 horas
 </table>
 <p>Se podría afirmar que hay relación o no entre el tiempo dedicado al
 uso del computador y genero de la persona?. Justifique su respuesta.</p>
+<pre class="r"><code>x = c(29,15,19,27)
+m= matrix(x, nrow = 2)
+rownames(m) =c(&quot;mas de 40 horas&quot;, &quot;menos de 40 horas&quot;)
+colnames(m) = c(&quot;Masculino&quot;, &quot;Femenino&quot;)
+m</code></pre>
+<pre><code>##                   Masculino Femenino
+## mas de 40 horas          29       19
+## menos de 40 horas        15       27</code></pre>
+<pre class="r"><code>prueba2 &lt;- chisq.test(m)
+
+prueba2$observed</code></pre>
+<pre><code>##                   Masculino Femenino
+## mas de 40 horas          29       19
+## menos de 40 horas        15       27</code></pre>
+<pre class="r"><code>prueba2$expected</code></pre>
+<pre><code>##                   Masculino Femenino
+## mas de 40 horas    23.46667 24.53333
+## menos de 40 horas  20.53333 21.46667</code></pre>
+<pre class="r"><code>prueba2$statistic</code></pre>
+<pre><code>## X-squared 
+##  4.526243</code></pre>
+<pre class="r"><code>prueba2$p.value</code></pre>
+<pre><code>## [1] 0.03337882</code></pre>
 <p><br/><br/><br/></p>
 </div>
 </div>
